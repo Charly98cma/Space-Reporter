@@ -6,6 +6,10 @@ Strings naming convention: {activity}_{field}_{object}
 
     <string name="app_name">Space Reporter</string>
 
+    <!-- PREFERENCES -->
+    <string name="preferences">PREFERENCES_LIST</string>
+    <string name="splash_executed">SPLASH_FLAG</string>
+
     <!-- MAIN -->
 
     <string name="main_btn_login">Login</string>
