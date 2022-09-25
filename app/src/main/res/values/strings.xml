@@ -1,0 +1,30 @@
+<!--
+Strings naming convention: {activity}_{field}_{object}
+-->
+
+<resources>
+
+    <string name="app_name">Space Reporter</string>
+
+    <!-- MAIN -->
+
+    <string name="main_btn_login">Login</string>
+    <string name="main_btn_signup">Sign up</string>
+
+    <!-- LOGIN -->
+
+    <string name="login_hint_username">Username</string>
+    <string name="login_hint_password">Password</string>
+
+    <string name="login_btn_login"><Login>Login</Login></string>
+    <string name="login_btn_forgotpwd">Forgot Password?</string>
+    <string name="login_btn_register">SIGN UP</string>
+
+    <string name="login_imgagedescription_logo">Logo of the app</string>
+
+    <string name="login_autofillhint_username">username</string>
+    <string name="login_autofillhint_password">password</string>
+
+    <string name="login_toast_wronglogin">Wrong username or password.</string>
+
+</resources>

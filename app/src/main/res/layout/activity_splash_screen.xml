@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <!-- TODO Insert introduction to the app -->
+
+    <!-- GO TO LOGIN button -->
+    <ImageButton
+        android:id="@+id/splash_btn_login"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/circular_button"
+        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+        android:textColor="@color/white"
+        />
+
+</LinearLayout>
