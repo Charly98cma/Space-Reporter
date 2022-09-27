@@ -4,20 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="32dp"
     tools:context=".SplashActivity"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:orientation="vertical">
+
+    <!-- TODO Adjust size according to screen size -->
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id = "@+id/splash_lbl_heading"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text = "@string/app_name"
+        android:textSize = "35dp"/>
 
     <!-- TODO Insert introduction to the app -->
 
-    <!-- GO TO LOGIN button -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/splash_lbl_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/app_descripcion"
+        android:textSize="20dp"
+        android:textAlignment="center"/>
+
     <ImageButton
         android:id="@+id/splash_btn_login"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
         android:background="@drawable/circular_button"
         android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-        android:textColor="@color/white"
-        />
+        android:textColor="@color/white" />
 
 </LinearLayout>
