@@ -15,6 +15,7 @@
         android:layout_marginTop="25dp"
         android:layout_gravity="center"
         android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+        android:contentDescription="@string/login_desc_logo"
         />
 
     <!-- TODO: Add some text below the logo -->
@@ -25,7 +26,7 @@
         android:layout_margin="25dp"
         android:textAlignment="center"
         android:text = "CATCHY LINE"
-        android:textSize = "20dp"/>
+        android:textSize = "20sp"/>
 
     <!-- USERNAME input -->
     <com.google.android.material.textfield.TextInputLayout
@@ -98,5 +99,17 @@
             android:text="@string/login_btn_register" />
 
     </LinearLayout>
+
+    <!-- TODO Move line to the bottom of teh page -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/login_lbl_poweredby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/login_lbl_poweredby"
+        android:textSize="12sp"
+        android:textColorLink="@color/blue"/>
+
+
 
 </LinearLayout>

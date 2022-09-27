@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String tag = "MAIN_SCREEN";
+    private static final String tag = "com.dam.spacereporter.main";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

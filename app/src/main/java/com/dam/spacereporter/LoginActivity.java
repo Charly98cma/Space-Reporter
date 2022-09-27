@@ -2,47 +2,143 @@ package com.dam.spacereporter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.text.method.LinkMovementMethod;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputLayout;
+
+import com.dam.spacereporter.utils.PwdManager;
+
+import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private String tag = "LOGIN_SCREEN";
+    private static final String tag = "com.dam.spacereporter.login";
+
+    EditText login_txt_username, login_txt_password;
+    TextView login_lbl_poweredby;
+    Button login_btn_login, login_btn_forgotpwd, login_btn_signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Do not show SPLASH screen if seen once
-        // FIXME Splash screen is not showing up
-        SharedPreferences pref = getSharedPreferences("ActivityPREF", Context.MODE_PRIVATE);
-        if (pref.getBoolean("splash_executed", false)) {
-            SharedPreferences.Editor edt = pref.edit();
-            edt.putBoolean("splash_executed", true);
-            edt.apply();
-        }
+        /*
+         * UI ELEMENTS
+         */
 
-        // TODO Check user already logued and if so, move to MAIN screen
+        // USER INPUT
+        login_txt_username = ((TextInputLayout) findViewById(R.id.login_txt_username)).getEditText();
+        login_txt_password = ((TextInputLayout) findViewById(R.id.login_txt_password)).getEditText();
 
-        // Access BUTTONS
-        // TODO Implement login buttons listeners
-        Button login_btn_login = (Button) findViewById(R.id.login_btn_login);
+        // BUTTONS
+        login_btn_login = findViewById(R.id.login_btn_login);
+        login_btn_forgotpwd = findViewById(R.id.login_btn_forgotpwd);
+        login_btn_signup = findViewById(R.id.login_btn_signup);
+
+        // LABEL with hyperlinks
+        login_lbl_poweredby = findViewById(R.id.login_lbl_poweredby);
+        login_lbl_poweredby.setMovementMethod(LinkMovementMethod.getInstance());
+
+        // TODO Check user already logged and if so, move to MAIN screen
+
+        /*
+         * LISTENERS
+         */
+
+        // TEXT EDIT LISTENERS
+        login_txt_username.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                login_txt_username.setError(null);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        login_txt_password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                login_txt_password.setError(null);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        // BUTTONS LISTENERS
         login_btn_login.setOnClickListener(view -> {
 
-        });
+            // Read username and password
+            final String username = Objects.requireNonNull(login_txt_username).getText().toString();
+            String password_clr = Objects.requireNonNull(login_txt_password).getText().toString().trim();
 
-        Button login_btn_forgotpwd = (Button) findViewById(R.id.login_btn_forgotpwd);
+            // Check required fields
+            if (checkAllFields(username, password_clr)) {
+                return;
+            }
+
+            // Hash password to login
+            String hash_password = "";
+            try {
+                hash_password = PwdManager.getSHA(password_clr);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            // TODO Implement real user login
+
+            Toast.makeText(LoginActivity.this, "Login not implemented", Toast.LENGTH_SHORT).show();
+
+            // Transition to MAIN window
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        });
+        // TODO Implement FORGOT_PASSWORD activity
         login_btn_forgotpwd.setOnClickListener(view -> {
-
+            Toast.makeText(LoginActivity.this, "Feature not implemented", Toast.LENGTH_SHORT).show();
         });
-
-        Button login_btn_signup = (Button) findViewById(R.id.login_btn_signup);
+        // TODO Implement SIGN UP activity
         login_btn_signup.setOnClickListener(view -> {
-
+            Toast.makeText(LoginActivity.this, "Feature not implemented", Toast.LENGTH_SHORT).show();
         });
+    }
+
+    private boolean checkAllFields(String username, String password) {
+        boolean bad_fields = false;
+
+        if (username.isEmpty()) {
+            login_txt_username.setError("Username required!");
+            bad_fields = true;
+        }
+
+        if (password.isEmpty()) {
+            login_txt_password.setError("Password required!");
+            bad_fields = true;
+        }
+
+        return bad_fields;
     }
 }

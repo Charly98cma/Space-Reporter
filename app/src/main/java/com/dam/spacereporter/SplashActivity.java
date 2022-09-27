@@ -8,46 +8,61 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
-    private static final String tag = "SPLASH_SCREEN";
+    private static final String tag = "com.dam.spacereporter.splash";
 
     SharedPreferences sharedPreferences;
-
-    private void goToLogin(Context context) {
-        // Transition to Login window
-        startActivity(new Intent(context, LoginActivity.class));
-        finish();
-    }
+    ImageButton splash_btn_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        // Preferences (flag of already seen SPLASH)
         sharedPreferences = getSharedPreferences(
                 getString(R.string.preferences), Context.MODE_PRIVATE
         );
 
+        /*
+         * UI ELEMENTS
+         */
+
+        // BUTTONS
+        splash_btn_login = (ImageButton) findViewById(R.id.splash_btn_login);
+
+
+        /*
+         * EARLY EXIT (user already logged in)
+         */
+
         // Go to LOGIN directly if SPLASH already seen
         if (sharedPreferences.getBoolean(getString(R.string.splash_executed), false)) {
-            Log.i(tag, "Redirected to LOGIN");
-            goToLogin(this);
+            // Transition to Login window
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
         }
 
-        // BUTTON to go to LOGIN screen
-        findViewById(R.id.splash_btn_login).setOnClickListener(view -> {
+        /*
+         * LISTENERS
+         */
 
-            Log.i(tag, "Redirected to LOGIN");
+        // Go to LOGIN button
+        splash_btn_login.setOnClickListener(view -> {
 
             // Mark SPLASH screen as seen and go to LOGIN
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean(getString(R.string.splash_executed), true);
             editor.apply();
 
-            goToLogin(SplashActivity.this);
+            // Transition to Login window
+            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+            finish();
         });
     }
 }
