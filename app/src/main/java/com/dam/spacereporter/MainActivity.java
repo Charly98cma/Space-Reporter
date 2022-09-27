@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String tag = "MAIN_SCREEN";
+    private static final String tag = "MAIN_SCREEN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
