@@ -55,49 +55,15 @@ public class LoginActivity extends AppCompatActivity {
          * LISTENERS
          */
 
-        // TEXT EDIT LISTENERS
-        login_txt_username.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                login_txt_username.setError(null);
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-        login_txt_password.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                login_txt_password.setError(null);
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
         // BUTTONS LISTENERS
         login_btn_login.setOnClickListener(view -> {
 
             // Read username and password
-            final String username = Objects.requireNonNull(login_txt_username).getText().toString();
+            final String username = Objects.requireNonNull(login_txt_username).getText().toString().trim();
             String password_clr = Objects.requireNonNull(login_txt_password).getText().toString().trim();
 
             // Check required fields
-            if (checkAllFields(username, password_clr)) {
+            if (!validateFields(username, password_clr)) {
                 return;
             }
 
@@ -127,19 +93,19 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-     private boolean checkAllFields(@NonNull String username, @NonNull String password) {
-        boolean bad_fields = false;
+     private boolean validateFields(@NonNull String username, @NonNull String password) {
+        boolean valid = true;
 
         if (username.isEmpty()) {
             login_txt_username.setError("Username required!");
-            bad_fields = true;
+            valid = false;
         }
 
         if (password.isEmpty()) {
             login_txt_password.setError("Password required!");
-            bad_fields = true;
+            valid = false;
         }
 
-        return bad_fields;
+        return valid;
     }
 }
