@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
 import android.widget.Button;
 import android.widget.EditText;
@@ -76,7 +74,6 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             // TODO Implement real user login
-
             Toast.makeText(LoginActivity.this, "Login not implemented", Toast.LENGTH_SHORT).show();
 
             // Transition to MAIN window
@@ -97,12 +94,12 @@ public class LoginActivity extends AppCompatActivity {
         boolean valid = true;
 
         if (username.isEmpty()) {
-            login_txt_username.setError("Username required!");
+            login_txt_username.setError(getResources().getText(R.string.login_error_username));
             valid = false;
         }
 
         if (password.isEmpty()) {
-            login_txt_password.setError("Password required!");
+            login_txt_password.setError(getResources().getText(R.string.login_error_password));
             valid = false;
         }
 

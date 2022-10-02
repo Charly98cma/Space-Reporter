@@ -44,4 +44,6 @@ Strings naming convention: {activity}_{field}_{object}
 
     <string name="login_lbl_poweredby">Powered by <a href="https://thespacedevs.com/llapi">Launch Library 2 API</a> and <a href="https://thespacedevs.com/snapi">Spaceflight News API</a></string>
 
+    <string name="login_error_username">Username required</string>
+    <string name="login_error_password">Password required</string>
 </resources>
