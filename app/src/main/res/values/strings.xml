@@ -60,7 +60,6 @@ Strings naming convention: {activity}_{field}_{object}
     <string name="signup_error_email">Email required</string>
     <string name="signup_error_pwd">Password required</string>
     <string name="signup_error_invalidemail">Invalid email address</string>
-    <string name=""></string>
     <string name="signup_error_nomatchpwd">Passwords do not match</string>
 
 
