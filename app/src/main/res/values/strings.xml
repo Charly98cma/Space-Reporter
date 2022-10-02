@@ -5,13 +5,19 @@ Strings naming convention: {activity}_{field}_{object}
 <resources>
 
     <string name="app_name">Space Reporter</string>
+    <string name="desc_logo">Logo of the application</string>
 
+    <!-- SPLASH -->
+
+    <string name="splash_btn_tologin">Go to Login button</string>
     <!-- TODO Add description to splash screen -->
-    <string name="app_descripcion">
+    <string name="app_description">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </string>
 
+
     <!-- PREFERENCES -->
+
     <string name="preferences">PREFERENCES_LIST</string>
     <string name="splash_executed">SPLASH_FLAG</string>
 
@@ -21,8 +27,6 @@ Strings naming convention: {activity}_{field}_{object}
     <string name="main_btn_signup">Sign up</string>
 
     <!-- LOGIN -->
-
-    <string name="login_desc_logo">Logo of the application</string>
 
     <string name="login_hint_username">Username</string>
     <string name="login_hint_password">Password</string>

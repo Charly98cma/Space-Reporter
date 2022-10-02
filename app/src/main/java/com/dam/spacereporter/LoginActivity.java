@@ -116,13 +116,13 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
         });
-        // TODO Implement FORGOT_PASSWORD activity
         login_btn_forgotpwd.setOnClickListener(view -> {
-            Toast.makeText(LoginActivity.this, "Feature not implemented", Toast.LENGTH_SHORT).show();
+            // Transition to FORGOTPWD window
+            startActivity(new Intent(LoginActivity.this, ForgotPwd.class));
         });
-        // TODO Implement SIGN UP activity
         login_btn_signup.setOnClickListener(view -> {
-            Toast.makeText(LoginActivity.this, "Feature not implemented", Toast.LENGTH_SHORT).show();
+            // Transition to SIGNUP window
+            startActivity(new Intent(LoginActivity.this, SignUp.class));
         });
     }
 
