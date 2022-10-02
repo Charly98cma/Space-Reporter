@@ -1,17 +1,16 @@
 package com.dam.spacereporter;
 
-import static com.dam.spacereporter.utils.PwdManager.validatePassword;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dam.spacereporter.utils.EmailValidator;
 import com.dam.spacereporter.utils.PwdManager;
+
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -55,8 +54,8 @@ public class SignUpActivity extends AppCompatActivity {
             email = readEditText(signup_txt_email);
 
             // Check all fields are valid
-            if (!validFields(fullname, username, password, repeatpassword, email)) return;
-            if (!(validEmail(email) & validPassword(password, repeatpassword))) return;
+            if (!validateFields(fullname, username, password, repeatpassword, email)) return;
+            if (!(validateEmail(email) & validatePassword(password, repeatpassword))) return;
 
             // TODO Check user is not already registered (username and email)
             // TODO Register new user if available email and usernames
@@ -77,49 +76,50 @@ public class SignUpActivity extends AppCompatActivity {
         return Objects.requireNonNull(field).getText().toString().trim();
     }
 
-    private boolean validFields(
+    private boolean validateFields(
             String fullname, String username, String pwd, String rpwd, String email
     ) {
         boolean valid = true;
 
         if (fullname.isEmpty()) {
-            signup_txt_fullname.setError("Name required");
+            signup_txt_fullname.setError(getResources().getString(R.string.signup_error_name));
             valid = false;
         }
 
         if (username.isEmpty()) {
-            signup_txt_username.setError("Username required");
+            signup_txt_username.setError(getResources().getString(R.string.signup_error_username));
             valid = false;
         }
 
         if (email.isEmpty()) {
-            signup_txt_email.setError("Email required");
+            signup_txt_email.setError(getResources().getString(R.string.signup_error_email));
             valid = false;
         }
 
         if (pwd.isEmpty()) {
-            signup_txt_password.setError("Password required");
+            signup_txt_password.setError(getResources().getString(R.string.signup_error_pwd));
             valid = false;
         }
 
         if (rpwd.isEmpty()) {
-            signup_txt_repeatpassword.setError("Password required");
+            signup_txt_repeatpassword.setError(getResources().getString(R.string.signup_error_pwd));
             valid = false;
         }
 
         return valid;
     }
 
-    private boolean validEmail(@NonNull String email) {
-        boolean valid = Patterns.EMAIL_ADDRESS.matcher(email).matches();
-        if (!valid)
-            signup_txt_email.setError("Invalid email address");
-        return valid;
+    private boolean validateEmail(@NonNull String email) {
+        if (!EmailValidator.isValidEmail(email)) {
+            signup_txt_email.setError(getResources().getText(R.string.signup_error_invalidemail));
+            return false;
+        }
+        return true;
     }
 
-    private boolean validPassword(String pwd, String rpwd) {
+    private boolean validatePassword(String pwd, String rpwd) {
 
-        if (!validatePassword(pwd)) {
+        if (!PwdManager.validatePassword(pwd)) {
             signup_txt_password.setError(getResources().getString(R.string.signup_error_pwdrequirements));
             return false;
         }
