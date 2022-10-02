@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
         android:hint="@string/login_hint_username"
-        android:autofillHints="@string/login_hint_username"
+        android:autofillHints="username"
         android:selectAllOnFocus="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
         android:hint="@string/login_hint_password"
-        android:autofillHints="@string/login_hint_password"
+        android:autofillHints="password"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
