@@ -34,7 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:paddingBottom="10dp"
-        android:hint="@string/forgotpwd_hint_email">
+        android:hint="@string/forgotpwd_hint_email"
+        android:autofillHints="emailAddress">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

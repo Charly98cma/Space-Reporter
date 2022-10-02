@@ -48,7 +48,7 @@ Strings naming convention: {activity}_{field}_{object}
 
     <string name="forgotpwd_lbl_desc">Enter the email you used to sign up to receive the code to reset your password</string>
 
-    <string name="forgotpwd_hint_email">Enter your email</string>
+    <string name="forgotpwd_hint_email">Enter your email address</string>
 
     <string name="forgotpwd_btn_send">Send code</string>
     <!-- TODO: Remove or change this placeholder text -->
