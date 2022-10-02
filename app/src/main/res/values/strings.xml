@@ -49,7 +49,7 @@ Strings naming convention: {activity}_{field}_{object}
     <!-- SIGNUP -->
 
     <string name="signup_hint_fullname">Full name</string>
-    <string name="signup_hint_email">Email</string>
+    <string name="signup_hint_email">Email address</string>
     <string name="login_hint_repeatpassword">Repeat password</string>
 
     <string name="signup_btn_signup">Sign Up</string>

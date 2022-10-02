@@ -24,7 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:paddingBottom="10dp"
-        android:hint="@string/signup_hint_fullname">
+        android:hint="@string/signup_hint_fullname"
+        android:autofillHints="name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -38,7 +39,8 @@
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
         android:layout_marginTop="16dp"
-        android:hint="@string/login_hint_username">
+        android:hint="@string/login_hint_username"
+        android:autofillHints="username">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -52,7 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:paddingBottom="10dp"
-        android:hint="@string/signup_hint_email">
+        android:hint="@string/signup_hint_email"
+        android:autofillHints= "emailAddress">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -68,7 +71,8 @@
         android:layout_marginTop="16dp"
         android:paddingBottom="10dp"
         app:passwordToggleEnabled="true"
-        android:hint="@string/login_hint_password">
+        android:hint="@string/login_hint_password"
+        android:autofillHints="password">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -84,7 +88,8 @@
         android:layout_marginTop="16dp"
         android:paddingBottom="10dp"
         app:passwordToggleEnabled="true"
-        android:hint="@string/login_hint_repeatpassword">
+        android:hint="@string/login_hint_repeatpassword"
+        android:autofillHints="password">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
