@@ -1,5 +1,6 @@
 package com.dam.spacereporter;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -118,15 +119,15 @@ public class LoginActivity extends AppCompatActivity {
         });
         login_btn_forgotpwd.setOnClickListener(view -> {
             // Transition to FORGOTPWD window
-            startActivity(new Intent(LoginActivity.this, ForgotPwd.class));
+            startActivity(new Intent(LoginActivity.this, ForgotPwdActivity.class));
         });
         login_btn_signup.setOnClickListener(view -> {
             // Transition to SIGNUP window
-            startActivity(new Intent(LoginActivity.this, SignUp.class));
+            startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
         });
     }
 
-    private boolean checkAllFields(String username, String password) {
+     private boolean checkAllFields(@NonNull String username, @NonNull String password) {
         boolean bad_fields = false;
 
         if (username.isEmpty()) {

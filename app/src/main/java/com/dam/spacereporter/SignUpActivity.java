@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 // TODO Implement
-public class SignUp extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
+
+    private static final String tag = "com.dam.spacereporter.signup";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

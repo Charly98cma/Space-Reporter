@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 // TODO Implement
-public class ForgotPwd extends AppCompatActivity {
+public class ForgotPwdActivity extends AppCompatActivity {
+
+    private static final String tag = "com.dam.spacereporter.forgotpwd";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
