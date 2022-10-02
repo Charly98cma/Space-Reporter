@@ -24,7 +24,7 @@ Strings naming convention: {activity}_{field}_{object}
     <!-- MAIN -->
 
     <string name="main_btn_login">Login</string>
-    <string name="main_btn_signup">Sign up</string>
+    <string name="main_btn_signup">Sign Up</string>
 
     <!-- LOGIN -->
 
@@ -43,5 +43,13 @@ Strings naming convention: {activity}_{field}_{object}
     <string name="login_toast_wronglogin">Wrong username or password.</string>
 
     <string name="login_lbl_poweredby">Powered by <a href="https://thespacedevs.com/llapi">Launch Library 2 API</a> and <a href="https://thespacedevs.com/snapi">Spaceflight News API</a></string>
+
+    <!-- SIGNUP -->
+
+    <string name="signup_hint_fullname">Full name</string>
+    <string name="signup_hint_email">Email</string>
+    <string name="login_hint_repeatpassword">Repeat password</string>
+
+    <string name="signup_btn_signup">Sign Up</string>
 
 </resources>
