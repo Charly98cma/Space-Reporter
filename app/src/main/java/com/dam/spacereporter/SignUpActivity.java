@@ -1,5 +1,7 @@
 package com.dam.spacereporter;
 
+import static com.dam.spacereporter.utils.PwdManager.validatePassword;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,18 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dam.spacereporter.utils.PwdManager;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 public class SignUpActivity extends AppCompatActivity {
 
     private static final String tag = "com.dam.spacereporter.signup";
-
-    private static Pattern uppercase = Pattern.compile("[A-Z]");
-    private static Pattern lowercase = Pattern.compile("[a-z]");
-    private static Pattern digit = Pattern.compile("[0-9]");
 
     EditText signup_txt_fullname, signup_txt_username, signup_txt_password, signup_txt_repeatpassword, signup_txt_email;
     Button signup_btn_signup;
@@ -121,7 +119,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private boolean validPassword(String pwd, String rpwd) {
 
-        if (!(uppercase.matcher(pwd).find() && lowercase.matcher(pwd).find() && digit.matcher(pwd).find() && pwd.length() >= 8)) {
+        if (!validatePassword(pwd)) {
             signup_txt_password.setError(getResources().getString(R.string.signup_error_pwdrequirements));
             return false;
         }

@@ -55,7 +55,7 @@ Strings naming convention: {activity}_{field}_{object}
     <string name="signup_btn_signup">Sign Up</string>
 
     <string name="signup_error_pwdrequirements">At least 8 characters, with one uppercase letter, one lowercase letter and one number</string>
-    <string name="signup_error_nomatchpwd">"Password do not match"</string>
+    <string name="signup_error_nomatchpwd">"Passwords do not match"</string>
 
 
 </resources>
