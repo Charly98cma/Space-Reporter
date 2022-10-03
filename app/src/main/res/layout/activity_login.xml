@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="32dp"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".ui.LoginActivity">
 
     <!-- TODO: Add logo to login screen -->
     <ImageView

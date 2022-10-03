@@ -1,8 +1,10 @@
-package com.dam.spacereporter;
+package com.dam.spacereporter.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.dam.spacereporter.R;
 
 public class MainActivity extends AppCompatActivity {
 

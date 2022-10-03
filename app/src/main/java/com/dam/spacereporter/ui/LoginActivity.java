@@ -1,4 +1,4 @@
-package com.dam.spacereporter;
+package com.dam.spacereporter.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dam.spacereporter.R;
 import com.google.android.material.textfield.TextInputLayout;
 
 import com.dam.spacereporter.utils.PwdManager;
@@ -21,8 +22,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String tag = "com.dam.spacereporter.login";
 
-    EditText login_txt_username, login_txt_password;
-    TextView login_lbl_poweredby;
+    private EditText login_txt_username, login_txt_password;
+    private TextView login_lbl_poweredby;
     Button login_btn_login, login_btn_forgotpwd, login_btn_signup;
 
     @Override

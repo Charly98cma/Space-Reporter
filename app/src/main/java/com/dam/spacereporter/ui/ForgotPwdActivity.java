@@ -1,9 +1,11 @@
-package com.dam.spacereporter;
+package com.dam.spacereporter.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Toast;
+
+import com.dam.spacereporter.R;
 
 // TODO Implement
 public class ForgotPwdActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.dam.spacereporter;
+package com.dam.spacereporter.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.dam.spacereporter.R;
 import com.dam.spacereporter.utils.EmailValidator;
 import com.dam.spacereporter.utils.PwdManager;
 
