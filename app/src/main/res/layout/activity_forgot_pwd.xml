@@ -17,18 +17,18 @@
         android:layout_margin="32dp"
         android:layout_gravity="center"
         android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-        android:contentDescription="@string/desc_logo"
+        android:contentDescription="@string/global_desc_logo"
         />
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="viewStart"
-        android:text="@string/forgotpwd_lbl_desc"
+        android:text="@string/forgotpwd_txt_desc"
         android:textSize = "20sp"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/forgotpwd_txt_email"
+        android:id="@+id/forgotpwd_et_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

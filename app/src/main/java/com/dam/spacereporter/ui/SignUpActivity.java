@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,9 +19,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     private static final String tag = "com.dam.spacereporter.signup";
 
-    EditText signup_txt_fullname, signup_txt_username, signup_txt_password, signup_txt_repeatpassword, signup_txt_email;
-    Button signup_btn_signup;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,27 +28,24 @@ public class SignUpActivity extends AppCompatActivity {
          * UI ELEMENTS
          */
 
-        signup_txt_fullname = getEditText(R.id.signup_txt_fullname);
-        signup_txt_username = getEditText(R.id.signup_txt_username);
-        signup_txt_password = getEditText(R.id.signup_txt_password);
-        signup_txt_repeatpassword = getEditText(R.id.signup_txt_repeatpassword);
-        signup_txt_email = getEditText(R.id.signup_txt_email);
-
-        signup_btn_signup = findViewById(R.id.signup_btn_signup);
+        final EditText signup_et_username = getEditText(R.id.signup_et_username);
+        final EditText signup_et_fullname = getEditText(R.id.signup_et_fullname);
+        final EditText signup_et_password = getEditText(R.id.signup_et_password);
+        final EditText signup_et_repeatpassword = getEditText(R.id.signup_et_repeatpassword);
+        final EditText signup_et_email = getEditText(R.id.signup_et_email);
 
         /*
          * LISTENERS
          */
 
-        signup_btn_signup.setOnClickListener(view -> {
+        findViewById(R.id.signup_btn_signup).setOnClickListener(view -> {
 
             // Read fields
-            final String fullname, username, password, repeatpassword, email;
-            fullname = readEditText(signup_txt_fullname);
-            username = readEditText(signup_txt_username);
-            password = readEditText(signup_txt_password);
-            repeatpassword = readEditText(signup_txt_repeatpassword);
-            email = readEditText(signup_txt_email);
+            final String fullname = readEditText(signup_et_fullname);
+            final String username = readEditText(signup_et_username);
+            final String password = readEditText(signup_et_password);
+            final String repeatpassword = readEditText(signup_et_repeatpassword);
+            final String email = readEditText(signup_et_email);
 
             // Check all fields are valid
             if (!validateFields(fullname, username, password, repeatpassword, email)) return;
@@ -72,6 +65,7 @@ public class SignUpActivity extends AppCompatActivity {
         return ((TextInputLayout) findViewById(ID)).getEditText();
     }
 
+    // TODO Refactor
     @NonNull
     private String readEditText(EditText field) {
         return Objects.requireNonNull(field).getText().toString().trim();

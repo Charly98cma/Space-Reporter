@@ -6,14 +6,14 @@ Strings naming convention: {activity}_{field}_{object}
 
 <resources>
 
-    <string name="app_name">Space Reporter</string>
-    <string name="desc_logo">Logo of the application</string>
+    <string name="global_app_name">Space Reporter</string>
+    <string name="global_desc_logo">Logo of the application</string>
 
     <!-- SPLASH -->
 
     <string name="splash_btn_tologin">Go to Login button</string>
     <!-- TODO Add description to splash screen -->
-    <string name="app_description">
+    <string name="splash_txt_appdesc">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </string>
 
@@ -37,11 +37,11 @@ Strings naming convention: {activity}_{field}_{object}
     <string name="login_btn_forgotpwd">Forgot Password?</string>
     <string name="login_btn_register">SIGN UP</string>
 
-    <string name="login_imgagedescription_logo">Logo of the app</string>
+    <string name="login_imgdesc_logo">Logo of the app</string>
 
     <string name="login_toast_wronglogin">Wrong username or password.</string>
 
-    <string name="login_lbl_poweredby">Powered by <a href="https://thespacedevs.com/llapi">Launch Library 2 API</a> and <a href="https://thespacedevs.com/snapi">Spaceflight News API</a></string>
+    <string name="login_txt_poweredby">Powered by <a href="https://thespacedevs.com/llapi">Launch Library 2 API</a> and <a href="https://thespacedevs.com/snapi">Spaceflight News API</a></string>
 
     <string name="login_error_username">Username required</string>
     <string name="login_error_password">Password required</string>
@@ -64,7 +64,7 @@ Strings naming convention: {activity}_{field}_{object}
 
     <!--FORGOT PASSWORD -->
 
-    <string name="forgotpwd_lbl_desc">Enter the email you used to sign up to receive the code to reset your password</string>
+    <string name="forgotpwd_txt_desc">Enter the email you used to sign up to receive the code to reset your password</string>
 
     <string name="forgotpwd_hint_email">Enter your email address</string>
 

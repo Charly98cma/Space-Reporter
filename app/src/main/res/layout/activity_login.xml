@@ -15,22 +15,22 @@
         android:layout_marginTop="25dp"
         android:layout_gravity="center"
         android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-        android:contentDescription="@string/desc_logo"
+        android:contentDescription="@string/global_desc_logo"
         />
 
     <!-- TODO: Add some text below the logo -->
     <com.google.android.material.textview.MaterialTextView
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="25dp"
         android:textAlignment="center"
-        android:text = "CATCHY LINE"
-        android:textSize = "20sp"/>
+        android:text="CATCHY LINE"
+        android:textSize="20sp"/>
 
     <!-- USERNAME input -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_txt_username"
+        android:id="@+id/login_et_username"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
 
     <!-- PASSWORD input -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_txt_password"
+        android:id="@+id/login_et_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/login_lbl_poweredby"
+            android:id="@+id/login_txt_poweredby"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -118,7 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="@string/login_lbl_poweredby"
+            android:text="@string/login_txt_poweredby"
             android:textColorLink="@color/blue"
             android:textSize="12sp"
             />

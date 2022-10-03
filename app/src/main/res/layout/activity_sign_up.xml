@@ -14,11 +14,11 @@
         android:layout_margin="32dp"
         android:layout_gravity="center"
         android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-        android:contentDescription="@string/desc_logo"
+        android:contentDescription="@string/global_desc_logo"
         />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/signup_txt_fullname"
+        android:id="@+id/signup_et_fullname"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/signup_txt_username"
+        android:id="@+id/signup_et_username"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/signup_txt_email"
+        android:id="@+id/signup_et_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/signup_txt_password"
+        android:id="@+id/signup_et_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/signup_txt_repeatpassword"
+        android:id="@+id/signup_et_repeatpassword"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -20,14 +20,12 @@ public class PwdManager {
         // Static instance of the hashing algorithm
         MessageDigest md = MessageDigest.getInstance(hash);
 
-        StringBuilder hexString = new StringBuilder(new BigInteger(
-                1, md.digest(input.getBytes(StandardCharsets.UTF_8))
+        StringBuilder hexString =
+                new StringBuilder(new BigInteger(1, md.digest(input.getBytes(StandardCharsets.UTF_8))
         ).toString(16));
 
         // Pad with leading zeros
-        while (hexString.length() < 64)
-            hexString.insert(0, '0');
-
+        while (hexString.length() < 64) hexString.insert(0, '0');
         return hexString.toString();
     }
 

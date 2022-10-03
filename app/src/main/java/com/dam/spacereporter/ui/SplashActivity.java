@@ -31,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
          * LISTENERS
          */
 
-        ((ImageButton) findViewById(R.id.splash_btn_login)).setOnClickListener(view -> {
+        findViewById(R.id.splash_btn_login).setOnClickListener(view -> {
 
             // Mark SPLASH screen as seen and go to LOGIN
             SharedPreferences.Editor editor = sharedPreferences.edit();
