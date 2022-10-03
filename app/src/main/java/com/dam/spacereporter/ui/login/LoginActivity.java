@@ -32,8 +32,10 @@ public class LoginActivity extends AppCompatActivity {
          * UI ELEMENTS
          */
 
-        final EditText login_et_username = ((TextInputLayout) findViewById(R.id.login_et_username)).getEditText();
-        final EditText login_et_password = ((TextInputLayout) findViewById(R.id.login_et_password)).getEditText();
+        final EditText login_et_username =
+                ((TextInputLayout) findViewById(R.id.login_et_username)).getEditText();
+        final EditText login_et_password =
+                ((TextInputLayout) findViewById(R.id.login_et_password)).getEditText();
 
         final Button login_btn_login = findViewById(R.id.login_btn_login);
         final Button login_btn_forgotpwd = findViewById(R.id.login_btn_forgotpwd);
@@ -98,11 +100,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean isFormValid(EditText username, EditText password) {
         boolean valid = true;
-        if (isValid(username.getText().toString().trim())) {
+        if (!isValid(username.getText().toString())) {
             username.setError(getResources().getString(R.string.login_error_password));
             valid = false;
         }
-        if (isValid(password.getText().toString().trim())) {
+        if (!isValid(password.getText().toString())) {
             password.setError(getResources().getString(R.string.login_error_username));
             valid = false;
         }
@@ -110,6 +112,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isValid(String field) {
-        return field != null && !field.isEmpty();
+        return field != null && !field.trim().isEmpty();
     }
 }
