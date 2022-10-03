@@ -11,9 +11,9 @@ public class PwdManager {
     private static final String hash = "SHA-256";
 
     // Password requirements
-    private static Pattern uppercase = Pattern.compile("[A-Z]");
-    private static Pattern lowercase = Pattern.compile("[a-z]");
-    private static Pattern digit = Pattern.compile("[0-9]");
+    private static final Pattern uppercase = Pattern.compile("[A-Z]");
+    private static final Pattern lowercase = Pattern.compile("[a-z]");
+    private static final Pattern digit = Pattern.compile("[0-9]");
 
     // TODO Add Salt to Hash to increase security
     public static String getPwdHash(String input) throws NoSuchAlgorithmException {
@@ -35,9 +35,10 @@ public class PwdManager {
     }
 
     private static boolean isValidPassword(String password) {
-        return uppercase.matcher(password).find() &&
+        return password != null &&
+                password.length() >= 8 &&
+                uppercase.matcher(password).find() &&
                 lowercase.matcher(password).find() &&
-                digit.matcher(password).find() &&
-                password.length() >= 8;
+                digit.matcher(password).find();
     }
 }

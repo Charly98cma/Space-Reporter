@@ -2,13 +2,11 @@
 Strings naming convention: {activity}_{field}_{object}
 -->
 
-<!-- TODO Add error messages to strings.xml -->
-
 <resources>
 
     <string name="global_app_name">Space Reporter</string>
     <string name="global_desc_logo">Logo of the application</string>
-
+    <string name="global_unexpected_exception">An unexpected exception has occurred :(</string>
     <!-- SPLASH -->
 
     <string name="splash_btn_tologin">Go to Login button</string>
@@ -55,12 +53,10 @@ Strings naming convention: {activity}_{field}_{object}
 
     <string name="signup_btn_signup">Sign Up</string>
 
-    <string name="signup_error_pwdrequirements">At least 8 characters, with one uppercase letter, one lowercase letter and one number</string>
     <string name="signup_error_name">Name required</string>
     <string name="signup_error_username">Username required</string>
-    <string name="signup_error_email">Email required</string>
-    <string name="signup_error_pwd">Password required</string>
     <string name="signup_error_invalidemail">Invalid email address</string>
+    <string name="signup_error_pwdrequirements">At least 8 characters, with one uppercase letter, one lowercase letter and one number</string>
     <string name="signup_error_nomatchpwd">Passwords do not match</string>
 
     <!--FORGOT PASSWORD -->
