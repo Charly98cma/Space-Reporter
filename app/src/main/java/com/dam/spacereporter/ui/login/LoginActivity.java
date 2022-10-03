@@ -14,7 +14,10 @@ import com.dam.spacereporter.R;
 import com.dam.spacereporter.ui.forgotpwd.ForgotPwdActivity;
 import com.dam.spacereporter.ui.MainActivity;
 import com.dam.spacereporter.ui.SignUpActivity;
+import com.dam.spacereporter.utils.PwdManager;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.security.NoSuchAlgorithmException;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -44,13 +47,23 @@ public class LoginActivity extends AppCompatActivity {
 
         login_btn_login.setOnClickListener(view -> {
 
-            // TODO Read username and pwd
-            //      Check != null and != ""
+            // Check fields are not null or empty
+            if (!isFormValid(login_et_username, login_et_password)) return;
 
-            // TODO Hash password (PwdManager.getHash(pwd))
+            final String username = login_et_username.getText().toString().trim();
+            final String pwd_clr = login_et_password.getText().toString().trim();
+
+            // Hash password
+            final String pwd_hash;
+            try {
+                pwd_hash = PwdManager.getPwdHash(pwd_clr);
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+                Toast.makeText(LoginActivity.this, getResources().getText(R.string.login_error_hash), Toast.LENGTH_SHORT);
+                return;
+            }
 
             // TODO Implement real login
-
             Toast.makeText(LoginActivity.this, "Login not implemented", Toast.LENGTH_SHORT).show();
 
             // Transition to MAIN window
@@ -81,5 +94,22 @@ public class LoginActivity extends AppCompatActivity {
     private void goToMain() {
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
         finish();
+    }
+
+    private boolean isFormValid(EditText username, EditText password) {
+        boolean valid = true;
+        if (isValid(username.getText().toString().trim())) {
+            username.setError(getResources().getString(R.string.login_error_password));
+            valid = false;
+        }
+        if (isValid(password.getText().toString().trim())) {
+            password.setError(getResources().getString(R.string.login_error_username));
+            valid = false;
+        }
+        return valid;
+    }
+
+    private boolean isValid(String field) {
+        return field != null && !field.isEmpty();
     }
 }

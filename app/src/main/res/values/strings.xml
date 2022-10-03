@@ -45,6 +45,7 @@ Strings naming convention: {activity}_{field}_{object}
 
     <string name="login_error_username">Username required</string>
     <string name="login_error_password">Password required</string>
+    <string name="login_error_hash">Hashing algorithm is unavailable</string>
 
     <!-- SIGNUP -->
 

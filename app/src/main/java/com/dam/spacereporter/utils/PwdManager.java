@@ -15,7 +15,8 @@ public class PwdManager {
     private static Pattern lowercase = Pattern.compile("[a-z]");
     private static Pattern digit = Pattern.compile("[0-9]");
 
-    public static String getSHA(String input) throws NoSuchAlgorithmException {
+    // TODO Add Salt to Hash to increase security
+    public static String getPwdHash(String input) throws NoSuchAlgorithmException {
 
         // Static instance of the hashing algorithm
         MessageDigest md = MessageDigest.getInstance(hash);
