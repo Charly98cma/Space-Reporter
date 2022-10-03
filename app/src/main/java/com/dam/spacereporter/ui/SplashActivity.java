@@ -2,17 +2,15 @@ package com.dam.spacereporter.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.ImageButton;
 
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.ui.login.LoginActivity;
 
-@SuppressLint("CustomSplashScreen")
+// TODO Redo the check (user already seen Splash screen)
 public class SplashActivity extends AppCompatActivity {
 
     private static final String tag = "com.dam.spacereporter.splash";

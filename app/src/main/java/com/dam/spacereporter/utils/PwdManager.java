@@ -35,8 +35,7 @@ public class PwdManager {
     }
 
     private static boolean isValidPassword(String password) {
-        return password != null &&
-                password.length() >= 8 &&
+        return password.length() >= 8 &&
                 uppercase.matcher(password).find() &&
                 lowercase.matcher(password).find() &&
                 digit.matcher(password).find();

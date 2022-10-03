@@ -100,12 +100,18 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isFormValid(EditText username, EditText password) {
+
+        if (username == null || password == null) {
+            Utils.toastException(LoginActivity.this);
+            return false;
+        }
+
         boolean valid = true;
-        if (username != null && !Utils.isValid(username.getText().toString())) {
+        if (!Utils.isValid(username.getText().toString())) {
             username.setError(getResources().getString(R.string.login_error_username));
             valid = false;
         }
-        if (password != null && !Utils.isValid(password.getText().toString())) {
+        if (!Utils.isValid(password.getText().toString())) {
             password.setError(getResources().getString(R.string.login_error_password));
             valid = false;
         }

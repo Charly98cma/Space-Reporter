@@ -43,15 +43,12 @@ public class SignUpActivity extends AppCompatActivity {
 
         findViewById(R.id.signup_btn_signup).setOnClickListener(view -> {
 
-            // Check fields are not null or empty
+            // Validate the fields of the form
             if (!isFormValid(signup_et_fullname, signup_et_username) |
                     (!(isEmailValid(signup_et_email) & isPwdValid(signup_et_password, signup_et_repeatpassword))))
                 return;
 
-            // TODO Check user is not already registered (username and email)
-
             // TODO Register new user if available email and usernames
-
             Toast.makeText(SignUpActivity.this, "Sign Up not implemented", Toast.LENGTH_SHORT).show();
 
             // Once registered, back to login
@@ -61,12 +58,23 @@ public class SignUpActivity extends AppCompatActivity {
 
     private boolean isFormValid(EditText signup_et_fullname, EditText signup_et_username) {
 
+        // Check fields are not null
+        if (signup_et_fullname == null || signup_et_username == null) {
+            Utils.toastException(SignUpActivity.this);
+            return false;
+        }
+
+        // Read fields content
+        final String fullname = signup_et_fullname.getText().toString();
+        final String username = signup_et_username.getText().toString();
+
+        // Validate the fields content (valid name and username)
         boolean valid = true;
-        if (!Utils.isValid(signup_et_fullname.getText().toString())) {
+        if (fullname.trim().isEmpty()) {
             signup_et_fullname.setError(getResources().getString(R.string.signup_error_name));
             valid = false;
         }
-        if (!Utils.isValid(signup_et_username.getText().toString())) {
+        if (username.trim().isEmpty()) {
             signup_et_username.setError(getResources().getString(R.string.signup_error_username));
             valid = false;
         }
@@ -74,6 +82,11 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private boolean isEmailValid(EditText signup_et_email) {
+
+        if (signup_et_email == null) {
+            Utils.toastException(SignUpActivity.this);
+            return false;
+        }
 
         if (!EmailValidator.isValidEmail(signup_et_email.getText().toString().trim())) {
             signup_et_email.setError(getResources().getString(R.string.signup_error_invalidemail));
@@ -83,6 +96,11 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private boolean isPwdValid(EditText signup_et_password, EditText signup_et_repeatpassword) {
+
+        if (signup_et_repeatpassword == null || signup_et_password == null) {
+            Utils.toastException(SignUpActivity.this);
+            return false;
+        }
 
         final String pwd = signup_et_password.getText().toString().trim();
         final String rpwd = signup_et_repeatpassword.getText().toString().trim();
@@ -99,5 +117,4 @@ public class SignUpActivity extends AppCompatActivity {
         }
         return true;
     }
-
 }
