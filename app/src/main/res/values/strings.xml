@@ -62,4 +62,12 @@ Strings naming convention: {activity}_{field}_{object}
     <string name="signup_error_invalidemail">Invalid email address</string>
     <string name="signup_error_nomatchpwd">Passwords do not match</string>
 
+    <!--FORGOT PASSWORD -->
+
+    <string name="forgotpwd_lbl_desc">Enter the email you used to sign up to receive the code to reset your password</string>
+
+    <string name="forgotpwd_hint_email">Enter your email address</string>
+
+    <string name="forgotpwd_btn_send">Send code</string>
+
 </resources>
