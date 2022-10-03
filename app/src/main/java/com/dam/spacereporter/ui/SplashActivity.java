@@ -10,14 +10,12 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 
 import com.dam.spacereporter.R;
+import com.dam.spacereporter.ui.login.LoginActivity;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
     private static final String tag = "com.dam.spacereporter.splash";
-
-    SharedPreferences sharedPreferences;
-    ImageButton splash_btn_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,35 +23,15 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         // Preferences (flag of already seen SPLASH)
-        sharedPreferences = getSharedPreferences(
+        final SharedPreferences sharedPreferences = getSharedPreferences(
                 getString(R.string.preferences), Context.MODE_PRIVATE
         );
-
-        /*
-         * UI ELEMENTS
-         */
-
-        // BUTTONS
-        splash_btn_login = (ImageButton) findViewById(R.id.splash_btn_login);
-
-
-        /*
-         * EARLY EXIT (user already logged in)
-         */
-
-        // Go to LOGIN directly if SPLASH already seen
-        if (sharedPreferences.getBoolean(getString(R.string.splash_executed), false)) {
-            // Transition to Login window
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
-        }
 
         /*
          * LISTENERS
          */
 
-        // Go to LOGIN button
-        splash_btn_login.setOnClickListener(view -> {
+        ((ImageButton) findViewById(R.id.splash_btn_login)).setOnClickListener(view -> {
 
             // Mark SPLASH screen as seen and go to LOGIN
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -64,5 +42,14 @@ public class SplashActivity extends AppCompatActivity {
             startActivity(new Intent(SplashActivity.this, LoginActivity.class));
             finish();
         });
+
+        /*
+         * SPLASH ALREADY SEEN (go to Login directly)
+         */
+
+        if (sharedPreferences.getBoolean(getString(R.string.splash_executed), false)) {
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+        }
     }
 }
