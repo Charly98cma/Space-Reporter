@@ -111,6 +111,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private boolean validateEmail(@NonNull String email) {
+
         if (!EmailValidator.isValidEmail(email)) {
             signup_txt_email.setError(getResources().getText(R.string.signup_error_invalidemail));
             return false;
@@ -120,8 +121,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     private boolean validatePassword(String pwd, String rpwd) {
 
-        if (!PwdManager.validatePassword(pwd)) {
+        if (!PwdManager.validatePassword(pwd, rpwd)) {
             signup_txt_password.setError(getResources().getString(R.string.signup_error_pwdrequirements));
+            signup_txt_repeatpassword.setError(getResources().getString(R.string.signup_error_pwdrequirements));
             return false;
         }
 

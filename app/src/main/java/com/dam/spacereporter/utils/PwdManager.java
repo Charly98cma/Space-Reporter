@@ -31,8 +31,14 @@ public class PwdManager {
         return hexString.toString();
     }
 
-    public static boolean validatePassword(String pwd) {
-       return uppercase.matcher(pwd).find() && lowercase.matcher(pwd).find() &&
-               digit.matcher(pwd).find() && pwd.length() >= 8;
+    public static boolean validatePassword(String pwd, String rpwd) {
+       return isValidPassword(pwd) && isValidPassword(rpwd);
+    }
+
+    private static boolean isValidPassword(String password) {
+        return uppercase.matcher(password).find() &&
+                lowercase.matcher(password).find() &&
+                digit.matcher(password).find() &&
+                password.length() >= 8;
     }
 }
