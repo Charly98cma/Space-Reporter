@@ -20,7 +20,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.ForgotPwdActivity"
+            android:name=".ui.forgotpwd.ForgotPwdActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

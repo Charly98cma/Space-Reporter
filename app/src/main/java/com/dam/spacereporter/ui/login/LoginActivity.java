@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dam.spacereporter.R;
-import com.dam.spacereporter.ui.ForgotPwdActivity;
+import com.dam.spacereporter.ui.forgotpwd.ForgotPwdActivity;
 import com.dam.spacereporter.ui.MainActivity;
 import com.dam.spacereporter.ui.SignUpActivity;
 import com.google.android.material.textfield.TextInputLayout;

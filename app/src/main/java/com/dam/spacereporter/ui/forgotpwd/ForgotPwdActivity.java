@@ -1,4 +1,4 @@
-package com.dam.spacereporter.ui;
+package com.dam.spacereporter.ui.forgotpwd;
 
 import androidx.appcompat.app.AppCompatActivity;
 
