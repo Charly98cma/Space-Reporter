@@ -1,4 +1,4 @@
-package com.dam.spacereporter.ui;
+package com.dam.spacereporter.ui.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dam.spacereporter.R;
+import com.dam.spacereporter.ui.ForgotPwdActivity;
+import com.dam.spacereporter.ui.MainActivity;
+import com.dam.spacereporter.ui.SignUpActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
 import com.dam.spacereporter.utils.PwdManager;
@@ -54,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
          * LISTENERS
          */
 
-        // BUTTONS LISTENERS
         login_btn_login.setOnClickListener(view -> {
 
             // Read username and password
