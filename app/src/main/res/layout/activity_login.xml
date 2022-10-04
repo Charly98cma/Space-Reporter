@@ -12,11 +12,10 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="25dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+        android:layout_marginTop="25dp"
         android:contentDescription="@string/global_desc_logo"
-        />
+        android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
 
     <!-- TODO: Add some text below the logo -->
     <com.google.android.material.textview.MaterialTextView
@@ -24,9 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="25dp"
-        android:textAlignment="center"
         android:text="CATCHY LINE"
-        android:textSize="20sp"/>
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <!-- USERNAME input -->
     <com.google.android.material.textfield.TextInputLayout
@@ -34,9 +33,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:hint="@string/login_hint_username"
         android:autofillHints="username"
+        android:hint="@string/login_hint_username"
+        android:paddingBottom="10dp"
         android:selectAllOnFocus="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -50,9 +49,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:hint="@string/login_hint_password"
         android:autofillHints="password"
+        android:hint="@string/login_hint_password"
+        android:paddingBottom="10dp"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -66,12 +65,12 @@
         android:id="@+id/login_btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="0dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:elevation="0dp"
         android:text="@string/login_btn_login" />
 
     <!-- FORGOT PWD and LOGIN buttons -->
@@ -87,9 +86,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:background="@color/transparent"
-            android:textColor="@color/black"
             android:elevation="0dp"
-            android:text="@string/login_btn_forgotpwd" />
+            android:text="@string/login_btn_forgotpwd"
+            android:textColor="@color/black" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/login_btn_signup"
@@ -97,9 +96,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:background="@color/transparent"
-            android:textColor="@color/black"
             android:elevation="0dp"
-            android:text="@string/login_btn_register" />
+            android:text="@string/login_btn_register"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 
@@ -109,19 +108,18 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/login_txt_poweredby"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/login_txt_poweredby"
             android:textColorLink="@color/blue"
             android:textSize="12sp"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

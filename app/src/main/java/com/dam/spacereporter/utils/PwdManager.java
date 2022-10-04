@@ -23,7 +23,7 @@ public class PwdManager {
 
         StringBuilder hexString =
                 new StringBuilder(new BigInteger(1, md.digest(input.getBytes(StandardCharsets.UTF_8))
-        ).toString(16));
+                ).toString(16));
 
         // Pad with leading zeros
         while (hexString.length() < 64) hexString.insert(0, '0');
@@ -31,7 +31,7 @@ public class PwdManager {
     }
 
     public static boolean validatePassword(String pwd, String rpwd) {
-       return isValidPassword(pwd) && isValidPassword(rpwd);
+        return isValidPassword(pwd) && isValidPassword(rpwd);
     }
 
     private static boolean isValidPassword(String password) {

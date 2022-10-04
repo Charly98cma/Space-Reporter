@@ -11,11 +11,10 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_margin="32dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+        android:layout_margin="32dp"
         android:contentDescription="@string/global_desc_logo"
-        />
+        android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/signup_et_fullname"
@@ -23,13 +22,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:paddingBottom="10dp"
+        android:autofillHints="name"
         android:hint="@string/signup_hint_fullname"
-        android:autofillHints="name">
+        android:paddingBottom="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -37,14 +36,14 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
         android:layout_marginTop="16dp"
+        android:autofillHints="username"
         android:hint="@string/login_hint_username"
-        android:autofillHints="username">
+        android:paddingBottom="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -53,14 +52,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:paddingBottom="10dp"
+        android:autofillHints="emailAddress"
         android:hint="@string/signup_hint_email"
-        android:autofillHints= "emailAddress">
+        android:paddingBottom="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -69,10 +68,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:paddingBottom="10dp"
-        app:passwordToggleEnabled="true"
+        android:autofillHints="password"
         android:hint="@string/login_hint_password"
-        android:autofillHints="password">
+        android:paddingBottom="10dp"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -86,10 +85,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:paddingBottom="10dp"
-        app:passwordToggleEnabled="true"
+        android:autofillHints="password"
         android:hint="@string/login_hint_repeatpassword"
-        android:autofillHints="password">
+        android:paddingBottom="10dp"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -102,9 +101,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:elevation="0dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:elevation="0dp"
         android:text="@string/signup_btn_signup" />
 
 </LinearLayout>

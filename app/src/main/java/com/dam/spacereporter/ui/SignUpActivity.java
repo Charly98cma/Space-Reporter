@@ -1,15 +1,14 @@
 package com.dam.spacereporter.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.utils.EmailValidator;
 import com.dam.spacereporter.utils.PwdManager;
-
 import com.dam.spacereporter.utils.Utils;
 import com.google.android.material.textfield.TextInputLayout;
 

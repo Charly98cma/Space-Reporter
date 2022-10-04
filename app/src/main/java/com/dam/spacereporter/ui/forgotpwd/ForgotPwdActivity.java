@@ -1,9 +1,9 @@
 package com.dam.spacereporter.ui.forgotpwd;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.spacereporter.R;
 
