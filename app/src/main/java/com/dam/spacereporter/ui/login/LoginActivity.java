@@ -106,12 +106,15 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         }
 
+        final String username_str = username.getText().toString().trim();
+        final String password_str = password.getText().toString().trim();
+
         boolean valid = true;
-        if (!Utils.isValid(username.getText().toString())) {
+        if (username_str.isEmpty()) {
             username.setError(getResources().getString(R.string.login_error_username));
             valid = false;
         }
-        if (!Utils.isValid(password.getText().toString())) {
+        if (password_str.isEmpty()) {
             password.setError(getResources().getString(R.string.login_error_password));
             valid = false;
         }
