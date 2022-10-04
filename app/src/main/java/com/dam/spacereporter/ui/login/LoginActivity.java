@@ -59,7 +59,8 @@ public class LoginActivity extends AppCompatActivity {
             // Hash password
             final String pwd_hash;
             try {
-                pwd_hash = PwdManager.getPwdHash(pwd_clr);
+                pwd_hash = PwdManager.getPwdHash(pwd_clr, username);
+                Toast.makeText(LoginActivity.this, pwd_hash, Toast.LENGTH_SHORT).show();
             } catch (NoSuchAlgorithmException e) {
                 e.printStackTrace();
                 Toast.makeText(LoginActivity.this, getResources().getText(R.string.login_error_hash), Toast.LENGTH_SHORT).show();
@@ -67,10 +68,10 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             // TODO Implement real login
-            Toast.makeText(LoginActivity.this, "Dummy login", Toast.LENGTH_SHORT).show();
-
-            // Transition to MAIN window
-            goToMain();
+            boolean loginSuccessful = true;
+            if (loginSuccessful) {
+                goToMain();
+            }
         });
         login_btn_forgotpwd.setOnClickListener(view -> {
             // Transition to FORGOTPWD window
