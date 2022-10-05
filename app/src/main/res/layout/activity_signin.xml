@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="32dp"
     android:orientation="vertical"
-    tools:context=".ui.login.SignInActivity">
+    tools:context=".ui.signin.SignInActivity">
 
     <!-- TODO: Add logo to login screen -->
     <ImageView
@@ -71,7 +71,7 @@
         android:elevation="0dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:text="@string/signin_btn_login" />
+        android:text="@string/signin_btn_signin" />
 
     <!-- FORGOT PWD and LOGIN buttons -->
     <LinearLayout

@@ -8,7 +8,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.spacereporter.R;
-import com.dam.spacereporter.ui.login.SignInActivity;
+import com.dam.spacereporter.ui.signin.SignInActivity;
 
 // TODO Redo the check (user already seen Splash screen)
 public class SplashActivity extends AppCompatActivity {

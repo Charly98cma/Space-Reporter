@@ -1,4 +1,4 @@
-package com.dam.spacereporter.ui.login;
+package com.dam.spacereporter.ui.signin;
 
 import android.content.Intent;
 import android.os.Bundle;
