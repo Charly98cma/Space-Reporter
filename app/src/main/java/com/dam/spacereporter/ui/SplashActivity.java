@@ -8,7 +8,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.spacereporter.R;
-import com.dam.spacereporter.ui.login.LoginActivity;
+import com.dam.spacereporter.ui.login.SignInActivity;
 
 // TODO Redo the check (user already seen Splash screen)
 public class SplashActivity extends AppCompatActivity {
@@ -37,7 +37,7 @@ public class SplashActivity extends AppCompatActivity {
             editor.apply();
 
             // Transition to Login window
-            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+            startActivity(new Intent(SplashActivity.this, SignInActivity.class));
             finish();
         });
 
@@ -46,7 +46,7 @@ public class SplashActivity extends AppCompatActivity {
          */
 
         if (sharedPreferences.getBoolean(getString(R.string.splash_executed), false)) {
-            startActivity(new Intent(this, LoginActivity.class));
+            startActivity(new Intent(this, SignInActivity.class));
             finish();
         }
     }

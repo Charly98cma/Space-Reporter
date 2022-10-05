@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="32dp"
     android:orientation="vertical"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".ui.login.SignInActivity">
 
     <!-- TODO: Add logo to login screen -->
     <ImageView
@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="username"
-        android:hint="@string/login_hint_username"
+        android:hint="@string/signin_hint_username"
         android:paddingBottom="10dp"
         android:selectAllOnFocus="true">
 
@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="password"
-        android:hint="@string/login_hint_password"
+        android:hint="@string/signin_hint_password"
         android:paddingBottom="10dp"
         app:passwordToggleEnabled="true">
 
@@ -71,7 +71,7 @@
         android:elevation="0dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:text="@string/login_btn_login" />
+        android:text="@string/signin_btn_login" />
 
     <!-- FORGOT PWD and LOGIN buttons -->
     <LinearLayout
@@ -87,7 +87,7 @@
             android:layout_gravity="start"
             android:background="@color/transparent"
             android:elevation="0dp"
-            android:text="@string/login_btn_forgotpwd"
+            android:text="@string/signin_btn_forgotpwd"
             android:textColor="@color/black" />
 
         <com.google.android.material.button.MaterialButton
@@ -97,7 +97,7 @@
             android:layout_gravity="end"
             android:background="@color/transparent"
             android:elevation="0dp"
-            android:text="@string/login_btn_register"
+            android:text="@string/signin_btn_register"
             android:textColor="@color/black" />
 
     </LinearLayout>
@@ -111,7 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="@string/login_txt_poweredby"
+            android:text="@string/signin_txt_poweredby"
             android:textColorLink="@color/blue"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"

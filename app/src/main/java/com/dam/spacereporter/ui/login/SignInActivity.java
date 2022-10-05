@@ -20,14 +20,14 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.security.NoSuchAlgorithmException;
 
-public class LoginActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
 
     private static final String tag = "com.dam.spacereporter.login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_signin);
 
         /*
          * UI ELEMENTS
@@ -60,10 +60,10 @@ public class LoginActivity extends AppCompatActivity {
             final String pwd_hash;
             try {
                 pwd_hash = PwdManager.getPwdHash(pwd_clr, username);
-                Toast.makeText(LoginActivity.this, pwd_hash, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignInActivity.this, pwd_hash, Toast.LENGTH_SHORT).show();
             } catch (NoSuchAlgorithmException e) {
                 e.printStackTrace();
-                Toast.makeText(LoginActivity.this, getResources().getText(R.string.login_error_hash), Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignInActivity.this, getResources().getText(R.string.signin_error_hash), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -75,11 +75,11 @@ public class LoginActivity extends AppCompatActivity {
         });
         login_btn_forgotpwd.setOnClickListener(view -> {
             // Transition to FORGOTPWD window
-            startActivity(new Intent(LoginActivity.this, ForgotPwdActivity.class));
+            startActivity(new Intent(SignInActivity.this, ForgotPwdActivity.class));
         });
         login_btn_signup.setOnClickListener(view -> {
             // Transition to SIGNUP window
-            startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+            startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
         });
 
         /*
@@ -96,14 +96,14 @@ public class LoginActivity extends AppCompatActivity {
     // Function to transition to the MAIN activity
     // (used if LogIn successful or user already logged)
     private void goToMain() {
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        startActivity(new Intent(SignInActivity.this, MainActivity.class));
         finish();
     }
 
     private boolean isFormValid(EditText username, EditText password) {
 
         if (username == null || password == null) {
-            Utils.toastException(LoginActivity.this);
+            Utils.toastException(SignInActivity.this);
             return false;
         }
 
@@ -112,11 +112,11 @@ public class LoginActivity extends AppCompatActivity {
 
         boolean valid = true;
         if (username_str.isEmpty()) {
-            username.setError(getResources().getString(R.string.login_error_username));
+            username.setError(getResources().getString(R.string.signin_error_username));
             valid = false;
         }
         if (password_str.isEmpty()) {
-            password.setError(getResources().getString(R.string.login_error_password));
+            password.setError(getResources().getString(R.string.signin_error_password));
             valid = false;
         }
         return valid;
