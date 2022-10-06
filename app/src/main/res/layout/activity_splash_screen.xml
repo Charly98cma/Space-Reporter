@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="32dp"
-    tools:context=".ui.SplashActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.SplashActivity">
 
     <!-- TODO Adjust size according to screen size -->
 
@@ -16,18 +16,17 @@
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
-        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
         android:contentDescription="@string/global_desc_logo"
-        />
+        android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id = "@+id/splash_txt_heading"
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
+        android:id="@+id/splash_txt_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:text = "@string/global_app_name"
-        android:textSize = "35sp"/>
+        android:text="@string/global_app_name"
+        android:textSize="35sp" />
 
     <!-- TODO Insert introduction to the app -->
 
@@ -38,8 +37,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:text="@string/splash_txt_appdesc"
-        android:textSize="20sp"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -50,13 +49,13 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@drawable/circular_button"
+            android:contentDescription="@string/splash_btn_tosignin"
             android:src="@drawable/ic_baseline_arrow_forward_ios_24"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/splash_btn_tologin"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

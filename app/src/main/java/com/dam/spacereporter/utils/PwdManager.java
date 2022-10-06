@@ -15,15 +15,15 @@ public class PwdManager {
     private static final Pattern lowercase = Pattern.compile("[a-z]");
     private static final Pattern digit = Pattern.compile("[0-9]");
 
-    // TODO Add Salt to Hash to increase security
-    public static String getPwdHash(String input) throws NoSuchAlgorithmException {
+    public static String getPwdHash(String input, String salt) throws NoSuchAlgorithmException {
 
         // Static instance of the hashing algorithm
         MessageDigest md = MessageDigest.getInstance(hash);
+        md.update(salt.getBytes(StandardCharsets.UTF_8));
 
         StringBuilder hexString =
                 new StringBuilder(new BigInteger(1, md.digest(input.getBytes(StandardCharsets.UTF_8))
-        ).toString(16));
+                ).toString(16));
 
         // Pad with leading zeros
         while (hexString.length() < 64) hexString.insert(0, '0');
@@ -31,7 +31,7 @@ public class PwdManager {
     }
 
     public static boolean validatePassword(String pwd, String rpwd) {
-       return isValidPassword(pwd) && isValidPassword(rpwd);
+        return isValidPassword(pwd) && isValidPassword(rpwd);
     }
 
     private static boolean isValidPassword(String password) {
