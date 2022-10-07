@@ -73,10 +73,10 @@ public class SignInActivity extends AppCompatActivity {
             boolean loginSuccessful = true;
             if (loginSuccessful) {
                 goToMain();
+            }else {
+                Toast.makeText(SignInActivity.this, getResources().getText(R.string.signin_toast_wrongcredentials), Toast.LENGTH_SHORT).show();
+                login_et_password.setText("");
             }
-
-            Toast.makeText(SignInActivity.this, getResources().getText(R.string.signin_toast_wrongcredentials), Toast.LENGTH_SHORT).show();
-            login_et_password.setText("");
         });
         login_btn_forgotpwd.setOnClickListener(view -> {
             // Transition to FORGOTPWD window
