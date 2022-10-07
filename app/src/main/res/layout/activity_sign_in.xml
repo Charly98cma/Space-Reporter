@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:layout_margin="32dp"
     android:orientation="vertical"
-    tools:context=".ui.signin.SignInActivity">
+    tools:context=".ui.sign.SignInActivity">
 
     <!-- TODO: Add logo to login screen -->
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="32dp"
         android:contentDescription="@string/global_desc_logo"
         android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
 
@@ -107,11 +107,12 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/login_txt_poweredby"
-            android:layout_width="wrap_content"
+            android:id="@+id/signin_txt_poweredby"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_marginBottom="16dp"
-            android:text="@string/signin_txt_poweredby"
+            android:text="@string/poweredby_txt"
             android:textColorLink="@color/blue"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
