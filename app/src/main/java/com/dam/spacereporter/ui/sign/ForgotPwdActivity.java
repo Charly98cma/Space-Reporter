@@ -1,4 +1,4 @@
-package com.dam.spacereporter.ui.forgotpwd;
+package com.dam.spacereporter.ui.sign;
 
 import android.os.Bundle;
 import android.view.Window;

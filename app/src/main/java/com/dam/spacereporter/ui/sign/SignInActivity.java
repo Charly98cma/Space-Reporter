@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.ui.MainActivity;
-import com.dam.spacereporter.ui.forgotpwd.ForgotPwdActivity;
 import com.dam.spacereporter.utils.PwdManager;
 import com.dam.spacereporter.utils.Utils;
 import com.google.android.material.textfield.TextInputLayout;
