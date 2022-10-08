@@ -13,13 +13,13 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:layout_marginTop="32dp"
+        android:layout_margin="32dp"
         android:contentDescription="@string/global_desc_logo"
         android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
 
     <!-- TODO: Add some text below the logo -->
     <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="25dp"
@@ -33,6 +33,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:autofillHints="username"
         android:hint="@string/signin_hint_username"
         android:paddingBottom="10dp"
@@ -49,6 +50,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:autofillHints="password"
         android:hint="@string/signin_hint_password"
         android:paddingBottom="10dp"
@@ -66,8 +68,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:elevation="0dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
@@ -77,7 +79,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="16dp"
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
