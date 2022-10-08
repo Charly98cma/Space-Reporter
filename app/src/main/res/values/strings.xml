@@ -24,6 +24,8 @@ Strings naming convention: {activity}_{field}_{object}
 
     <!-- SIGNIN -->
 
+    <string name="signin_txt_catchyline">If you want to keep updated of the latest space news, this is your place!</string>
+
     <string name="signin_hint_username">Username</string>
     <string name="signin_hint_password">Password</string>
 
@@ -43,7 +45,7 @@ Strings naming convention: {activity}_{field}_{object}
 
     <string name="signup_hint_fullname">Full name</string>
     <string name="signup_hint_email">Email address</string>
-    <string name="signup_hint_repeatpassword">Repeat password</string>
+    <string name="signup_hint_repeatpassword">Retype password</string>
 
     <string name="signup_btn_signup">Sign Up</string>
 

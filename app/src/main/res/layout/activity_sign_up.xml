@@ -8,32 +8,14 @@
     android:orientation="vertical"
     tools:context=".ui.sign.SignUpActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="16dp">
-
-        <!-- TODO: Add logo to login screen -->
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:contentDescription="@string/global_desc_logo"
-            android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
-
-        <!-- TODO: Add some text below the logo -->
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="8dp"
-            android:text="CATCHY LINE"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
-    </LinearLayout>
+    <!-- TODO: Add logo to login screen -->
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_margin="32dp"
+        android:contentDescription="@string/global_desc_logo"
+        android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
 
     <ScrollView
         android:layout_width="match_parent"
