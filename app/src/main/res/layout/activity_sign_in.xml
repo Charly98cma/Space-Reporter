@@ -6,24 +6,24 @@
     android:layout_height="match_parent"
     android:layout_margin="32dp"
     android:orientation="vertical"
-    tools:context=".ui.signin.SignInActivity">
+    tools:context=".ui.sign.SignInActivity">
 
     <!-- TODO: Add logo to login screen -->
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_gravity="center"
-        android:layout_marginTop="25dp"
+        android:layout_margin="32dp"
         android:contentDescription="@string/global_desc_logo"
         android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
 
     <!-- TODO: Add some text below the logo -->
     <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="25dp"
-        android:text="CATCHY LINE"
+        android:layout_margin="15dp"
+        android:text="@string/signin_txt_catchyline"
         android:textAlignment="center"
         android:textSize="20sp" />
 
@@ -33,6 +33,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:autofillHints="username"
         android:hint="@string/signin_hint_username"
         android:paddingBottom="10dp"
@@ -49,6 +50,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:autofillHints="password"
         android:hint="@string/signin_hint_password"
         android:paddingBottom="10dp"
@@ -66,8 +68,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:elevation="0dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
@@ -77,7 +79,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="16dp"
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
@@ -107,11 +109,12 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/login_txt_poweredby"
-            android:layout_width="wrap_content"
+            android:id="@+id/signin_txt_poweredby"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_marginBottom="16dp"
-            android:text="@string/signin_txt_poweredby"
+            android:text="@string/poweredby_txt"
             android:textColorLink="@color/blue"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -13,21 +13,22 @@
         android:theme="@style/Theme.SpaceReporter"
         tools:targetApi="31">
         <activity
-            android:name=".ui.SignUpActivity"
+            android:name=".ui.sign.SignUpActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value=""
+                android:windowSoftInputMode="adjustResize" />
+        </activity>
+        <activity
+            android:name=".ui.sign.ForgotPwdActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.forgotpwd.ForgotPwdActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.StartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,8 +37,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.signin.SignInActivity"
-            android:exported="false" />
+            android:name=".ui.sign.SignInActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".ui.MainActivity"
             android:exported="false" />

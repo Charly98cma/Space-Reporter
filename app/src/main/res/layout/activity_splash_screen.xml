@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     android:layout_margin="32dp"
     android:orientation="vertical"
-    tools:context=".ui.SplashActivity">
+    tools:context=".ui.StartActivity">
 
     <!-- TODO Adjust size according to screen size -->
 
     <ImageView
-        android:id="@+id/splash_img_logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
@@ -20,7 +19,6 @@
         android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/splash_txt_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -31,12 +29,11 @@
     <!-- TODO Insert introduction to the app -->
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/splash_txt_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:text="@string/splash_txt_appdesc"
+        android:text="@string/start_txt_appdesc"
         android:textAlignment="center"
         android:textSize="20sp" />
 
@@ -49,7 +46,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@drawable/circular_button"
-            android:contentDescription="@string/splash_btn_tosignin"
+            android:contentDescription="@string/start_btn_tosignin"
             android:src="@drawable/ic_baseline_arrow_forward_ios_24"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

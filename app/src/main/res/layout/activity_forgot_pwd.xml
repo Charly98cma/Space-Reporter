@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_margin="32dp"
     android:orientation="vertical"
-    tools:context=".ui.forgotpwd.ForgotPwdActivity">
+    tools:context=".ui.sign.ForgotPwdActivity">
 
     <!-- TODO Implement -->
 
@@ -26,7 +26,6 @@
         android:textSize="20sp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/forgotpwd_et_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,7 +41,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/forgotpwd_btn_send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

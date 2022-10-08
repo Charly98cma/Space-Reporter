@@ -1,8 +1,9 @@
-package com.dam.spacereporter.ui.signin;
+package com.dam.spacereporter.ui.sign;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,8 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.ui.MainActivity;
-import com.dam.spacereporter.ui.SignUpActivity;
-import com.dam.spacereporter.ui.forgotpwd.ForgotPwdActivity;
 import com.dam.spacereporter.utils.PwdManager;
 import com.dam.spacereporter.utils.Utils;
 import com.google.android.material.textfield.TextInputLayout;
@@ -27,7 +26,9 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signin);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
+        setContentView(R.layout.activity_sign_in);
 
         /*
          * UI ELEMENTS
@@ -42,7 +43,7 @@ public class SignInActivity extends AppCompatActivity {
         final Button login_btn_forgotpwd = findViewById(R.id.login_btn_forgotpwd);
         final Button login_btn_signup = findViewById(R.id.login_btn_signup);
 
-        ((TextView) findViewById(R.id.login_txt_poweredby)).setMovementMethod(LinkMovementMethod.getInstance());
+        ((TextView) findViewById(R.id.signin_txt_poweredby)).setMovementMethod(LinkMovementMethod.getInstance());
 
         /*
          * LISTENERS
@@ -71,6 +72,9 @@ public class SignInActivity extends AppCompatActivity {
             boolean loginSuccessful = true;
             if (loginSuccessful) {
                 goToMain();
+            }else {
+                Toast.makeText(SignInActivity.this, getResources().getText(R.string.signin_toast_wrongcredentials), Toast.LENGTH_SHORT).show();
+                login_et_password.setText("");
             }
         });
         login_btn_forgotpwd.setOnClickListener(view -> {

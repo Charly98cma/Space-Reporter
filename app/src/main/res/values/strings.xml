@@ -7,26 +7,24 @@ Strings naming convention: {activity}_{field}_{object}
     <string name="global_app_name">Space Reporter</string>
     <string name="global_desc_logo">Logo of the application</string>
     <string name="global_unexpected_exception">An unexpected exception has occurred :(</string>
-    <!-- SPLASH -->
-
-    <string name="splash_btn_tosignin">Go to Sign In button</string>
-    <!-- TODO Add description to splash screen -->
-    <string name="splash_txt_appdesc">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </string>
-
+    <string name="poweredby_txt">Powered by <a href="https://thespacedevs.com/llapi">Launch Library 2 API</a> and <a href="https://thespacedevs.com/snapi">Spaceflight News API</a></string>
 
     <!-- PREFERENCES -->
 
     <string name="preferences">PREFERENCES_LIST</string>
     <string name="splash_executed">SPLASH_FLAG</string>
 
-    <!-- MAIN -->
+    <!-- START -->
 
-    <string name="main_btn_signin">Sign In</string>
-    <string name="main_btn_signup">Sign Up</string>
+    <string name="start_btn_tosignin">Go to Sign In button</string>
+    <!-- TODO Add description to splash screen -->
+    <string name="start_txt_appdesc">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </string>
 
     <!-- SIGNIN -->
+
+    <string name="signin_txt_catchyline">If you want to keep updated of the latest space news, this is your place!</string>
 
     <string name="signin_hint_username">Username</string>
     <string name="signin_hint_password">Password</string>
@@ -39,8 +37,6 @@ Strings naming convention: {activity}_{field}_{object}
 
     <string name="signin_toast_wrongcredentials">Wrong username or password.</string>
 
-    <string name="signin_txt_poweredby">Powered by <a href="https://thespacedevs.com/llapi">Launch Library 2 API</a> and <a href="https://thespacedevs.com/snapi">Spaceflight News API</a></string>
-
     <string name="signin_error_username">Username required</string>
     <string name="signin_error_password">Password required</string>
     <string name="signin_error_hash">Hashing algorithm is unavailable</string>
@@ -49,7 +45,7 @@ Strings naming convention: {activity}_{field}_{object}
 
     <string name="signup_hint_fullname">Full name</string>
     <string name="signup_hint_email">Email address</string>
-    <string name="signup_hint_repeatpassword">Repeat password</string>
+    <string name="signup_hint_repeatpassword">Retype password</string>
 
     <string name="signup_btn_signup">Sign Up</string>
 

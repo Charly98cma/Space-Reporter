@@ -4,20 +4,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.spacereporter.R;
-import com.dam.spacereporter.ui.signin.SignInActivity;
+import com.dam.spacereporter.ui.sign.SignInActivity;
 
 // TODO Redo the check (user already seen Splash screen)
-public class SplashActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity {
 
     private static final String tag = "com.dam.spacereporter.splash";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_splash_screen);
 
         // Preferences (flag of already seen SPLASH)
@@ -37,7 +40,7 @@ public class SplashActivity extends AppCompatActivity {
             editor.apply();
 
             // Transition to Login window
-            startActivity(new Intent(SplashActivity.this, SignInActivity.class));
+            startActivity(new Intent(StartActivity.this, SignInActivity.class));
             finish();
         });
 
