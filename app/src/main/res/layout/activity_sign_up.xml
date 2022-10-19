@@ -8,14 +8,13 @@
     android:orientation="vertical"
     tools:context=".ui.sign.SignUpActivity">
 
-    <!-- TODO: Add logo to login screen -->
     <ImageView
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_gravity="center"
         android:layout_margin="32dp"
         android:contentDescription="@string/global_desc_logo"
-        android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+        android:src="@drawable/ic_app_logo" />
 
     <ScrollView
         android:layout_width="match_parent"

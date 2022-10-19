@@ -68,7 +68,8 @@ public class SignInActivity extends AppCompatActivity {
                 return;
             }
 
-            // TODO Implement real login
+            // TODO Implement SignIn process
+
             boolean loginSuccessful = true;
             if (loginSuccessful) {
                 goToMain();

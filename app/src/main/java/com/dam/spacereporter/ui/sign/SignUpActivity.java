@@ -50,7 +50,8 @@ public class SignUpActivity extends AppCompatActivity {
                     (!(isEmailValid(signup_et_email) & isPwdValid(signup_et_password, signup_et_repeatpassword))))
                 return;
 
-            // TODO Register new user if available email and usernames
+            // TODO Implement SignUp process
+
             Toast.makeText(SignUpActivity.this, "Sign Up not implemented", Toast.LENGTH_SHORT).show();
 
             // Once registered, back to login
