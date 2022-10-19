@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.spacereporter.R;
 
-// TODO Implement
+// TODO Implement process
 public class ForgotPwdActivity extends AppCompatActivity {
 
     private static final String tag = "com.dam.spacereporter.forgotpwd";
