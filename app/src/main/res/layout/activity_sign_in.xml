@@ -88,8 +88,7 @@
             android:layout_gravity="start"
             android:background="@color/transparent"
             android:elevation="0dp"
-            android:text="@string/signin_btn_forgotpwd"
-            android:textColor="@color/black" />
+            android:text="@string/signin_btn_forgotpwd" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/login_btn_signup"
@@ -98,8 +97,7 @@
             android:layout_gravity="end"
             android:background="@color/transparent"
             android:elevation="0dp"
-            android:text="@string/signin_btn_register"
-            android:textColor="@color/black" />
+            android:text="@string/signin_btn_register" />
 
     </LinearLayout>
 
