@@ -7,12 +7,13 @@ Strings naming convention: {activity}_{field}_{object}
     <string name="global_app_name">Space Reporter</string>
     <string name="global_desc_logo">Logo of the application</string>
     <string name="global_unexpected_exception">An unexpected exception has occurred :(</string>
-    <string name="poweredby_txt">Powered by <a href="https://thespacedevs.com/llapi">Launch Library 2 API</a> and <a href="https://thespacedevs.com/snapi">Spaceflight News API</a></string>
+    <string name="global_poweredby_txt">Powered by <a href="https://thespacedevs.com/llapi">Launch Library 2 API</a> and <a href="https://thespacedevs.com/snapi">Spaceflight News API</a></string>
+    <string name="global_noInternet">No internet connection</string>
 
     <!-- PREFERENCES -->
 
     <string name="preferences">PREFERENCES_LIST</string>
-    <string name="splash_executed">SPLASH_FLAG</string>
+    <string name="start_screen_seen">START_FLAG</string>
 
     <!-- START -->
 
@@ -26,25 +27,27 @@ Strings naming convention: {activity}_{field}_{object}
 
     <string name="signin_txt_catchyline">If you want to keep updated of the latest space news, this is your place!</string>
 
-    <string name="signin_hint_username">Username</string>
+    <string name="signin_hint_email">Email</string>
     <string name="signin_hint_password">Password</string>
 
     <string name="signin_btn_signin"><SignIn>Sign In</SignIn></string>
     <string name="signin_btn_forgotpwd">Forgot Password?</string>
     <string name="signin_btn_register">SIGN UP</string>
 
-    <string name="signin_imgdesc_logo">Logo of the app</string>
+    <string name="signin_toast_wrongcredentials">Wrong email or password.</string>
 
-    <string name="signin_toast_wrongcredentials">Wrong username or password.</string>
-
-    <string name="signin_error_username">Username required</string>
+    <string name="signin_error_noEmail">Email required</string>
+    <string name="signin_error_invalidEmail">Invalid email</string>
     <string name="signin_error_password">Password required</string>
-    <string name="signin_error_hash">Hashing algorithm is unavailable</string>
+
+    <string name="signin_error_invalidCredentials">Invalid credentials</string>
 
     <!-- SIGNUP -->
 
     <string name="signup_hint_fullname">Full name</string>
+    <string name="signup_hint_username">Username</string>
     <string name="signup_hint_email">Email address</string>
+    <string name="signup_hint_password">Password</string>
     <string name="signup_hint_repeatpassword">Retype password</string>
 
     <string name="signup_btn_signup">Sign Up</string>
@@ -55,6 +58,8 @@ Strings naming convention: {activity}_{field}_{object}
     <string name="signup_error_pwdrequirements">At least 8 characters, with one uppercase letter, one lowercase letter and one number</string>
     <string name="signup_error_nomatchpwd">Passwords do not match</string>
 
+    <string name="signup_login_successful">Account created successfully</string>
+
     <!--FORGOT PASSWORD -->
 
     <string name="forgotpwd_txt_desc">Enter the email you used to sign up to receive the code to reset your password</string>
@@ -62,5 +67,9 @@ Strings naming convention: {activity}_{field}_{object}
     <string name="forgotpwd_hint_email">Enter your email address</string>
 
     <string name="forgotpwd_btn_send">Send code</string>
+
+    <string name="forgotpwd_error_invalidEmail">Invalid email</string>
+
+    <string name="forgotpwd_toast_sendEmail">Email sent</string>
 
 </resources>
