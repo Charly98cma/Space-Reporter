@@ -39,8 +39,6 @@ Strings naming convention: {activity}_{field}_{object}
     <string name="signin_error_invalidEmail">Invalid email</string>
     <string name="signin_error_password">Password required</string>
 
-    <string name="signin_error_invalidCredentials">Invalid credentials</string>
-
     <!-- SIGNUP -->
 
     <string name="signup_hint_fullname">Full name</string>

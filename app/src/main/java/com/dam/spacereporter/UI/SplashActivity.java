@@ -2,7 +2,7 @@ package com.dam.spacereporter.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
+@SuppressLint("CustomSplashScreen")
 public class SplashActivity extends AppCompatActivity {
 
     private static final String TAG = "com.dam.spacereporter.splash";
@@ -55,7 +56,7 @@ public class SplashActivity extends AppCompatActivity {
                 } else {
                     Log.w(TAG, "onStart: User credentials no longer valid");
                     // User has been disabled, deleted or login credentials are no longer valid
-                    Toast.makeText(SplashActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SplashActivity.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "onStart: Transitioning to SIGNIN window");
                     nextActivity(SignInActivity.class);
                 }
@@ -63,7 +64,7 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
-    private void nextActivity(Class next) {
+    private void nextActivity(@SuppressWarnings("rawtypes") Class next) {
         startActivity(new Intent(SplashActivity.this, next));
         finish();
     }

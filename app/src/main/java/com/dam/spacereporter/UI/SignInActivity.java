@@ -18,7 +18,6 @@ import com.dam.spacereporter.Utils.DataValidator;
 import com.dam.spacereporter.Utils.Utils;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
