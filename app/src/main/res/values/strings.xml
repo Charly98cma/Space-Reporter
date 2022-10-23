@@ -68,8 +68,6 @@ Strings naming convention: {activity}_{field}_{object}
 
     <string name="forgotpwd_btn_send">Send code</string>
 
-    <string name="forgotpwd_error_invalidEmail">Invalid email</string>
-
     <string name="forgotpwd_toast_sendEmail">Email sent</string>
 
 </resources>
