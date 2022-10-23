@@ -83,7 +83,8 @@ public class ForgotPwdActivity extends AppCompatActivity {
                 finish();
             }else {
                 Log.w(TAG, "signInUser:sendPasswordResetEmail:failure", task.getException());
-                Toast.makeText(ForgotPwdActivity.this, R.string.forgotpwd_error_invalidEmail, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ForgotPwdActivity.this, R.string.forgotpwd_error_invalidEmail, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ForgotPwdActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
