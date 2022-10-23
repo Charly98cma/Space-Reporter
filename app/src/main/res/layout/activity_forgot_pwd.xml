@@ -9,7 +9,6 @@
     android:orientation="vertical"
     tools:context=".UI.ForgotPwdActivity">
 
-    <!-- TODO Implement -->
     <ImageView
         android:id="@+id/forgotpwd_img_logo"
         android:layout_width="150dp"

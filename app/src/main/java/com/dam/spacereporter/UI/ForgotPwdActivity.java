@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
-// TODO Implement process
 public class ForgotPwdActivity extends AppCompatActivity {
 
     private static final String TAG = "com.dam.spacereporter.forgotpwd";

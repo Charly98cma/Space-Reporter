@@ -71,32 +71,6 @@ public class SignInActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        // FIXME The 'SignIn' screen can be seen (briefly) even if the user has already sign in
-        //  (possible solution, a temporal screen with only the logo, like Twitter does)
-        // USER LOGIN CHECK
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            // Check valid credentials
-            currentUser.reload().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    Log.d(TAG, "onStart: User already logged");
-                    // User is valid and is already logged
-                    goToMain();
-                }else {
-                    Log.w(TAG, "onStart: User has provided invalid credentials");
-                    // User has been disabled, deleted or login credentials are no longer valid
-                    Toast.makeText(SignInActivity.this, R.string.signin_error_invalidCredentials, Toast.LENGTH_SHORT).show();
-                }
-            });
-        }else {
-            Log.d(TAG, "onStart: User not logged");
-        }
-    }
-
     /*
      * AUXILIAR FUNCTIONS
      */
@@ -124,9 +98,10 @@ public class SignInActivity extends AppCompatActivity {
             signup_progressBar.setVisibility(View.GONE);
             if (task.isSuccessful()) {
                 Log.d(TAG, "signInUser:signInWithEmailAndPassword:success");
-                goToMain();
+                Log.d(TAG, "signInUser: Transitioning to MAIN window");
+                startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                finish();
             }else {
-                // TODO Implement custom error message
                 Log.w(TAG, "signInUser:signInWithEmailAndPassword:failure", task.getException());
                 Toast.makeText(SignInActivity.this, R.string.signin_toast_wrongcredentials, Toast.LENGTH_SHORT).show();
                 login_et_password.setText("");
@@ -164,11 +139,5 @@ public class SignInActivity extends AppCompatActivity {
             valid = false;
         }
         return valid;
-    }
-
-    private void goToMain() {
-        Log.d(TAG, "goToMain: Transitioning to MAIN window");
-        startActivity(new Intent(SignInActivity.this, MainActivity.class));
-        finish();
     }
 }

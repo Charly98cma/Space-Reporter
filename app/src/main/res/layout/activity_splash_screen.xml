@@ -8,8 +8,6 @@
     android:layout_margin="@dimen/activity_margins"
     tools:context=".UI.StartActivity">
 
-    <!-- TODO Adjust size according to screen size -->
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="150dp"
