@@ -1,4 +1,4 @@
-package com.dam.spacereporter.UI;
+package com.dam.spacereporter.UI.activities;
 
 import android.os.Bundle;
 import android.util.Log;

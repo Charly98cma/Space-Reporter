@@ -1,4 +1,4 @@
-package com.dam.spacereporter.UI;
+package com.dam.spacereporter.UI.activities;
 
 import android.content.Context;
 import android.content.Intent;
