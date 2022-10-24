@@ -5,9 +5,9 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/nav_profilePic"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="32dp"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/ic_user_image"/>
 
@@ -17,12 +17,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/nav_profilePic"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:textColor="@color/black"
         android:text="Sample text"
         android:textStyle="bold"
-        android:textSize="18dp"/>
+        android:textSize="24sp"/>
 
     <!-- TODO: User defined username -->
     <TextView
@@ -30,16 +30,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/nav_fullName"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:textColor="@color/black"
         android:text="\@Bottom_text"
-        android:textSize="14dp"/>
+        android:textSize="18sp"/>
+
+    <!-- TODO: User defined email -->
+    <TextView
+        android:id="@+id/nav_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nav_username"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:text="\@correo.ejemplo@gmail.com"
+        android:textSize="14sp"/>
 
     <View
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/nav_username"
+        android:layout_below="@id/nav_email"
         style="@style/nav_line"/>
 
 </RelativeLayout>

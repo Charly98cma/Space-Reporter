@@ -57,7 +57,7 @@ Strings naming convention: {activity}_{field}_{object}
 
     <string name="signup_login_successful">Account created successfully</string>
 
-    <!--FORGOT PASSWORD -->
+    <!-- FORGOT PASSWORD -->
 
     <string name="forgotpwd_txt_desc">Enter the email you used to sign up to receive the code to reset your password</string>
 
@@ -66,5 +66,9 @@ Strings naming convention: {activity}_{field}_{object}
     <string name="forgotpwd_btn_send">Send code</string>
 
     <string name="forgotpwd_toast_sendEmail">Email sent</string>
+
+    <!-- MAIN -->
+
+    <string name="main_toast_logout">Log out successfully</string>
 
 </resources>
