@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         ((MaterialToolbar) findViewById(R.id.matToolbar)).setNavigationOnClickListener(view ->
                 drawerLayout.openDrawer(GravityCompat.START));
 
+        // TODO Implement the rest of the menus
         navigationView.setNavigationItemSelectedListener(item -> {
             drawerLayout.closeDrawer(GravityCompat.START);
             switch (item.getItemId()) {
