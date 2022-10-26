@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.spacereporter.R;
+import com.dam.spacereporter.Tasks.LoginManager;
 import com.dam.spacereporter.Utils.DataValidator;
 import com.dam.spacereporter.Utils.Utils;
 import com.google.android.material.textfield.TextInputLayout;
@@ -24,7 +25,9 @@ import java.util.Objects;
 public class SignInActivity extends AppCompatActivity {
 
     private static final String TAG = "com.dam.spacereporter.signin";
-    private FirebaseAuth mAuth;
+
+    private static LoginManager login;
+
     private EditText login_et_email, login_et_password;
     private ProgressBar signup_progressBar;
 
@@ -37,7 +40,7 @@ public class SignInActivity extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: Activity created");
 
-        mAuth = FirebaseAuth.getInstance();
+        login = LoginManager.getInstance();
 
         /*
          * UI ELEMENTS
@@ -93,7 +96,7 @@ public class SignInActivity extends AppCompatActivity {
         String email = login_et_email.getText().toString().trim();
         String password = login_et_password.getText().toString().trim();
 
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+        login.loginUser(email, password).addOnCompleteListener(task -> {
             signup_progressBar.setVisibility(View.GONE);
             if (task.isSuccessful()) {
                 Log.d(TAG, "signInUser:signInWithEmailAndPassword:success");
@@ -107,6 +110,10 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
     }
+
+    /*
+     * DATA VALIDATION
+     */
 
     private boolean isFormValid() {
 

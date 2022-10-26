@@ -56,6 +56,7 @@ Strings naming convention: {activity}_{field}_{object}
     <string name="signup_error_nomatchpwd">Passwords do not match</string>
 
     <string name="signup_login_successful">Account created successfully</string>
+    <string name="signup_db_usernameUsed">Username already in use</string>
 
     <!-- FORGOT PASSWORD -->
 
