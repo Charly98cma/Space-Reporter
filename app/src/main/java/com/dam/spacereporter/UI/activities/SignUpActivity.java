@@ -97,39 +97,18 @@ public class SignUpActivity extends AppCompatActivity {
         String password = signup_et_password.getText().toString();
 
         // Check username
-        dbUser.isUserInDB(username).addValueEventListener(new ValueEventListener() {
+        dbUser.isUserInDB(username).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     // Username already in use
+                    Log.w(TAG, "signUpUser:inUserDB:true");
                     signup_progressBar.setVisibility(View.GONE);
                     signup_et_username.setError(getResources().getString(R.string.signup_db_usernameUsed));
                 }else {
                     // FIREBASE AUTH: USER CREATION
-                    login.createUser(email, password).addOnCompleteListener(fb_task -> {
-                        if(fb_task.isSuccessful()) {
-                            Log.d(TAG, "signUpUser:LoginManager:createUser:success");
-                            login.signOut();
-                            // Successful authentication leads to register user in Users DB
-                            dbUser.storeUser(fullName, username, email).addOnCompleteListener(db_task -> {
-                                signup_progressBar.setVisibility(View.GONE);
-                                if (db_task.isSuccessful()) {
-                                    // User registered on Firebase and DB
-                                    Toast.makeText(SignUpActivity.this, R.string.signup_login_successful, Toast.LENGTH_SHORT).show();
-                                    // Once fully registered, back to sign in page
-                                    finish();
-                                }else {
-                                    // Unexpected error while adding user to DB
-                                    Toast.makeText(SignUpActivity.this, Objects.requireNonNull(db_task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        }else {
-                            // Inform user of error creating account
-                            Log.w(TAG, "signInUser:LoginManager:createUser:failure", fb_task.getException());
-                            Toast.makeText(SignUpActivity.this, Objects.requireNonNull(fb_task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
-                            signup_progressBar.setVisibility(View.GONE);
-                        }
-                    });
+                    Log.d(TAG, "signUpUser:inUserDB:false");
+                    createUserAuthentication(fullName, username, email, password);
                 }
             }
 
@@ -216,4 +195,44 @@ public class SignUpActivity extends AppCompatActivity {
         }
         return true;
     }
+
+    /*
+     * LISTENERS
+     */
+
+    private void createUserAuthentication(String fullName, String username, String email, String password) {
+        login.createUser(email, password).addOnCompleteListener(fb_task -> {
+            if(fb_task.isSuccessful()) {
+                Log.d(TAG, "createUserAuthentication:createUser:success");
+                // Successful authentication leads to register user in Users DB
+                registerUserInDB(fullName, username, email);
+            }else {
+                // Inform user of error creating account
+                Log.w(TAG, "createUserAuthentication:createUser:failure", fb_task.getException());
+                Toast.makeText(SignUpActivity.this, Objects.requireNonNull(fb_task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                signup_progressBar.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    private void registerUserInDB(String fullName, String username, String email) {
+        dbUser.storeUser(login.getUserUid(), fullName, username, email).addOnCompleteListener(db_task -> {
+            signup_progressBar.setVisibility(View.GONE);
+            if (db_task.isSuccessful()) {
+                Log.d(TAG, "registerUserInDB:storeUser:success");
+                // User registered on Firebase and DB
+                Toast.makeText(SignUpActivity.this, R.string.signup_login_successful, Toast.LENGTH_SHORT).show();
+                login.signOut();
+                // Once fully registered, back to sign in page
+                finish();
+            }else {
+                // Unexpected error while adding user to DB
+                Log.w(TAG, "registerUserInDB:storeUser:fail");
+                Toast.makeText(SignUpActivity.this, Objects.requireNonNull(db_task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                login.deleteUser();
+                login.signOut();
+            }
+        });
+    }
+
 }

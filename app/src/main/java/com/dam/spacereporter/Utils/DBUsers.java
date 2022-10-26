@@ -31,15 +31,12 @@ public class DBUsers {
      * FUNCTIONS
      */
 
-    public Task<Void> storeUser(String fullName, String username, String email) {
+    public Task<Void> storeUser(String UID, String fullName, String username, String email) {
         User newUser = new User(fullName, username, email);
-        return usersDB.child(username).setValue(newUser);
+        return usersDB.child(UID).setValue(newUser);
     }
 
     public Query isUserInDB(String username) {
         return usersDB.orderByChild("username").equalTo(username);
     }
-
-
-
 }

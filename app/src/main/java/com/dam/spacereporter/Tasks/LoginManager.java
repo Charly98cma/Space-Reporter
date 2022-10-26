@@ -19,6 +19,18 @@ public class LoginManager {
         return instance;
     }
 
+    /*
+     * GETTERS
+     */
+
+    public String getUserUid() {
+        return Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
+    }
+
+    /*
+     * AUXILIAR FUNCTIONS
+     */
+
     public Task<AuthResult> createUser(String email, String password) {
         return firebaseAuth.createUserWithEmailAndPassword(email, password);
     }
