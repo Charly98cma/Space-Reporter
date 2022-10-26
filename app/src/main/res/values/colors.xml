@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="blue">#FF2986CC</color>
+
+    <color name="lightgrey">#989797</color>
+    <color name="underline">#D8D6D6</color>
 </resources>
