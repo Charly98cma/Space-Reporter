@@ -1,30 +1,82 @@
-<!--
-Strings naming convention: {activity}_{field}_{object}
--->
-
 <resources>
 
-    <string name="app_name">Space Reporter</string>
+    <!-- SHARED PREFERENCES -->
+    <string name="pref_name">SHARED_PREF_LIST</string>
+    <string name="pref_save_login">SAVE_LOGIN</string>
+    <string name="pref_seen_start">SEEN_START</string>
+    <string name="pref_fullName">USER_FULL_NAME</string>
+    <string name="pref_username">USER_USERNAME</string>
+    <string name="pref_email">USER_EMAIL</string>
 
-    <!-- MAIN -->
+    <!-- GLOBAL -->
+    <string name="global_app_name">Space Reporter</string>
+    <string name="global_poweredBy_txt">Powered by <a href="https://thespacedevs.com/llapi">Launch Library 2 API</a> and <a href="https://thespacedevs.com/snapi">Spaceflight News API</a></string>
+    <string name="global_logoDesc">Application logo</string>
 
-    <string name="main_btn_login">Login</string>
-    <string name="main_btn_signup">Sign up</string>
+    <!-- SHARE -->
+    <string name="share_body">Hey! I am using this application, and I think you should check it out too!\n\nLINK_TO_PLAYSTORE</string>
+
+    <!-- NAVIGATION DRAWER -->
+    <string name="nav_home">Home</string>
+    <string name="nav_fav">Favorites</string>
+    <string name="nav_later">Read later</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_communicate">Communicate</string>
+    <string name="nav_share">Share</string>
+    <string name="nav_rate">Rate app</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_logout">Logout</string>
+
+    <!-- START -->
+    <!-- TODO Add app description -->
+    <string name="start_txt_appDescription">Text</string>
+    <string name="start_btn_toLogin">To Login</string>
 
     <!-- LOGIN -->
-
-    <string name="login_hint_username">Username</string>
+    <string name="login_txt_remember">Stay logged?</string>
+    <string name="login_txt_catchyLine">If you want to keep updated of the latest space news, this is your place!</string>
+    <string name="login_btn_login">Login</string>
+    <string name="login_btn_forgotPwd">Forgot Password?</string>
+    <string name="login_btn_signUp">Sign Up</string>
+    <string name="login_hint_email">Email</string>
     <string name="login_hint_password">Password</string>
+    <string name="login_error_email">Invalid email</string>
+    <string name="login_error_password">Invalid password</string>
+    <string name="login_error_fail">Wrong email and/or password</string>
+    <string name="login_error_unverifiedEmail">Email unverified</string>
+    <string name="login_toast_success">Successful login</string>
 
-    <string name="login_btn_login"><Login>Login</Login></string>
-    <string name="login_btn_forgotpwd">Forgot Password?</string>
-    <string name="login_btn_register">SIGN UP</string>
+    <!-- SIGNUP -->
+    <string name="signUp_btn_signup">Sign Up</string>
+    <string name="signUp_hint_fullName">Name</string>
+    <string name="signUp_hint_username">Username</string>
+    <string name="signUp_hint_email">Email</string>
+    <string name="signUp_hint_password">Password</string>
+    <string name="signUp_hint_confirmPassword">Repeat password</string>
+    <string name="signUp_error_fullname">Invalid name</string>
+    <string name="signUp_error_username">Invalid username</string>
+    <string name="signUp_error_usernameUsed">Username already in use</string>
+    <string name="signUp_error_email">Invalid email</string>
+    <string name="signUp_error_password">Password longer than 8 characters, with one uppercase letter, one lowercase letter and one number</string>
+    <string name="signUp_error_matchPassword">Passwords do not match</string>
+    <string name="signUp_error_firebaseAuth">Email already in use</string>
+    <string name="signUp_error_firebaseDatabase">Unexpected FirebaseDatabase error</string>
+    <string name="signUp_error_verificationEmail">Error while sending verification email</string>
+    <string name="signUp_toast_success">Account created</string>
 
-    <string name="login_imgagedescription_logo">Logo of the app</string>
+    <!-- FORGOT PASSWORD -->
+    <string name="forgotPwd_txt_explanation">Enter the email you used to sign up to receive the code to reset your password</string>
+    <string name="forgotPwd_btn_send">Send email</string>
+    <string name="forgotPwd_hint_email">Email</string>
+    <string name="forgotPwd_error_invalidEmail">Invalid email</string>
+    <string name="forgotPwd_error_emailUnregistered">No account with that email</string>
+    <string name="forgotPwd_toast_sent">Email sent</string>
 
-    <string name="login_autofillhint_username">username</string>
-    <string name="login_autofillhint_password">password</string>
 
-    <string name="login_toast_wronglogin">Wrong username or password.</string>
+    <!-- HOME (fragment) -->
+    <string name="home_desc_news">Button to access latest news</string>
+    <string name="home_desc_launched">Button to access incoming launches</string>
+    <string name="home_txt_news">News</string>
+    <string name="home_txt_launches">Launches</string>
 
 </resources>

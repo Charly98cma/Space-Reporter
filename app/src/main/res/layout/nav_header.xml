@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/nav_img_ppf"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_baseline_person_24" />
+
+    <!-- TODO: User defined name -->
+    <TextView
+        android:id="@+id/nav_txt_fullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nav_img_ppf"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Sample text"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nav_txt_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nav_txt_fullName"
+        android:layout_marginStart="16dp"
+        android:text="\@Bottom_text"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/nav_txt_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nav_txt_username"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="\@correo.ejemplo@gmail.com"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+</RelativeLayout>
