@@ -1,78 +1,49 @@
 package com.dam.spacereporter.spacereporter.data.models;
 
-import java.util.Date;
-import java.util.List;
+import com.google.gson.annotations.SerializedName;
 
-public class Article {
+public class  Article {
 
     private final Integer id;
     private final String title, url, imageUrl, newsSite, summary;
-    private final Date publishedAt, updatedAt;
-    private final boolean featured;
-    private final List launches;
+    // FIXME Add the rest of the fields to the upgraded version
 
-    // FIXME Review the structure and datatypes
-
-    public Article(Integer id,
-                   String title,
-                   String url,
-                   String imageUrl,
-                   String newsSite,
-                   String summary,
-                   Date publishedAt,
-                   Date updatedAt,
-                   boolean featured,
-                   List launches) {
-
+    public Article(Integer id, String title, String url, String imageUrl, String newsSite, String summary) {
         this.id = id;
         this.title = title;
         this.url = url;
         this.imageUrl = imageUrl;
         this.newsSite = newsSite;
         this.summary = summary;
-        this.publishedAt = publishedAt;
-        this.updatedAt = updatedAt;
-        this.featured = featured;
-        this.launches = launches;
     }
 
+    @SerializedName("id")
     public Integer getId() {
         return id;
     }
 
+    @SerializedName("title")
     public String getTitle() {
         return title;
     }
 
+    @SerializedName("url")
     public String getUrl() {
         return url;
     }
 
+    @SerializedName("imageUrl")
     public String getImageUrl() {
         return imageUrl;
     }
 
+    @SerializedName("newsSite")
     public String getNewsSite() {
         return newsSite;
     }
 
+    @SerializedName("summary")
     public String getSummary() {
         return summary;
-    }
-
-    public Date getPublishedAt() {
-        return publishedAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public boolean isFeatured() {
-        return featured;
-    }
-
-    public List getLaunches() {
-        return launches;
     }
 }

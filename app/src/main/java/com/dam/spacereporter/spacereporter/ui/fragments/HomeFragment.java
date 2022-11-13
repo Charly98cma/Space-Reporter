@@ -27,6 +27,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         // NOTE: Passing through HOME resets the backstack
         //       Pressing "<" from HOME always closes the app
+        // FIXME: This doesnt work (no HOME fragment left when backing from News)
         getActivity().getSupportFragmentManager()
                 .popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE );
         navigationView.setCheckedItem(R.id.nav_home);

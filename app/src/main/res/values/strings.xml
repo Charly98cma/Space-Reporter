@@ -12,6 +12,7 @@
     <string name="global_app_name">Space Reporter</string>
     <string name="global_poweredBy_txt">Powered by <a href="https://thespacedevs.com/llapi">Launch Library 2 API</a> and <a href="https://thespacedevs.com/snapi">Spaceflight News API</a></string>
     <string name="global_logoDesc">Application logo</string>
+    <string name="global_noInternetConn">No internet connection</string>
 
     <!-- SHARE -->
     <string name="share_body">Hey! I am using this application, and I think you should check it out too!\n\nLINK_TO_PLAYSTORE</string>
@@ -78,5 +79,9 @@
     <string name="home_desc_launched">Button to access incoming launches</string>
     <string name="home_txt_news">News</string>
     <string name="home_txt_launches">Launches</string>
+
+    <!-- NEWS -->
+    <string name="news_desc_articleImage">Image attached to the article</string>
+    <string name="news_txt_article">ARTICLE_TITLE</string>
 
 </resources>
