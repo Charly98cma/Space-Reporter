@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,8 +22,13 @@ import java.util.ArrayList;
 
 public class NewsFragment extends Fragment {
 
+    private int count = 0;
+
     private NavigationView navigationView;
     private ArrayList<Article> newsArrayList;
+
+    private RecyclerView newsRV;
+    private ProgressBar newsProgressBar;
 
     // Required empty public constructor
     public NewsFragment() {
@@ -52,22 +59,30 @@ public class NewsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        NestedScrollView newsNestedScrollView = view.findViewById(R.id.news_nestedScrollView);
+        newsRV = view.findViewById(R.id.news_rv);
+        newsProgressBar = view.findViewById(R.id.news_pb);
+
+        // Init array list of articles
+        newsArrayList = new ArrayList<>();
+
+        // TODO Replace with a call to retrieve initial data from the API
         initData();
 
-        RecyclerView newsRV = view.findViewById(R.id.news_rv);
         newsRV.setLayoutManager(new LinearLayoutManager(getContext()));
-        newsRV.setHasFixedSize(true);
 
-        NewsRVAdapter newsRVAdapter = new NewsRVAdapter(getContext(), newsArrayList);
-        newsRV.setAdapter(newsRVAdapter);
-        newsRVAdapter.notifyDataSetChanged();
+        newsNestedScrollView.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+            if (scrollY == v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight()) {
+                count++;
+                newsProgressBar.setVisibility(View.VISIBLE);
+                // TODO Replace with a call to retrive more data from API
+                if (count < 20) initData();
+            }
+        });
     }
 
     private void initData() {
 
-        // TODO Change to read from the API
-
-        newsArrayList = new ArrayList<>();
         String[] titles = {
                 "Delayed NASA Venus mission looks for a reprieve",
                 "ESA seeks funding for navigation technology programs at ministerial",
@@ -107,8 +122,9 @@ public class NewsFragment extends Fragment {
                 "https://spacenews.com/space-force-orders-new-weather-satellite-from-ball-aerospace/"
         };
 
-        for (int i = 0; i < titles.length; i++)
+        for (int i = 0; i < titles.length; i++) {
             newsArrayList.add(new Article(i, titles[i], urls[i], imgUrl[i], "", ""));
-
+            newsRV.setAdapter(new NewsRVAdapter(getContext(), newsArrayList));
+        }
     }
 }
