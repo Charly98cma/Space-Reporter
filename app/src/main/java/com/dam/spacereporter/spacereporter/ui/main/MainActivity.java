@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private FirebaseAuth firebaseAuth;
 
-    private MaterialToolbar materialToolbar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
 
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         /*---------- UI ELEMENTS ----------*/
 
-        materialToolbar = findViewById(R.id.mat_toolbar);
+        MaterialToolbar materialToolbar = findViewById(R.id.mat_toolbar);
         navigationView = findViewById(R.id.nav_view);
         drawerLayout = findViewById(R.id.drawer_layout);
 
