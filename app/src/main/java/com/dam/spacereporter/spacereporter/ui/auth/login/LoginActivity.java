@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Checkable;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -21,6 +22,8 @@ import com.dam.spacereporter.spacereporter.ui.auth.signup.SignUpActivity;
 import com.dam.spacereporter.spacereporter.ui.main.MainActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -53,9 +56,9 @@ public class LoginActivity extends AppCompatActivity {
 
             login_btn_login.setEnabled(loginFormState.isDataValid());
             if (loginFormState.getEmailError() != null)
-                login_et_email.setError(getString(loginFormState.getEmailError()));
+                Objects.requireNonNull(login_et_email).setError(getString(loginFormState.getEmailError()));
             if (loginFormState.getPasswordError() != null)
-                login_et_password.setError(getString(loginFormState.getPasswordError()));
+                Objects.requireNonNull(login_et_password).setError(getString(loginFormState.getPasswordError()));
         });
 
         loginViewModel.getLoginResult().observe(this, loginResult -> {
@@ -87,14 +90,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 loginViewModel.loginDataChanged(
-                        login_et_email.getText().toString().trim(),
-                        login_et_password.getText().toString().trim()
+                        Objects.requireNonNull(login_et_email).getText().toString().trim(),
+                        Objects.requireNonNull(login_et_password).getText().toString().trim()
                 );
             }
         };
 
-        login_et_email.addTextChangedListener(afterTextChangedListener);
-        login_et_password.addTextChangedListener(afterTextChangedListener);
+        Objects.requireNonNull(login_et_email).addTextChangedListener(afterTextChangedListener);
+        Objects.requireNonNull(login_et_password).addTextChangedListener(afterTextChangedListener);
 
         login_btn_login.setOnClickListener(view -> {
             login_bar_loading.setVisibility(View.VISIBLE);

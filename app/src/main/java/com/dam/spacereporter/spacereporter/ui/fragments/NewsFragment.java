@@ -43,7 +43,7 @@ public class NewsFragment extends Fragment {
 
         // Inflate the layout for this fragment
         fragmentView = inflater.inflate(R.layout.fragment_news, container, false);
-        navigationView = getActivity().findViewById(R.id.nav_view);
+        navigationView = requireActivity().findViewById(R.id.nav_view);
 
         return fragmentView;
     }

@@ -16,6 +16,8 @@ import com.dam.spacereporter.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.Objects;
+
 public class SignUpActivity extends AppCompatActivity {
 
     private SignUpViewModel signUpViewModel;
@@ -52,15 +54,15 @@ public class SignUpActivity extends AppCompatActivity {
 
             signup_btn_signup.setEnabled(signUpFormState.isDataValid());
             if (signUpFormState.getFullNameError() != null)
-                signup_et_fullName.setError(getString(signUpFormState.getFullNameError()));
+                Objects.requireNonNull(signup_et_fullName).setError(getString(signUpFormState.getFullNameError()));
             if (signUpFormState.getUsernameError() != null)
-                signup_et_username.setError(getString(signUpFormState.getUsernameError()));
+                Objects.requireNonNull(signup_et_username).setError(getString(signUpFormState.getUsernameError()));
             if (signUpFormState.getEmailError() != null)
-                signup_et_email.setError(getString(signUpFormState.getEmailError()));
+                Objects.requireNonNull(signup_et_email).setError(getString(signUpFormState.getEmailError()));
             if (signUpFormState.getPasswordError() != null)
-                signup_et_password.setError(getString(signUpFormState.getPasswordError()));
+                Objects.requireNonNull(signup_et_password).setError(getString(signUpFormState.getPasswordError()));
             if (signUpFormState.getConfirmPasswordError() != null)
-                signup_et_confirmPassword.setError(getString(signUpFormState.getConfirmPasswordError()));
+                Objects.requireNonNull(signup_et_confirmPassword).setError(getString(signUpFormState.getConfirmPasswordError()));
         });
 
         signUpViewModel.getSignUpResult().observe(this, signUpResult -> {
@@ -90,20 +92,20 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 signUpViewModel.signupDataChanged(
-                        signup_et_fullName.getText().toString().trim(),
-                        signup_et_username.getText().toString().trim(),
-                        signup_et_email.getText().toString().trim(),
-                        signup_et_password.getText().toString().trim(),
-                        signup_et_confirmPassword.getText().toString().trim()
+                        Objects.requireNonNull(signup_et_fullName).getText().toString().trim(),
+                        Objects.requireNonNull(signup_et_username).getText().toString().trim(),
+                        Objects.requireNonNull(signup_et_email).getText().toString().trim(),
+                        Objects.requireNonNull(signup_et_password).getText().toString().trim(),
+                        Objects.requireNonNull(signup_et_confirmPassword).getText().toString().trim()
                 );
             }
         };
 
-        signup_et_fullName.addTextChangedListener(afterTextChangedListener);
-        signup_et_username.addTextChangedListener(afterTextChangedListener);
-        signup_et_email.addTextChangedListener(afterTextChangedListener);
-        signup_et_password.addTextChangedListener(afterTextChangedListener);
-        signup_et_confirmPassword.addTextChangedListener(afterTextChangedListener);
+        Objects.requireNonNull(signup_et_fullName).addTextChangedListener(afterTextChangedListener);
+        Objects.requireNonNull(signup_et_username).addTextChangedListener(afterTextChangedListener);
+        Objects.requireNonNull(signup_et_email).addTextChangedListener(afterTextChangedListener);
+        Objects.requireNonNull(signup_et_password).addTextChangedListener(afterTextChangedListener);
+        Objects.requireNonNull(signup_et_confirmPassword).addTextChangedListener(afterTextChangedListener);
 
         signup_btn_signup.setOnClickListener(view -> {
             signup_bar_loading.setVisibility(View.VISIBLE);

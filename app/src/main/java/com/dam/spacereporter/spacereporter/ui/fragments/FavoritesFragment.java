@@ -34,7 +34,7 @@ public class FavoritesFragment extends Fragment {
 
         // Inflate the layout for this fragment
         fragmentView = inflater.inflate(R.layout.fragment_favorites, container, false);
-        navigationView = getActivity().findViewById(R.id.nav_view);
+        navigationView = requireActivity().findViewById(R.id.nav_view);
 
         /*---------- UI ELEMENTS LISTENERS ----------*/
         // TODO Implement UI and features

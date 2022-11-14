@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 public class LoginViewModel extends ViewModel {
 
     private final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -42,7 +44,7 @@ public class LoginViewModel extends ViewModel {
                 email, password
         ).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                if (firebaseAuth.getCurrentUser().isEmailVerified()) {
+                if (Objects.requireNonNull(firebaseAuth.getCurrentUser()).isEmailVerified()) {
                     loginResult.setValue(new LoginResult(true));
                 } else {
                     loginResult.setValue(new LoginResult(R.string.login_error_unverifiedEmail));
@@ -65,7 +67,7 @@ public class LoginViewModel extends ViewModel {
 
     public void cacheUserInfo(Context context) {
         usersDatabase.child(
-                firebaseAuth.getCurrentUser().getUid()
+                Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid()
         ).addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
