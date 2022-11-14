@@ -8,7 +8,7 @@
     android:paddingBottom="64dp"
     tools:context=".spacereporter.ui.fragments.HomeFragment">
 
-    <!-- TODO Implement menu -->
+    <!-- TODO Implement more options based on API -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
