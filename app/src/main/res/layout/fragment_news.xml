@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".spacereporter.ui.fragments.NewsFragment">
 
-    <!-- TODO Implement UI -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/news_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="News Fragment" />
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/news_rv_article"/>
 
 </FrameLayout>

@@ -83,5 +83,7 @@
     <!-- NEWS -->
     <string name="news_desc_articleImage">Image attached to the article</string>
     <string name="news_txt_article">ARTICLE_TITLE</string>
+    <string name="news_toast_webView">Loading built-in view of article…</string>
+    <string name="news_intent_urlKey">webUrl</string>
 
 </resources>
