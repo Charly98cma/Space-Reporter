@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.spacereporter.R;
@@ -43,8 +44,8 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
         Picasso.get().load(article.getImageUrl()).into(holder.articlePicture);
         // Load title of the article
         holder.articleTitle.setText(article.getTitle());
-        // Listener for title pressed (show WebView with the article)
-        holder.articleTitle.setOnClickListener(view -> {
+        // Apply listener to load the WebView to the entire card
+        holder.articleCardView.setOnClickListener(v -> {
             Toast.makeText(context, R.string.news_toast_webView, Toast.LENGTH_SHORT).show();
             // Pass URL and show WebView activity
             Intent intentToWebView = new Intent(context, NewsWebViewActivity.class);
@@ -61,12 +62,14 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
 
     public static class NewsViewHolder extends RecyclerView.ViewHolder {
 
+        final CardView articleCardView;
         final ShapeableImageView articlePicture;
         final TextView articleTitle;
 
         public NewsViewHolder(@NonNull View itemView) {
             super(itemView);
             // Read the UI elements
+            articleCardView = itemView.findViewById(R.id.news_card_article);
             articlePicture = itemView.findViewById(R.id.news_img_articlePicture);
             articleTitle = itemView.findViewById(R.id.news_txt_articleTitle);
         }
