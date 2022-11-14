@@ -1,5 +1,7 @@
 <resources>
 
+    <string name="api_url">https://api.spaceflightnewsapi.net/v3/articles?_limit=%d&amp;_start=%d</string>
+
     <!-- SHARED PREFERENCES -->
     <string name="pref_name">SHARED_PREF_LIST</string>
     <string name="pref_save_login">SAVE_LOGIN</string>
@@ -83,6 +85,7 @@
 
     <!-- NEWS -->
     <string name="news_toast_webView">Loading built-in view of article…</string>
+    <string name="news_toast_errorApi">Failed to get the data…</string>
     <string name="news_intent_urlKey">webUrl</string>
     <string name="news_txt_titlePlaceholder">Sample text</string>
 
