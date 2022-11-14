@@ -18,6 +18,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+// TODO URGENT Add scroll to load more news
 public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHolder> {
 
     private final Context context;
