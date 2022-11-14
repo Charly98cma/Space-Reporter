@@ -20,7 +20,7 @@
         android:layout_below="@id/nav_img_ppf"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Sample text"
+        android:text="@string/nav_header_fullName"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/nav_txt_fullName"
         android:layout_marginStart="16dp"
-        android:text="\@Bottom_text"
+        android:text="@string/nav_header_username"
         android:textColor="@color/black"
         android:textSize="18sp" />
 
@@ -42,7 +42,7 @@
         android:layout_below="@id/nav_txt_username"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
-        android:text="\@correo.ejemplo@gmail.com"
+        android:text="@string/nav_header_email"
         android:textColor="@color/black"
         android:textSize="14sp" />
 
