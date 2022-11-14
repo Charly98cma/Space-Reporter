@@ -1,4 +1,4 @@
-package com.dam.spacereporter.spacereporter.ui.fragments;
+package com.dam.spacereporter.spacereporter.ui.home;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.dam.spacereporter.R;
+import com.dam.spacereporter.spacereporter.ui.launches.LaunchesFragment;
 import com.dam.spacereporter.spacereporter.ui.news.NewsFragment;
 import com.google.android.material.navigation.NavigationView;
 

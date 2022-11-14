@@ -13,10 +13,10 @@ import androidx.fragment.app.Fragment;
 
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.ui.auth.login.LoginActivity;
-import com.dam.spacereporter.spacereporter.ui.fragments.FavoritesFragment;
-import com.dam.spacereporter.spacereporter.ui.fragments.HomeFragment;
-import com.dam.spacereporter.spacereporter.ui.fragments.ReadLaterFragment;
-import com.dam.spacereporter.spacereporter.ui.fragments.SettingsFragment;
+import com.dam.spacereporter.spacereporter.ui.favorites.FavoritesFragment;
+import com.dam.spacereporter.spacereporter.ui.home.HomeFragment;
+import com.dam.spacereporter.spacereporter.ui.readlater.ReadLaterFragment;
+import com.dam.spacereporter.spacereporter.ui.settings.SettingsFragment;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.play.core.review.ReviewInfo;

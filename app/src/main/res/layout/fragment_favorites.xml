@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".spacereporter.ui.fragments.FavoritesFragment">
+    tools:context=".spacereporter.ui.favorites.FavoritesFragment">
 
     <!-- TODO Implement UI -->
     <TextView

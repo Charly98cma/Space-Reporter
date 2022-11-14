@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingTop="64dp"
     android:paddingBottom="64dp"
-    tools:context=".spacereporter.ui.fragments.HomeFragment">
+    tools:context=".spacereporter.ui.home.HomeFragment">
 
     <!-- TODO Implement more options based on API -->
 
