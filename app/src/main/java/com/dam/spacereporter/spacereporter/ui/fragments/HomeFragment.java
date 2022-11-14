@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.dam.spacereporter.R;
+import com.dam.spacereporter.spacereporter.ui.news.NewsFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {

@@ -77,7 +77,6 @@
     <string name="forgotPwd_error_emailUnregistered">No account with that email</string>
     <string name="forgotPwd_toast_sent">Email sent</string>
 
-
     <!-- HOME (fragment) -->
     <string name="home_desc_news">Button to access latest news</string>
     <string name="home_txt_news">News</string>

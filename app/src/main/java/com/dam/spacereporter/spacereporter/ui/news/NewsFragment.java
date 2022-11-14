@@ -1,4 +1,4 @@
-package com.dam.spacereporter.spacereporter.ui.fragments;
+package com.dam.spacereporter.spacereporter.ui.news;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
