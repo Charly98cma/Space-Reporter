@@ -1,4 +1,4 @@
-package com.dam.spacereporter.spacereporter.ui.main;
+package com.dam.spacereporter.spacereporter.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

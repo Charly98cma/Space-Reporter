@@ -64,7 +64,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".spacereporter.ui.main.MainActivity"
+            android:name=".spacereporter.ui.MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
