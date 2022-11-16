@@ -48,11 +48,11 @@
     </style>
 
     <style name="article_popup_title">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
     </style>
     <style name="article_popup_summary">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <!-- NEWS IMAGES -->
@@ -60,6 +60,14 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">8dp</item>
         <item name="color">@color/white</item>
+    </style>
+
+    <!-- POPUP -->
+    <style name="article_popup_btns">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:background">@color/transparent</item>
     </style>
 
 </resources>

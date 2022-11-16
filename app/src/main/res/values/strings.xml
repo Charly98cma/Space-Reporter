@@ -83,9 +83,11 @@
     <string name="home_txt_launches">Launches</string>
 
     <!-- NEWS -->
-    <string name="news_toast_webView">Loading built-in view of article…</string>
+    <string name="news_toast_webView">Loading article on web browser…</string>
     <string name="news_toast_errorApi">Failed to get the data…</string>
-    <string name="news_intent_urlKey">webUrl</string>
     <string name="news_txt_titlePlaceholder">Sample text</string>
+    <string name="popup_desc_fav">Button to add article to favorites list</string>
+    <string name="popup_desc_readLater">Button to add article to read later list</string>
+    <string name="popup_desc_webView">Button to go to the website with the full article</string>
 
 </resources>
