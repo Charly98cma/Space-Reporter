@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.dam.spacereporter.R;
+import com.dam.spacereporter.spacereporter.utils.NetworkConnection;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -81,10 +82,14 @@ public class ForgotPwdActivity extends AppCompatActivity {
         Objects.requireNonNull(forgotPwd_et_email).addTextChangedListener(afterTextChangedListener);
 
         forgotPwd_btn_send.setOnClickListener(view -> {
-            forgotPwd_bar_loading.setVisibility(View.VISIBLE);
-            forgotPwdViewModel.sendPasswordResetEmail(
-                    forgotPwd_et_email.getText().toString().trim()
-            );
+            if (NetworkConnection.isNetworkConnected(this)) {
+                forgotPwd_bar_loading.setVisibility(View.VISIBLE);
+                forgotPwdViewModel.sendPasswordResetEmail(
+                        forgotPwd_et_email.getText().toString().trim()
+                );
+            }else {
+                Toast.makeText(this, R.string.global_noConn, Toast.LENGTH_SHORT).show();
+            }
         });
     }
 

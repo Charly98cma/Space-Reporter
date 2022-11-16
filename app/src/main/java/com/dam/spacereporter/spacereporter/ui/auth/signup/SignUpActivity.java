@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.dam.spacereporter.R;
+import com.dam.spacereporter.spacereporter.utils.NetworkConnection;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -108,13 +109,17 @@ public class SignUpActivity extends AppCompatActivity {
         Objects.requireNonNull(signup_et_confirmPassword).addTextChangedListener(afterTextChangedListener);
 
         signup_btn_signup.setOnClickListener(view -> {
-            signup_bar_loading.setVisibility(View.VISIBLE);
-            signUpViewModel.signup(
-                    signup_et_fullName.getText().toString().trim(),
-                    signup_et_username.getText().toString().trim(),
-                    signup_et_email.getText().toString().trim(),
-                    signup_et_password.getText().toString().trim()
-            );
+            if (NetworkConnection.isNetworkConnected(this)) {
+                signup_bar_loading.setVisibility(View.VISIBLE);
+                signUpViewModel.signup(
+                        signup_et_fullName.getText().toString().trim(),
+                        signup_et_username.getText().toString().trim(),
+                        signup_et_email.getText().toString().trim(),
+                        signup_et_password.getText().toString().trim()
+                );
+            }else {
+                Toast.makeText(this, R.string.global_noConn, Toast.LENGTH_SHORT).show();
+            }
         });
     }
 

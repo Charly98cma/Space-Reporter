@@ -20,6 +20,7 @@ import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.ui.auth.forgotPwd.ForgotPwdActivity;
 import com.dam.spacereporter.spacereporter.ui.auth.signup.SignUpActivity;
 import com.dam.spacereporter.spacereporter.ui.MainActivity;
+import com.dam.spacereporter.spacereporter.utils.NetworkConnection;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -39,10 +40,8 @@ public class LoginActivity extends AppCompatActivity {
 
         /*---------- UI ELEMENTS ----------*/
 
-        final EditText login_et_email =
-                ((TextInputLayout) findViewById(R.id.login_et_email)).getEditText();
-        final EditText login_et_password =
-                ((TextInputLayout) findViewById(R.id.login_et_password)).getEditText();
+        final EditText login_et_email = ((TextInputLayout) findViewById(R.id.login_et_email)).getEditText();
+        final EditText login_et_password = ((TextInputLayout) findViewById(R.id.login_et_password)).getEditText();
         final MaterialButton login_btn_login = findViewById(R.id.login_btn_login);
         final MaterialButton login_btn_forgotPwd = findViewById(R.id.login_btn_forgotPwd);
         final MaterialButton login_btn_signUp = findViewById(R.id.login_btn_signUp);
@@ -60,7 +59,6 @@ public class LoginActivity extends AppCompatActivity {
             if (loginFormState.getPasswordError() != null)
                 Objects.requireNonNull(login_et_password).setError(getString(loginFormState.getPasswordError()));
         });
-
         loginViewModel.getLoginResult().observe(this, loginResult -> {
             if (loginResult == null) return;
 
@@ -95,24 +93,23 @@ public class LoginActivity extends AppCompatActivity {
                 );
             }
         };
-
         Objects.requireNonNull(login_et_email).addTextChangedListener(afterTextChangedListener);
         Objects.requireNonNull(login_et_password).addTextChangedListener(afterTextChangedListener);
 
         login_btn_login.setOnClickListener(view -> {
-            login_bar_loading.setVisibility(View.VISIBLE);
-            readRememberMeSwitch(login_sw_stayLogged);
-            loginViewModel.login(
-                    login_et_email.getText().toString().trim(),
-                    login_et_password.getText().toString().trim()
-            );
+            if (NetworkConnection.isNetworkConnected(this)) {
+                login_bar_loading.setVisibility(View.VISIBLE);
+                readRememberMeSwitch(login_sw_stayLogged);
+                loginViewModel.login(
+                        login_et_email.getText().toString().trim(),
+                        login_et_password.getText().toString().trim()
+                );
+            } else {
+                Toast.makeText(this, R.string.global_noConn, Toast.LENGTH_SHORT).show();
+            }
         });
-
-        login_btn_forgotPwd.setOnClickListener(view ->
-                startActivity(new Intent(this, ForgotPwdActivity.class)));
-
-        login_btn_signUp.setOnClickListener(view ->
-                startActivity(new Intent(this, SignUpActivity.class)));
+        login_btn_forgotPwd.setOnClickListener(view -> startActivity(new Intent(this, ForgotPwdActivity.class)));
+        login_btn_signUp.setOnClickListener(view -> startActivity(new Intent(this, SignUpActivity.class)));
     }
 
     private void readRememberMeSwitch(Checkable login_sw_stayLogged) {

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.ui.auth.login.LoginActivity;
+import com.dam.spacereporter.spacereporter.utils.NetworkConnection;
 import com.google.firebase.auth.FirebaseAuth;
 
 @SuppressLint("CustomSplashScreen")
@@ -37,13 +38,20 @@ public class SplashScreenActivity extends AppCompatActivity {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         } else {
-            firebaseAuth.getCurrentUser().reload().addOnCompleteListener(task -> {
-                if (task.isSuccessful())
-                    startActivity(new Intent(this, MainActivity.class));
-                else
-                    startActivity(new Intent(this, LoginActivity.class));
+            if (NetworkConnection.isNetworkConnected(this)) {
+                // Update user credentials beforehand
+                firebaseAuth.getCurrentUser().reload().addOnCompleteListener(task -> {
+                    if (task.isSuccessful())
+                        startActivity(new Intent(this, MainActivity.class));
+                    else
+                        startActivity(new Intent(this, LoginActivity.class));
+                    finish();
+                });
+            }else {
+                // No connection, assume user credentials are valid
+                startActivity(new Intent(this, MainActivity.class));
                 finish();
-            });
+            }
         }
     }
 }

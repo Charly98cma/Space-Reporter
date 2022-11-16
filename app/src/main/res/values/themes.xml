@@ -47,13 +47,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="article_popup_title">
-        <item name="android:textSize">24sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-    <style name="article_popup_summary">
-        <item name="android:textSize">20sp</item>
-    </style>
+
 
     <!-- NEWS IMAGES -->
     <style name="news_roundCorner">
@@ -69,5 +63,15 @@
         <item name="android:scaleType">fitXY</item>
         <item name="android:background">@color/transparent</item>
     </style>
+
+    <style name="article_popup_title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="article_popup_summary">
+        <item name="android:textSize">18sp</item>
+    </style>
+
 
 </resources>

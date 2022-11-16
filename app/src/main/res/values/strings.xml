@@ -14,6 +14,7 @@
     <string name="global_app_name">Space Reporter</string>
     <string name="global_poweredBy_txt">Powered by <a href="https://thespacedevs.com/llapi">Launch Library 2 API</a> and <a href="https://thespacedevs.com/snapi">Spaceflight News API</a></string>
     <string name="global_logoDesc">Application logo</string>
+    <string name="global_noConn">No internet connection</string>
 
     <!-- SHARE -->
     <string name="share_body">Hey! I am using this application, and I think you should check it out too!\n\nLINK_TO_PLAYSTORE</string>
