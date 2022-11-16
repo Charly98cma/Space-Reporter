@@ -42,8 +42,9 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
         Article article = newsArrayList.get(position);
         // Load picture from URL
         Picasso.get().load(article.getImageUrl()).into(holder.articlePicture);
-        // Load title of the article
+        // Load article information
         holder.articleTitle.setText(article.getTitle());
+        holder.articleSummary.setText(article.getSummary());
         // Apply listener to load the WebView to the entire card
         holder.articleCardView.setOnClickListener(v -> {
             Toast.makeText(context, R.string.news_toast_webView, Toast.LENGTH_SHORT).show();
@@ -64,14 +65,15 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
 
         final CardView articleCardView;
         final ShapeableImageView articlePicture;
-        final TextView articleTitle;
+        final TextView articleTitle, articleSummary;
 
         public NewsViewHolder(@NonNull View itemView) {
             super(itemView);
             // Read the UI elements
             articleCardView = itemView.findViewById(R.id.news_card_article);
-            articlePicture = itemView.findViewById(R.id.news_img_articlePicture);
             articleTitle = itemView.findViewById(R.id.news_txt_articleTitle);
+            articlePicture = itemView.findViewById(R.id.news_img_articlePicture);
+            articleSummary = itemView.findViewById(R.id.news_txt_summary);
         }
     }
 }

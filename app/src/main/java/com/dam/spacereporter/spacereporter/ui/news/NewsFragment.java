@@ -30,10 +30,9 @@ import java.util.ArrayList;
 
 public class NewsFragment extends Fragment {
 
-    // Number of articles to skip
-    private int skip = 0;
-    // Number of articles on each requests
+    // Number of articles on each requests and articles to skip
     private final int limit = 20;
+    private int skip = 0;
 
     private int count = 0;
 
@@ -85,7 +84,6 @@ public class NewsFragment extends Fragment {
             if (scrollY == v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight()) {
                 count++;
                 newsProgressBar.setVisibility(View.VISIBLE);
-                // TODO Replace with a call to retrive more data from API
                 if (count < 20) getData();
             }
         });
