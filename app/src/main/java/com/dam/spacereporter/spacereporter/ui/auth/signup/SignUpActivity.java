@@ -117,7 +117,7 @@ public class SignUpActivity extends AppCompatActivity {
                         signup_et_email.getText().toString().trim(),
                         signup_et_password.getText().toString().trim()
                 );
-            }else {
+            } else {
                 Toast.makeText(this, R.string.global_noConn, Toast.LENGTH_SHORT).show();
             }
         });

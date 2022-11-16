@@ -20,7 +20,6 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.data.models.Article;
-import com.dam.spacereporter.spacereporter.ui.news.NewsRVAdapter;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONException;
@@ -113,9 +112,10 @@ public class NewsFragment extends Fragment {
                                     responseObj.getString("summary")));
                             newsRV.setAdapter(new NewsRVAdapter(requireContext(), newsArrayList));
                         }
-                    }catch (JSONException e) {
+                    } catch (JSONException e) {
                         e.printStackTrace();
-                    }},
+                    }
+                },
                 error -> Toast.makeText(requireContext(), R.string.news_toast_errorApi, Toast.LENGTH_SHORT).show());
         queue.add(jsonArrayRequest);
     }

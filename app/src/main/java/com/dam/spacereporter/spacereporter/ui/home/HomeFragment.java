@@ -30,7 +30,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         // NOTE: Passing through HOME resets the backstack
         //       Pressing "<" from HOME always closes the app
         requireActivity().getSupportFragmentManager()
-                .popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE );
+                .popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         navigationView.setCheckedItem(R.id.nav_home);
         super.onStart();
     }

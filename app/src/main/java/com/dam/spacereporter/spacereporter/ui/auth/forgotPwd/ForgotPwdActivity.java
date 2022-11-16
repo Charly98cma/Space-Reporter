@@ -87,7 +87,7 @@ public class ForgotPwdActivity extends AppCompatActivity {
                 forgotPwdViewModel.sendPasswordResetEmail(
                         forgotPwd_et_email.getText().toString().trim()
                 );
-            }else {
+            } else {
                 Toast.makeText(this, R.string.global_noConn, Toast.LENGTH_SHORT).show();
             }
         });

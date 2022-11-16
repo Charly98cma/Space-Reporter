@@ -47,7 +47,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                         startActivity(new Intent(this, LoginActivity.class));
                     finish();
                 });
-            }else {
+            } else {
                 // No connection, assume user credentials are valid
                 startActivity(new Intent(this, MainActivity.class));
                 finish();

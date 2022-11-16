@@ -2,7 +2,7 @@ package com.dam.spacereporter.spacereporter.data.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class  Article {
+public class Article {
 
     private final Integer id;
     private final String title, url, imageUrl, newsSite, summary;

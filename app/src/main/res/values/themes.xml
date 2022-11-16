@@ -48,7 +48,6 @@
     </style>
 
 
-
     <!-- NEWS IMAGES -->
     <style name="news_roundCorner">
         <item name="cornerFamily">rounded</item>

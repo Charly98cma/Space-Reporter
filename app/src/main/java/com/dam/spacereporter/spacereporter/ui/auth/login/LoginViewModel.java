@@ -82,7 +82,8 @@ public class LoginViewModel extends ViewModel {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
 }

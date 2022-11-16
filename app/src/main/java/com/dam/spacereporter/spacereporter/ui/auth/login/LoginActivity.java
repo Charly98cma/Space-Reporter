@@ -17,9 +17,9 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.dam.spacereporter.R;
+import com.dam.spacereporter.spacereporter.ui.MainActivity;
 import com.dam.spacereporter.spacereporter.ui.auth.forgotPwd.ForgotPwdActivity;
 import com.dam.spacereporter.spacereporter.ui.auth.signup.SignUpActivity;
-import com.dam.spacereporter.spacereporter.ui.MainActivity;
 import com.dam.spacereporter.spacereporter.utils.NetworkConnection;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
