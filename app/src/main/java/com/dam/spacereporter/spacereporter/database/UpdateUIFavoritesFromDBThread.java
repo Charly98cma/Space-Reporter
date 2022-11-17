@@ -6,6 +6,7 @@ import com.dam.spacereporter.spacereporter.data.models.Article;
 import com.dam.spacereporter.spacereporter.ui.favorites.FavoritesFragment;
 
 import java.util.List;
+import java.util.Objects;
 
 public class UpdateUIFavoritesFromDBThread implements Runnable {
 
@@ -24,6 +25,6 @@ public class UpdateUIFavoritesFromDBThread implements Runnable {
     @Override
     public void run() {
         List<Article> allFavArticles = FavoritesDB.get(dbHelper, limit, offset);
-        favoritesFragment.getActivity().runOnUiThread((Runnable) () -> favoritesFragment.updateList(allFavArticles));
+        Objects.requireNonNull(favoritesFragment.requireActivity()).runOnUiThread((Runnable) () -> favoritesFragment.updateList(allFavArticles));
     }
 }
