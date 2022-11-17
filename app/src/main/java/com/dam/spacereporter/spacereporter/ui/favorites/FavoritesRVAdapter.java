@@ -1,4 +1,4 @@
-package com.dam.spacereporter.spacereporter.ui.news;
+package com.dam.spacereporter.spacereporter.ui.favorites;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -20,40 +20,38 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.data.models.Article;
-import com.dam.spacereporter.spacereporter.database.FavoritesDB;
-import com.dam.spacereporter.spacereporter.database.FavoritesDatabaseHelper;
+import com.dam.spacereporter.spacereporter.utils.NetworkConnection;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-// TODO Cache newsArrayList (do not delete all elements when exit fragment)
-public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHolder> {
+
+public class FavoritesRVAdapter extends RecyclerView.Adapter<FavoritesRVAdapter.FavoritesViewHolder> {
 
     private final Context context;
-    private final ArrayList<Article> newsArrayList;
-    private final FavoritesDatabaseHelper dbHelper;
+    private final ArrayList<Article> favArrayList;
 
-    public NewsRVAdapter(Context context, ArrayList<Article> newsArrayList, FavoritesDatabaseHelper dbHelper) {
+    public FavoritesRVAdapter(Context context, ArrayList<Article> favArrayList) {
         this.context = context;
-        this.newsArrayList = newsArrayList;
-        this.dbHelper = dbHelper;
+        this.favArrayList = favArrayList;
     }
 
     @NonNull
     @Override
-    public NewsRVAdapter.NewsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FavoritesRVAdapter.FavoritesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Inflate view of the list
-        return new NewsViewHolder(LayoutInflater.from(context).inflate(R.layout.news_rv_article, parent, false));
+        return new FavoritesViewHolder(LayoutInflater.from(context).inflate(R.layout.news_rv_article, parent, false));
     }
 
+    // FIXME Should be redone to solve photos loading and some other similar issues
     @Override
-    public void onBindViewHolder(@NonNull NewsRVAdapter.NewsViewHolder holder, int position) {
-        Article article = newsArrayList.get(position);
+    public void onBindViewHolder(@NonNull FavoritesRVAdapter.FavoritesViewHolder holder, int position) {
+        Article article = favArrayList.get(position);
 
-        // Set title and picture
-        Picasso.get().load(article.getImageUrl()).into(holder.articlePicture);
         holder.articleTitle.setText(article.getTitle());
+        if (NetworkConnection.isNetworkConnected(context))
+            Picasso.get().load(article.getImageUrl()).into(holder.articlePicture);
 
         holder.articleCardView.setOnClickListener(v -> {
 
@@ -75,19 +73,15 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
             ImageButton popupBtnReadLater = popupView.findViewById(R.id.popup_btn_readLater);
             ImageButton popupBtnWebView = popupView.findViewById(R.id.popup_btn_openWeb);
 
-            popupTitle.setText(article.getTitle());
-            popupSummary.setText(article.getSummary());
+            popupBtnFav.setImageResource(R.drawable.ic_baseline_favorite_24);
 
-            if (FavoritesDB.isArticleSaved(dbHelper, article.getId()))
-                popupBtnFav.setImageResource(R.drawable.ic_baseline_favorite_24);
-
-            // TODO Implement LOGIC to change FAV icon if article on FAV list
+            popupTitle.setText(favArrayList.get(position).getTitle());
+            popupSummary.setText(favArrayList.get(position).getSummary());
 
             // Listeners
             popupBtnFav.setOnClickListener(v_fav -> {
                 // TODO Implement FAV logic
-                Toast.makeText(context, "Favorites clicked", Toast.LENGTH_SHORT).show();
-                FavoritesDB.save(dbHelper, newsArrayList.get(position));
+                Toast.makeText(context, "Favorites clickes", Toast.LENGTH_SHORT).show();
             });
             popupBtnReadLater.setOnClickListener(v_fav -> {
                 // TODO Implement READLATER Logic
@@ -96,7 +90,7 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
             popupBtnWebView.setOnClickListener(f_web -> {
                 Toast.makeText(context, R.string.news_toast_webView, Toast.LENGTH_SHORT).show();
                 Intent intentWebBrowser = new Intent(Intent.ACTION_VIEW);
-                intentWebBrowser.setData(Uri.parse(newsArrayList.get(position).getUrl()));
+                intentWebBrowser.setData(Uri.parse(favArrayList.get(position).getUrl()));
                 context.startActivity(intentWebBrowser);
             });
 
@@ -108,20 +102,20 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
     @Override
     public int getItemCount() {
         // Return the number of articles loaded
-        return newsArrayList.size();
+        return favArrayList.size();
     }
 
     /*
      * ViewHolder class
      */
 
-    public static class NewsViewHolder extends RecyclerView.ViewHolder {
+    public static class FavoritesViewHolder extends RecyclerView.ViewHolder {
 
         final CardView articleCardView;
         final ShapeableImageView articlePicture;
         final TextView articleTitle;
 
-        public NewsViewHolder(@NonNull View itemView) {
+        public FavoritesViewHolder(@NonNull View itemView) {
             super(itemView);
             // Read the UI elements
             articleCardView = itemView.findViewById(R.id.news_card_article);

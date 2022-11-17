@@ -1,5 +1,7 @@
 package com.dam.spacereporter.spacereporter.data.models;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Article {
@@ -45,5 +47,18 @@ public class Article {
     @SerializedName("summary")
     public String getSummary() {
         return summary;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", url='" + url + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", newsSite='" + newsSite + '\'' +
+                ", summary='" + summary + '\'' +
+                '}';
     }
 }

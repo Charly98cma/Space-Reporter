@@ -20,6 +20,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.data.models.Article;
+import com.dam.spacereporter.spacereporter.database.FavoritesDatabaseHelper;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONException;
@@ -37,9 +38,10 @@ public class NewsFragment extends Fragment {
 
     private NavigationView navigationView;
     private ArrayList<Article> newsArrayList;
-
     private RecyclerView newsRV;
     private ProgressBar newsProgressBar;
+
+    private FavoritesDatabaseHelper dbHelper;
 
     // Required empty public constructor
     public NewsFragment() {
@@ -56,6 +58,7 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         final View fragmentView;
+        dbHelper = new FavoritesDatabaseHelper(requireContext());
 
         /*---------- UI ELEMENTS ----------*/
 
@@ -110,7 +113,8 @@ public class NewsFragment extends Fragment {
                                     responseObj.getString("imageUrl"),
                                     responseObj.getString("newsSite"),
                                     responseObj.getString("summary")));
-                            newsRV.setAdapter(new NewsRVAdapter(requireContext(), newsArrayList));
+                            newsRV.setAdapter(new NewsRVAdapter(requireContext(), newsArrayList, dbHelper));
+                            newsProgressBar.setVisibility(View.INVISIBLE);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

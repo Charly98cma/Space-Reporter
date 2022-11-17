@@ -1,5 +1,7 @@
 package com.dam.spacereporter.spacereporter.data.models;
 
+import androidx.annotation.NonNull;
+
 public class User {
 
     private String fullName;
@@ -25,5 +27,15 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "User{" +
+                "fullName='" + fullName + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
