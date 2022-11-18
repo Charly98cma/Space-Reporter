@@ -79,8 +79,8 @@ public class FavoritesRVAdapter extends RecyclerView.Adapter<FavoritesRVAdapter.
 
             popupBtnFav.setImageResource(R.drawable.ic_baseline_favorite_24);
 
-            popupTitle.setText(favArrayList.get(position).getTitle());
-            popupSummary.setText(favArrayList.get(position).getSummary());
+            popupTitle.setText(article.getTitle());
+            popupSummary.setText(article.getSummary());
 
             // Change icons based on the article being (or not) in Fav/RL database
             if (ArticlesDB.isArticleInFavorites(dbHelper, article.getId()))
