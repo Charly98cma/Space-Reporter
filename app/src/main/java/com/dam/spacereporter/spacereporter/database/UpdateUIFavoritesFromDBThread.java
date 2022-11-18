@@ -1,7 +1,5 @@
 package com.dam.spacereporter.spacereporter.database;
 
-import android.app.Activity;
-
 import com.dam.spacereporter.spacereporter.data.models.Article;
 import com.dam.spacereporter.spacereporter.ui.favorites.FavoritesFragment;
 
@@ -11,11 +9,11 @@ import java.util.Objects;
 public class UpdateUIFavoritesFromDBThread implements Runnable {
 
     private final FavoritesFragment favoritesFragment;
-    private final FavoritesDatabaseHelper dbHelper;
+    private final ArticlesDatabaseHelper dbHelper;
     private final int limit;
     private final int offset;
 
-    public UpdateUIFavoritesFromDBThread(FavoritesFragment favoritesFragment, FavoritesDatabaseHelper dbHelper, int limit, int offset) {
+    public UpdateUIFavoritesFromDBThread(FavoritesFragment favoritesFragment, ArticlesDatabaseHelper dbHelper, int limit, int offset) {
         this.favoritesFragment = favoritesFragment;
         this.dbHelper = dbHelper;
         this.limit = limit;
@@ -24,7 +22,8 @@ public class UpdateUIFavoritesFromDBThread implements Runnable {
 
     @Override
     public void run() {
-        List<Article> allFavArticles = FavoritesDB.get(dbHelper, limit, offset);
-        Objects.requireNonNull(favoritesFragment.requireActivity()).runOnUiThread((Runnable) () -> favoritesFragment.updateList(allFavArticles));
+        List<Article> readLaterArticles = ArticlesDB.getFavoritesArticles(dbHelper, limit, offset);
+        Objects.requireNonNull(favoritesFragment.requireActivity()).runOnUiThread((Runnable) () ->
+                favoritesFragment.updateList(readLaterArticles));
     }
 }

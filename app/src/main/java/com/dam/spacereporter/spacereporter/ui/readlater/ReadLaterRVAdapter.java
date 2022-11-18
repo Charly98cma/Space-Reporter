@@ -1,4 +1,4 @@
-package com.dam.spacereporter.spacereporter.ui.favorites;
+package com.dam.spacereporter.spacereporter.ui.readlater;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -28,30 +28,27 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-
-public class FavoritesRVAdapter extends RecyclerView.Adapter<FavoritesRVAdapter.FavoritesViewHolder> {
+public class ReadLaterRVAdapter extends RecyclerView.Adapter<ReadLaterRVAdapter.ReadLaterViewHolder> {
 
     private final Context context;
-    private final ArrayList<Article> favArrayList;
+    private final ArrayList<Article> readLaterArrayList;
     private final ArticlesDatabaseHelper dbHelper;
 
-    public FavoritesRVAdapter(Context context, ArrayList<Article> favArrayList, ArticlesDatabaseHelper dbHelper) {
+    public ReadLaterRVAdapter(Context context, ArrayList<Article> readLaterArrayList, ArticlesDatabaseHelper dbHelper) {
         this.context = context;
-        this.favArrayList = favArrayList;
+        this.readLaterArrayList = readLaterArrayList;
         this.dbHelper = dbHelper;
     }
 
     @NonNull
     @Override
-    public FavoritesRVAdapter.FavoritesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Inflate view of the list
-        return new FavoritesViewHolder(LayoutInflater.from(context).inflate(R.layout.news_rv_article, parent, false));
+    public ReadLaterRVAdapter.ReadLaterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ReadLaterRVAdapter.ReadLaterViewHolder(LayoutInflater.from(context).inflate(R.layout.news_rv_article, parent, false));
     }
 
-    // FIXME Should be redone to solve photos loading and some other similar issues
     @Override
-    public void onBindViewHolder(@NonNull FavoritesRVAdapter.FavoritesViewHolder holder, int position) {
-        Article article = favArrayList.get(position);
+    public void onBindViewHolder(@NonNull ReadLaterRVAdapter.ReadLaterViewHolder holder, int position) {
+        Article article = readLaterArrayList.get(position);
 
         holder.articleTitle.setText(article.getTitle());
         if (NetworkConnection.isNetworkConnected(context))
@@ -77,10 +74,8 @@ public class FavoritesRVAdapter extends RecyclerView.Adapter<FavoritesRVAdapter.
             ImageButton popupBtnReadLater = popupView.findViewById(R.id.popup_btn_readLater);
             ImageButton popupBtnWebView = popupView.findViewById(R.id.popup_btn_openWeb);
 
-            popupBtnFav.setImageResource(R.drawable.ic_baseline_favorite_24);
-
-            popupTitle.setText(favArrayList.get(position).getTitle());
-            popupSummary.setText(favArrayList.get(position).getSummary());
+            popupTitle.setText(article.getTitle());
+            popupSummary.setText(article.getSummary());
 
             // Change icons based on the article being (or not) in Fav/RL database
             if (ArticlesDB.isArticleInFavorites(dbHelper, article.getId()))
@@ -100,7 +95,7 @@ public class FavoritesRVAdapter extends RecyclerView.Adapter<FavoritesRVAdapter.
                     popupBtnFav.setImageResource(R.drawable.ic_baseline_favorite_24);
                 }
             });
-            popupBtnReadLater.setOnClickListener(v_rl -> {
+            popupBtnReadLater.setOnClickListener(v_fav -> {
                 if (ArticlesDB.isArticleInReadLater(dbHelper, article.getId())) {
                     Toast.makeText(context, "Article removed from read later", Toast.LENGTH_SHORT).show();
                     ArticlesDB.deleteArticleFromReadLater(dbHelper, article.getId());
@@ -111,35 +106,31 @@ public class FavoritesRVAdapter extends RecyclerView.Adapter<FavoritesRVAdapter.
                     popupBtnReadLater.setImageResource(R.drawable.ic_baseline_read_later_24);
                 }
             });
-            popupBtnWebView.setOnClickListener(v_web -> {
+            popupBtnWebView.setOnClickListener(f_web -> {
                 Toast.makeText(context, R.string.news_toast_webView, Toast.LENGTH_SHORT).show();
                 Intent intentWebBrowser = new Intent(Intent.ACTION_VIEW);
-                intentWebBrowser.setData(Uri.parse(favArrayList.get(position).getUrl()));
+                intentWebBrowser.setData(Uri.parse(article.getUrl()));
                 context.startActivity(intentWebBrowser);
             });
 
             // Show PopUp on screen
             popupWindow.showAtLocation(holder.itemView, Gravity.CENTER, 0, 0);
         });
+
     }
 
     @Override
     public int getItemCount() {
-        // Return the number of articles loaded
-        return favArrayList.size();
+        return readLaterArrayList.size();
     }
 
-    /*
-     * ViewHolder class
-     */
-
-    public static class FavoritesViewHolder extends RecyclerView.ViewHolder {
+    public static class ReadLaterViewHolder extends RecyclerView.ViewHolder {
 
         final CardView articleCardView;
         final ShapeableImageView articlePicture;
         final TextView articleTitle;
 
-        public FavoritesViewHolder(@NonNull View itemView) {
+        public ReadLaterViewHolder(@NonNull View itemView) {
             super(itemView);
             // Read the UI elements
             articleCardView = itemView.findViewById(R.id.news_card_article);

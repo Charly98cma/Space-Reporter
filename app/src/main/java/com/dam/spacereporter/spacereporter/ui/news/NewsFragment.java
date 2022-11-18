@@ -20,7 +20,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.data.models.Article;
-import com.dam.spacereporter.spacereporter.database.FavoritesDatabaseHelper;
+import com.dam.spacereporter.spacereporter.database.ArticlesDatabaseHelper;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONException;
@@ -41,7 +41,7 @@ public class NewsFragment extends Fragment {
     private RecyclerView newsRV;
     private ProgressBar newsProgressBar;
 
-    private FavoritesDatabaseHelper dbHelper;
+    private ArticlesDatabaseHelper dbHelper;
 
     // Required empty public constructor
     public NewsFragment() {
@@ -58,7 +58,7 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         final View fragmentView;
-        dbHelper = new FavoritesDatabaseHelper(requireContext());
+        dbHelper = new ArticlesDatabaseHelper(requireContext());
 
         /*---------- UI ELEMENTS ----------*/
 
@@ -103,7 +103,7 @@ public class NewsFragment extends Fragment {
                         skip += limit;
                         // Read the new articles
                         newsRV.setVisibility(View.VISIBLE);
-                        // TODO Change to serialize the objects
+                        // FIXME Change to serialize the objects
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject responseObj = response.getJSONObject(i);
                             newsArrayList.add(new Article(

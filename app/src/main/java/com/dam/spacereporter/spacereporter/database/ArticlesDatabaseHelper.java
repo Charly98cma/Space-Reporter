@@ -7,20 +7,33 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-// FIXME Should be redone to use a Factory (proper implementation)
-public class FavoritesDatabaseHelper extends SQLiteOpenHelper {
+public class ArticlesDatabaseHelper extends SQLiteOpenHelper {
 
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "db_articles";
-    public static final String TABLE_NAME = "favorites";
 
-    public FavoritesDatabaseHelper(@Nullable Context context) {
+    public static final String TABLE_NAME_FAV = "favorites";
+    public static final String TABLE_NAME_RL = "read_later";
+
+    public ArticlesDatabaseHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
     @Override
     public void onCreate(@NonNull SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_NAME + "(" +
+
+        // Table with the FAVORITES articles
+        db.execSQL("CREATE TABLE " + TABLE_NAME_FAV + "(" +
+                "id INTEGER PRIMARY KEY," +
+                "title TEXT," +
+                "url TEXT," +
+                "imageUrl TEXT," +
+                "newsSite TEXT," +
+                "summary TEXT" +
+                ");");
+
+        // Table with the READ LATER articles
+        db.execSQL("CREATE TABLE " + TABLE_NAME_RL + " (" +
                 "id INT PRIMARY KEY," +
                 "title TEXT," +
                 "url TEXT," +

@@ -15,7 +15,6 @@ import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.ui.auth.login.LoginActivity;
 import com.dam.spacereporter.spacereporter.ui.favorites.FavoritesFragment;
 import com.dam.spacereporter.spacereporter.ui.home.HomeFragment;
-import com.dam.spacereporter.spacereporter.ui.readlater.ReadLaterFragment;
 import com.dam.spacereporter.spacereporter.ui.settings.SettingsFragment;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new FavoritesFragment());
                     break;
                 case R.id.nav_readLater:
-                    replaceFragment(new ReadLaterFragment());
+                    replaceFragment(new com.dam.spacereporter.spacereporter.ui.readlater.ReadLaterFragment());
                     break;
                 case R.id.nav_settings:
                     replaceFragment(new SettingsFragment());

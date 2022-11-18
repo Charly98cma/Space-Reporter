@@ -20,8 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.data.models.Article;
-import com.dam.spacereporter.spacereporter.database.FavoritesDB;
-import com.dam.spacereporter.spacereporter.database.FavoritesDatabaseHelper;
+import com.dam.spacereporter.spacereporter.database.ArticlesDB;
+import com.dam.spacereporter.spacereporter.database.ArticlesDatabaseHelper;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
 
@@ -32,9 +32,9 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
 
     private final Context context;
     private final ArrayList<Article> newsArrayList;
-    private final FavoritesDatabaseHelper dbHelper;
+    private final ArticlesDatabaseHelper dbHelper;
 
-    public NewsRVAdapter(Context context, ArrayList<Article> newsArrayList, FavoritesDatabaseHelper dbHelper) {
+    public NewsRVAdapter(Context context, ArrayList<Article> newsArrayList, ArticlesDatabaseHelper dbHelper) {
         this.context = context;
         this.newsArrayList = newsArrayList;
         this.dbHelper = dbHelper;
@@ -78,22 +78,36 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
             popupTitle.setText(article.getTitle());
             popupSummary.setText(article.getSummary());
 
-            if (FavoritesDB.isArticleSaved(dbHelper, article.getId()))
+            // Change icons based on the article being (or not) in Fav/RL database
+            if (ArticlesDB.isArticleInFavorites(dbHelper, article.getId()))
                 popupBtnFav.setImageResource(R.drawable.ic_baseline_favorite_24);
-
-            // TODO Implement LOGIC to change FAV icon if article on FAV list
+            if (ArticlesDB.isArticleInReadLater(dbHelper, article.getId()))
+                popupBtnReadLater.setImageResource(R.drawable.ic_baseline_read_later_24);
 
             // Listeners
             popupBtnFav.setOnClickListener(v_fav -> {
-                // TODO Implement FAV logic
-                Toast.makeText(context, "Favorites clicked", Toast.LENGTH_SHORT).show();
-                FavoritesDB.save(dbHelper, newsArrayList.get(position));
+                if (ArticlesDB.isArticleInFavorites(dbHelper, article.getId())) {
+                    Toast.makeText(context, "Article removed from favorites", Toast.LENGTH_SHORT).show();
+                    ArticlesDB.deleteArticleFromFavorites(dbHelper, article.getId());
+                    popupBtnFav.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                }else {
+                    Toast.makeText(context, "Article added to favorites", Toast.LENGTH_SHORT).show();
+                    ArticlesDB.saveArticleToFavorites(dbHelper, article);
+                    popupBtnFav.setImageResource(R.drawable.ic_baseline_favorite_24);
+                }
             });
-            popupBtnReadLater.setOnClickListener(v_fav -> {
-                // TODO Implement READLATER Logic
-                Toast.makeText(context, "Read later clicked", Toast.LENGTH_SHORT).show();
+            popupBtnReadLater.setOnClickListener(v_rl -> {
+                if (ArticlesDB.isArticleInReadLater(dbHelper, article.getId())) {
+                    Toast.makeText(context, "Article removed from read later", Toast.LENGTH_SHORT).show();
+                    ArticlesDB.deleteArticleFromReadLater(dbHelper, article.getId());
+                    popupBtnReadLater.setImageResource(R.drawable.ic_outline_watch_later_24);
+                }else {
+                    Toast.makeText(context, "Article added to reaq later", Toast.LENGTH_SHORT).show();
+                    ArticlesDB.saveArticleToReadLater(dbHelper, article);
+                    popupBtnReadLater.setImageResource(R.drawable.ic_baseline_read_later_24);
+                }
             });
-            popupBtnWebView.setOnClickListener(f_web -> {
+            popupBtnWebView.setOnClickListener(v_web -> {
                 Toast.makeText(context, R.string.news_toast_webView, Toast.LENGTH_SHORT).show();
                 Intent intentWebBrowser = new Intent(Intent.ACTION_VIEW);
                 intentWebBrowser.setData(Uri.parse(newsArrayList.get(position).getUrl()));

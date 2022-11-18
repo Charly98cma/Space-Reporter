@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.data.models.Article;
-import com.dam.spacereporter.spacereporter.database.FavoritesDatabaseHelper;
+import com.dam.spacereporter.spacereporter.database.ArticlesDatabaseHelper;
 import com.dam.spacereporter.spacereporter.database.UpdateUIFavoritesFromDBThread;
 import com.google.android.material.navigation.NavigationView;
 
@@ -35,7 +35,7 @@ public class FavoritesFragment extends Fragment {
     private RecyclerView favRV;
     private ProgressBar favProgressBar;
 
-    private FavoritesDatabaseHelper dbHelper;
+    private ArticlesDatabaseHelper dbHelper;
 
     // Required empty public constructor
     public FavoritesFragment() {
@@ -52,7 +52,7 @@ public class FavoritesFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         final View fragmentView;
-        dbHelper = new FavoritesDatabaseHelper(requireContext());
+        dbHelper = new ArticlesDatabaseHelper(requireContext());
 
         /*---------- UI ELEMENTS ----------*/
 
@@ -89,7 +89,7 @@ public class FavoritesFragment extends Fragment {
         favRV.setVisibility(View.VISIBLE);
         // Concat articles to the list
         favArrayList.addAll(favArticles);
-        favRV.setAdapter(new FavoritesRVAdapter(requireContext(), favArrayList));
+        favRV.setAdapter(new FavoritesRVAdapter(requireContext(), favArrayList, dbHelper));
         favProgressBar.setVisibility(View.INVISIBLE);
     }
 }
