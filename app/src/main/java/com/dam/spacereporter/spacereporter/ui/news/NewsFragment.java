@@ -2,7 +2,6 @@ package com.dam.spacereporter.spacereporter.ui.news;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -48,7 +47,7 @@ public class NewsFragment extends Fragment {
     private RecyclerView newsRV;
     private ProgressBar newsProgressBar;
 
-    private NotificationManager notificationManager;
+    private NotificationManagerCompat notificationManager;
     private SharedPreferences sharedPreferences;
 
     private ArticlesDatabaseHelper dbHelper;
@@ -68,7 +67,10 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         final View fragmentView;
-        notificationManager = (NotificationManager) requireContext().getSystemService(Context.NOTIFICATION_SERVICE);
+
+        /*---------- INIT ----------*/
+
+        notificationManager = NotificationManagerCompat.from(requireContext());
         sharedPreferences = requireContext().getSharedPreferences(
                 getString(R.string.pref), Context.MODE_PRIVATE);
         dbHelper = new ArticlesDatabaseHelper(requireContext());
@@ -78,6 +80,10 @@ public class NewsFragment extends Fragment {
         // Inflate the layout for this fragment
         fragmentView = inflater.inflate(R.layout.fragment_news, container, false);
         navigationView = requireActivity().findViewById(R.id.nav_view);
+
+        /*---------- ADDITIONAL OPERATIONS ----------*/
+
+        createNotificationChannel();
 
         return fragmentView;
     }
@@ -104,29 +110,31 @@ public class NewsFragment extends Fragment {
         });
     }
 
-    // FIXME Notifications arent showing up
+    private void createNotificationChannel() {
+        NotificationChannel channel = new NotificationChannel(
+                getString(R.string.notif_channel_newArticle_id),
+                getString(R.string.notif_channel_newArticle_name),
+                NotificationManager.IMPORTANCE_DEFAULT);
+        channel.setDescription(getString(R.string.notif_channel_newArticle_desc));
+        channel.enableVibration(true);
+        channel.enableLights(true);
+        channel.setAllowBubbles(true);
+        notificationManager.createNotificationChannel(channel);
+    }
+
     private void notification() {
         // Notify user of new articles available to read
         int newestArticleId = newsArrayList.get(0).getId();
-        if (lastSeenArticle() < newestArticleId) {
-            // Notification channel
-            NotificationChannel channel = new NotificationChannel(
-                    "NEWS_NOTIFICATION",
-                    "NEW_ARTICLES",
-                    NotificationManager.IMPORTANCE_DEFAULT);
-            channel.setDescription("New articles in the news view");
-            notificationManager.createNotificationChannel(channel);
-
+        int oldestArticleId = lastSeenArticle();
+        if (oldestArticleId < newestArticleId) {
             // Create notification and notify user
-            NotificationCompat.Builder builder =
-                    new NotificationCompat.Builder(requireContext(), "NEWS_NOTIFICATION")
-                            .setSmallIcon(R.drawable.notification_icon)
-                            .setContentTitle(getString(R.string.news_txt_notificationTitle))
-                            .setContentText(getString(R.string.news_txt_notificationBody))
-                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                            .setAutoCancel(true);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), getString(R.string.notif_channel_newArticle_id))
+                    .setSmallIcon(R.drawable.notification_icon)
+                    .setContentTitle(getString(R.string.notif_txt_newArticle_title))
+                    .setContentText(getString(R.string.notif_txt_newArticle_body))
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setAutoCancel(true);
             notificationManager.notify(0, builder.build());
-
             // Save ID pf the newest article shown
             saveLastSeenArticle(newestArticleId);
         }
@@ -167,6 +175,9 @@ public class NewsFragment extends Fragment {
                             newsRV.setAdapter(new NewsRVAdapter(requireContext(), newsArrayList, dbHelper));
                             newsProgressBar.setVisibility(View.INVISIBLE);
                         }
+
+                        notification();
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

@@ -17,6 +17,13 @@
     <string name="global_logoDesc">Application logo</string>
     <string name="global_noConn">No internet connection</string>
 
+    <!-- NOTIFICATIONS -->
+    <string name="notif_channel_newArticle_id">UNREAD_ARTICLES</string>
+    <string name="notif_channel_newArticle_name">Unread articles</string>
+    <string name="notif_channel_newArticle_desc">Channel for notifications about unread articles</string>
+    <string name="notif_txt_newArticle_title">New unread articles!</string>
+    <string name="notif_txt_newArticle_body">There are new articles to read since last time</string>
+
     <!-- SHARE -->
     <string name="share_body">Hey! I am using this application, and I think you should check it out too!\n\nLINK_TO_PLAYSTORE</string>
 
@@ -88,8 +95,6 @@
     <string name="news_toast_webView">Loading article on web browser…</string>
     <string name="news_toast_errorApi">Failed to get the data…</string>
     <string name="news_txt_titlePlaceholder">Sample text</string>
-    <string name="news_txt_notificationTitle">New articles!</string>
-    <string name="news_txt_notificationBody">There are new articles to read since last time</string>
     <string name="popup_desc_fav">Add article to favorites list</string>
     <string name="popup_desc_readLater">Add article to read later list</string>
     <string name="popup_desc_webView">Go to the website with the full article</string>
