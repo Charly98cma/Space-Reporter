@@ -2,6 +2,7 @@ package com.dam.spacereporter.spacereporter.ui.auth.login;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 

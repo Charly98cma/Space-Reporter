@@ -100,9 +100,12 @@ public class MainActivity extends AppCompatActivity {
         String username = sharedPreferences.getString(getString(R.string.pref_username), "USERNAME");
         String email = sharedPreferences.getString(getString(R.string.pref_email), "EMAIL");
 
-        ((TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_txt_fullName)).setText(fullName);
-        ((TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_txt_username)).setText(username);
-        ((TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_txt_email)).setText(email);
+        ((TextView) navigationView.getHeaderView(0)
+                .findViewById(R.id.nav_txt_fullName)).setText(fullName);
+        ((TextView) navigationView.getHeaderView(0)
+                .findViewById(R.id.nav_txt_username)).setText(username);
+        ((TextView) navigationView.getHeaderView(0)
+                .findViewById(R.id.nav_txt_email)).setText(email);
 
         super.onStart();
     }
@@ -110,8 +113,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
 
-        if (!sharedPreferences.getBoolean(getString(R.string.pref_save_login), false))
+        if (!sharedPreferences.getBoolean(getString(R.string.pref_save_login), false)) {
+            clearCache();
             firebaseAuth.signOut();
+        }
         super.onDestroy();
     }
 
@@ -127,6 +132,17 @@ public class MainActivity extends AppCompatActivity {
     /*
      * AUX METHODS / FUNCTIONS
      */
+
+    private void clearCache() {
+        SharedPreferences.Editor editor = getSharedPreferences(
+                getString(R.string.pref_name), MODE_PRIVATE
+        ).edit();
+        editor.remove(getString(R.string.pref_fullName));
+        editor.remove(getString(R.string.pref_username));
+        editor.remove(getString(R.string.pref_email));
+        editor.remove(getString(R.string.pref_save_login));
+        editor.apply();
+    }
 
     private void replaceFragment(Fragment fragment) {
 
