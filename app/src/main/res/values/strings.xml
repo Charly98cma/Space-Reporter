@@ -79,7 +79,7 @@
     <string name="forgotPwd_toast_sent">Email sent</string>
 
     <!-- HOME (fragment) -->
-    <string name="home_desc_news">Button to access latest news</string>
+    <string name="home_desc_news">Access latest news</string>
     <string name="home_txt_news">News</string>
     <string name="home_txt_launches">Launches</string>
 
@@ -87,8 +87,8 @@
     <string name="news_toast_webView">Loading article on web browser…</string>
     <string name="news_toast_errorApi">Failed to get the data…</string>
     <string name="news_txt_titlePlaceholder">Sample text</string>
-    <string name="popup_desc_fav">Button to add article to favorites list</string>
-    <string name="popup_desc_readLater">Button to add article to read later list</string>
-    <string name="popup_desc_webView">Button to go to the website with the full article</string>
+    <string name="popup_desc_fav">Add article to favorites list</string>
+    <string name="popup_desc_readLater">Add article to read later list</string>
+    <string name="popup_desc_webView">Go to the website with the full article</string>
 
 </resources>
