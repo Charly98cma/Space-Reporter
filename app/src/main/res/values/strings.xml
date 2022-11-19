@@ -3,12 +3,13 @@
     <string name="api_url">https://api.spaceflightnewsapi.net/v3/articles?_limit=%d&amp;_start=%d</string>
 
     <!-- SHARED PREFERENCES -->
-    <string name="pref_name">SHARED_PREF_LIST</string>
+    <string name="pref">SHARED_PREF_LIST</string>
     <string name="pref_save_login">SAVE_LOGIN</string>
     <string name="pref_seen_start">SEEN_START</string>
-    <string name="pref_fullName">USER_FULL_NAME</string>
-    <string name="pref_username">USER_USERNAME</string>
-    <string name="pref_email">USER_EMAIL</string>
+    <string name="pref_user_fullName">USER_FULL_NAME</string>
+    <string name="pref_user_username">USER_USERNAME</string>
+    <string name="pref_user_email">USER_EMAIL</string>
+    <string name="pref_article_lastSeen">ARTICLE_LAST_ID</string>
 
     <!-- GLOBAL -->
     <string name="global_app_name">Space Reporter</string>
@@ -87,6 +88,8 @@
     <string name="news_toast_webView">Loading article on web browser…</string>
     <string name="news_toast_errorApi">Failed to get the data…</string>
     <string name="news_txt_titlePlaceholder">Sample text</string>
+    <string name="news_txt_notificationTitle">New articles!</string>
+    <string name="news_txt_notificationBody">There are new articles to read since last time</string>
     <string name="popup_desc_fav">Add article to favorites list</string>
     <string name="popup_desc_readLater">Add article to read later list</string>
     <string name="popup_desc_webView">Go to the website with the full article</string>

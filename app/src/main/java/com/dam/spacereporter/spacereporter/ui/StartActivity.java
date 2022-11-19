@@ -23,7 +23,7 @@ public class StartActivity extends AppCompatActivity {
         start_btn_toLogin.setOnClickListener(view -> {
 
             SharedPreferences sharedPreferences =
-                    getSharedPreferences(getString(R.string.pref_name), MODE_PRIVATE);
+                    getSharedPreferences(getString(R.string.pref), MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean(getString(R.string.pref_seen_start), true);
             editor.apply();

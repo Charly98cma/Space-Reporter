@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void readRememberMeSwitch(Checkable login_sw_stayLogged) {
         SharedPreferences.Editor editor =
-                getSharedPreferences(getString(R.string.pref_name), MODE_PRIVATE).edit();
+                getSharedPreferences(getString(R.string.pref), MODE_PRIVATE).edit();
         editor.putBoolean(getString(R.string.pref_save_login), login_sw_stayLogged.isChecked());
         editor.apply();
     }

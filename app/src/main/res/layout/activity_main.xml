@@ -31,7 +31,7 @@
                 android:id="@+id/mat_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:navigationIcon="@drawable/ic_baseline_menu_24"
+                app:navigationIcon="@drawable/menu_icon"
                 app:title="@string/global_app_name" />
 
         </com.google.android.material.appbar.AppBarLayout>

@@ -9,9 +9,11 @@ import androidx.annotation.Nullable;
 
 public class ArticlesDatabaseHelper extends SQLiteOpenHelper {
 
+    // Database version (update whenever the DBs are changed)
     private static final int DB_VERSION = 1;
-    private static final String DB_NAME = "db_articles";
 
+    // DB name and tables
+    private static final String DB_NAME = "db_articles";
     public static final String TABLE_NAME_FAV = "favorites";
     public static final String TABLE_NAME_RL = "read_later";
 

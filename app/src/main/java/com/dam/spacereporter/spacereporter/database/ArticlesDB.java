@@ -17,14 +17,33 @@ public class ArticlesDB {
      * STORE methods
      */
 
+    /**
+     * Saves the given article in the ArticlesDB, in the "favorites" table
+     *
+     * @param dbHelper Articles database helper
+     * @param article Article to be stored in the DB
+     */
     public static void saveArticleToFavorites(@NonNull ArticlesDatabaseHelper dbHelper, @NonNull Article article) {
         saveArticle(dbHelper, article, ArticlesDatabaseHelper.TABLE_NAME_FAV);
     }
 
+    /**
+     * Saves the given article in the ArticlesDB, in the "read later" table
+     *
+     * @param dbHelper Articles database helper
+     * @param article Article to be stored in the DB
+     */
     public static void saveArticleToReadLater(@NonNull ArticlesDatabaseHelper dbHelper, @NonNull Article article) {
         saveArticle(dbHelper, article, ArticlesDatabaseHelper.TABLE_NAME_RL);
     }
 
+    /**
+     * Saves the given article in the given table
+     *
+     * @param dbHelper Articles database helper
+     * @param article Article to be stored in the DB
+     * @param table Table in which the article will be stored
+     */
     @SuppressLint("DefaultLocale")
     private static void saveArticle(@NonNull ArticlesDatabaseHelper dbHelper, @NonNull Article article, String table) {
         SQLiteDatabase conn = dbHelper.getWritableDatabase();
@@ -38,11 +57,27 @@ public class ArticlesDB {
      * SELECT functions
      */
 
+    /**
+     * Returns a list of, at most 'limit' articles (skipping the first 'offset' articles) from the "favorites" table in the ArticlesDB
+     *
+     * @param dbHelper Articles database helper
+     * @param limit Number of articles to return
+     * @param offset Number of articles to skip from the DB
+     * @return List of articles
+     */
     @NonNull
     public static List<Article> getFavoritesArticles(@NonNull ArticlesDatabaseHelper dbHelper, int limit, int offset) {
         return get(dbHelper, limit, offset, ArticlesDatabaseHelper.TABLE_NAME_FAV);
     }
 
+    /**
+     * Returns a list of, at most 'limit' articles (skipping the first 'offset' articles) from the "read later" table in the ArticlesDB
+     *
+     * @param dbHelper Articles database helper
+     * @param limit Number of articles to return
+     * @param offset Number of articles to skip from the DB
+     * @return List of articles
+     */
     @NonNull
     public static List<Article> getReadLaterArticles(@NonNull ArticlesDatabaseHelper dbHelper, int limit, int offset) {
         return get(dbHelper, limit, offset, ArticlesDatabaseHelper.TABLE_NAME_RL);
@@ -76,10 +111,24 @@ public class ArticlesDB {
      * ASK functions
      */
 
+    /**
+     * Returns whether the article is in the "favorites" table in the ArticlesDB
+     *
+     * @param dbHelper Articles database helper
+     * @param articleId Id of the article to check
+     * @return Whether the article is in the DB
+     */
     public static boolean isArticleInFavorites(ArticlesDatabaseHelper dbHelper, int articleId) {
         return isArticleIn(dbHelper, articleId, ArticlesDatabaseHelper.TABLE_NAME_FAV);
     }
 
+    /**
+     * Returns whether the article is in the "read later" table in the ArticlesDB
+     *
+     * @param dbHelper Articles database helper
+     * @param articleId Id of the article to check
+     * @return Whether the article is in the DB
+     */
     public static boolean isArticleInReadLater(ArticlesDatabaseHelper dbHelper, int articleId) {
         return isArticleIn(dbHelper, articleId, ArticlesDatabaseHelper.TABLE_NAME_RL);
     }
@@ -98,10 +147,22 @@ public class ArticlesDB {
      * DELETE methods
      */
 
+    /**
+     * Deletes the given article from the "favorites" table in the ArticlesDB
+     *
+     * @param dbHelper Articles database helper
+     * @param articleId Id of the article to delete
+     */
     public static void deleteArticleFromFavorites(ArticlesDatabaseHelper dbHelper, int articleId) {
         deleteArticle(dbHelper, articleId, ArticlesDatabaseHelper.TABLE_NAME_FAV);
     }
 
+    /**
+     * Deletes the given article from the "read later" table in the ArticlesDB
+     *
+     * @param dbHelper Articles database helper
+     * @param articleId Id of the article to delete
+     */
     public static void deleteArticleFromReadLater(ArticlesDatabaseHelper dbHelper, int articleId) {
         deleteArticle(dbHelper, articleId, ArticlesDatabaseHelper.TABLE_NAME_RL);
     }

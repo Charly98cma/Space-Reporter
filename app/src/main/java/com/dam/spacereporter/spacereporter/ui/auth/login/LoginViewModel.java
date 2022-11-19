@@ -2,7 +2,6 @@ package com.dam.spacereporter.spacereporter.ui.auth.login;
 
 import static android.content.Context.MODE_PRIVATE;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -74,11 +73,11 @@ public class LoginViewModel extends ViewModel {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 SharedPreferences.Editor editor = context.getSharedPreferences(
-                        context.getString(R.string.pref_name), MODE_PRIVATE
+                        context.getString(R.string.pref), MODE_PRIVATE
                 ).edit();
-                editor.putString(context.getString(R.string.pref_fullName), (String) snapshot.child("fullName").getValue());
-                editor.putString(context.getString(R.string.pref_username), (String) snapshot.child("username").getValue());
-                editor.putString(context.getString(R.string.pref_email), (String) snapshot.child("email").getValue());
+                editor.putString(context.getString(R.string.pref_user_fullName), (String) snapshot.child("fullName").getValue());
+                editor.putString(context.getString(R.string.pref_user_username), (String) snapshot.child("username").getValue());
+                editor.putString(context.getString(R.string.pref_user_email), (String) snapshot.child("email").getValue());
                 editor.apply();
             }
 

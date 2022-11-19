@@ -6,22 +6,22 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_baseline_home_24"
+            android:icon="@drawable/home_icon"
             android:title="@string/nav_home" />
 
         <item
             android:id="@+id/nav_fav"
-            android:icon="@drawable/ic_baseline_favorite_24"
+            android:icon="@drawable/favorite_icon_filled"
             android:title="@string/nav_fav" />
 
         <item
             android:id="@+id/nav_readLater"
-            android:icon="@drawable/ic_baseline_read_later_24"
+            android:icon="@drawable/readlater_icon_filled"
             android:title="@string/nav_later" />
 
         <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_baseline_settings_24"
+            android:icon="@drawable/settings_icon"
             android:title="@string/nav_settings" />
 
         <item
@@ -35,12 +35,12 @@
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_baseline_share_24"
+                android:icon="@drawable/share_icon"
                 android:title="@string/nav_share" />
 
             <item
                 android:id="@+id/nav_rate"
-                android:icon="@drawable/ic_baseline_rate_review_24"
+                android:icon="@drawable/rate_icon"
                 android:title="@string/nav_rate" />
         </menu>
     </item>
@@ -49,7 +49,7 @@
         <menu>
             <item
                 android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_baseline_logout_24"
+                android:icon="@drawable/logout_icon"
                 android:title="@string/nav_logout" />
         </menu>
     </item>

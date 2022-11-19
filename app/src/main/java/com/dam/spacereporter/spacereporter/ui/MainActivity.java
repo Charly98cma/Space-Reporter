@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        sharedPreferences = getSharedPreferences(getString(R.string.pref_name), MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(getString(R.string.pref), MODE_PRIVATE);
 
         /*---------- UI ELEMENTS ----------*/
 
@@ -96,9 +96,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
 
-        String fullName = sharedPreferences.getString(getString(R.string.pref_fullName), "NAME");
-        String username = sharedPreferences.getString(getString(R.string.pref_username), "USERNAME");
-        String email = sharedPreferences.getString(getString(R.string.pref_email), "EMAIL");
+        String fullName = sharedPreferences.getString(getString(R.string.pref_user_fullName), "NAME");
+        String username = sharedPreferences.getString(getString(R.string.pref_user_username), "USERNAME");
+        String email = sharedPreferences.getString(getString(R.string.pref_user_email), "EMAIL");
 
         ((TextView) navigationView.getHeaderView(0)
                 .findViewById(R.id.nav_txt_fullName)).setText(fullName);
@@ -135,11 +135,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void clearCache() {
         SharedPreferences.Editor editor = getSharedPreferences(
-                getString(R.string.pref_name), MODE_PRIVATE
+                getString(R.string.pref), MODE_PRIVATE
         ).edit();
-        editor.remove(getString(R.string.pref_fullName));
-        editor.remove(getString(R.string.pref_username));
-        editor.remove(getString(R.string.pref_email));
+        editor.remove(getString(R.string.pref_user_fullName));
+        editor.remove(getString(R.string.pref_user_username));
+        editor.remove(getString(R.string.pref_user_email));
         editor.remove(getString(R.string.pref_save_login));
         editor.apply();
     }

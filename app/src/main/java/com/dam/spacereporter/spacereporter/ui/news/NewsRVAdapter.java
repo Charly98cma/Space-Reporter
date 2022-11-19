@@ -3,7 +3,6 @@ package com.dam.spacereporter.spacereporter.ui.news;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,37 +79,37 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
 
             // Change icons based on the article being (or not) in Fav/RL database
             if (ArticlesDB.isArticleInFavorites(dbHelper, article.getId()))
-                popupBtnFav.setImageResource(R.drawable.ic_baseline_favorite_24);
+                popupBtnFav.setImageResource(R.drawable.favorite_icon_filled);
             if (ArticlesDB.isArticleInReadLater(dbHelper, article.getId()))
-                popupBtnReadLater.setImageResource(R.drawable.ic_baseline_read_later_24);
+                popupBtnReadLater.setImageResource(R.drawable.readlater_icon_filled);
 
             // Listeners
             popupBtnFav.setOnClickListener(v_fav -> {
                 if (ArticlesDB.isArticleInFavorites(dbHelper, article.getId())) {
                     Toast.makeText(context, "Article removed from favorites", Toast.LENGTH_SHORT).show();
                     ArticlesDB.deleteArticleFromFavorites(dbHelper, article.getId());
-                    popupBtnFav.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                    popupBtnFav.setImageResource(R.drawable.favorite_icon_outline);
                 }else {
                     Toast.makeText(context, "Article added to favorites", Toast.LENGTH_SHORT).show();
                     ArticlesDB.saveArticleToFavorites(dbHelper, article);
-                    popupBtnFav.setImageResource(R.drawable.ic_baseline_favorite_24);
+                    popupBtnFav.setImageResource(R.drawable.favorite_icon_filled);
                 }
             });
             popupBtnReadLater.setOnClickListener(v_rl -> {
                 if (ArticlesDB.isArticleInReadLater(dbHelper, article.getId())) {
                     Toast.makeText(context, "Article removed from read later", Toast.LENGTH_SHORT).show();
                     ArticlesDB.deleteArticleFromReadLater(dbHelper, article.getId());
-                    popupBtnReadLater.setImageResource(R.drawable.ic_outline_watch_later_24);
+                    popupBtnReadLater.setImageResource(R.drawable.readlater_icon_outline);
                 }else {
                     Toast.makeText(context, "Article added to reaq later", Toast.LENGTH_SHORT).show();
                     ArticlesDB.saveArticleToReadLater(dbHelper, article);
-                    popupBtnReadLater.setImageResource(R.drawable.ic_baseline_read_later_24);
+                    popupBtnReadLater.setImageResource(R.drawable.readlater_icon_filled);
                 }
             });
             popupBtnWebView.setOnClickListener(v_web -> {
                 Toast.makeText(context, R.string.news_toast_webView, Toast.LENGTH_SHORT).show();
                 Intent intentWebBrowser = new Intent(Intent.ACTION_VIEW);
-                intentWebBrowser.setData(Uri.parse(newsArrayList.get(position).getUrl()));
+                intentWebBrowser.setData(article.getUrl());
                 context.startActivity(intentWebBrowser);
             });
 

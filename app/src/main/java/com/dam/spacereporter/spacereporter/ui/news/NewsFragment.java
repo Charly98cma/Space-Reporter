@@ -1,5 +1,10 @@
 package com.dam.spacereporter.spacereporter.ui.news;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,6 +48,9 @@ public class NewsFragment extends Fragment {
     private RecyclerView newsRV;
     private ProgressBar newsProgressBar;
 
+    private NotificationManager notificationManager;
+    private SharedPreferences sharedPreferences;
+
     private ArticlesDatabaseHelper dbHelper;
 
     // Required empty public constructor
@@ -58,6 +68,9 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         final View fragmentView;
+        notificationManager = (NotificationManager) requireContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        sharedPreferences = requireContext().getSharedPreferences(
+                getString(R.string.pref), Context.MODE_PRIVATE);
         dbHelper = new ArticlesDatabaseHelper(requireContext());
 
         /*---------- UI ELEMENTS ----------*/
@@ -89,6 +102,44 @@ public class NewsFragment extends Fragment {
                 if (count < 20) getData();
             }
         });
+    }
+
+    // FIXME Notifications arent showing up
+    private void notification() {
+        // Notify user of new articles available to read
+        int newestArticleId = newsArrayList.get(0).getId();
+        if (lastSeenArticle() < newestArticleId) {
+            // Notification channel
+            NotificationChannel channel = new NotificationChannel(
+                    "NEWS_NOTIFICATION",
+                    "NEW_ARTICLES",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription("New articles in the news view");
+            notificationManager.createNotificationChannel(channel);
+
+            // Create notification and notify user
+            NotificationCompat.Builder builder =
+                    new NotificationCompat.Builder(requireContext(), "NEWS_NOTIFICATION")
+                            .setSmallIcon(R.drawable.notification_icon)
+                            .setContentTitle(getString(R.string.news_txt_notificationTitle))
+                            .setContentText(getString(R.string.news_txt_notificationBody))
+                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                            .setAutoCancel(true);
+            notificationManager.notify(0, builder.build());
+
+            // Save ID pf the newest article shown
+            saveLastSeenArticle(newestArticleId);
+        }
+    }
+
+    private Integer lastSeenArticle() {
+        return sharedPreferences.getInt(getString(R.string.pref_article_lastSeen), -1);
+    }
+
+    private void saveLastSeenArticle(Integer articleId) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(getString(R.string.pref_article_lastSeen), articleId);
+        editor.apply();
     }
 
     private void getData() {

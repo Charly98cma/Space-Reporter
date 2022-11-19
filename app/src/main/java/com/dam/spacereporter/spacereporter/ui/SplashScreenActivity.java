@@ -23,7 +23,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        sharedPreferences = getSharedPreferences(getString(R.string.pref_name), MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(getString(R.string.pref), MODE_PRIVATE);
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
