@@ -21,12 +21,13 @@ import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.data.models.Article;
 import com.dam.spacereporter.spacereporter.database.ArticlesDB;
 import com.dam.spacereporter.spacereporter.database.ArticlesDatabaseHelper;
+import com.dam.spacereporter.spacereporter.utils.NetworkConnection;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-// TODO Cache newsArrayList (do not delete all elements when exit fragment)
+// FIXME (Ideally) Cache newsArrayList (do not delete all elements when exit fragment)
 public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHolder> {
 
     private final Context context;
@@ -48,12 +49,15 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
 
     @Override
     public void onBindViewHolder(@NonNull NewsRVAdapter.NewsViewHolder holder, int position) {
+
         Article article = newsArrayList.get(position);
 
-        // Set title and picture
-        Picasso.get().load(article.getImageUrl()).into(holder.articlePicture);
+        // Set title and picture (Picasso downloads and sets image async)
+        if (NetworkConnection.isNetworkConnected(context))
+            Picasso.get().load(article.getImageUrl()).into(holder.articlePicture);
         holder.articleTitle.setText(article.getTitle());
 
+        // Listener for click on any part of the card
         holder.articleCardView.setOnClickListener(v -> {
 
             // Setup PopUp window
@@ -67,15 +71,14 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
                     true // Focusable
             );
 
-            // Set PopUP UI elements
-            TextView popupTitle = popupView.findViewById(R.id.popup_txt_title);
-            TextView popupSummary = popupView.findViewById(R.id.popup_txt_summary);
+            // Set title and body
+            ((TextView) popupView.findViewById(R.id.popup_txt_title)).setText(article.getTitle());
+            ((TextView) popupView.findViewById(R.id.popup_txt_summary)).setText(article.getSummary());
+
+            // Setup buttons
             ImageButton popupBtnFav = popupView.findViewById(R.id.popup_btn_fav);
             ImageButton popupBtnReadLater = popupView.findViewById(R.id.popup_btn_readLater);
             ImageButton popupBtnWebView = popupView.findViewById(R.id.popup_btn_openWeb);
-
-            popupTitle.setText(article.getTitle());
-            popupSummary.setText(article.getSummary());
 
             // Change icons based on the article being (or not) in Fav/RL database
             if (ArticlesDB.isArticleInFavorites(dbHelper, article.getId()))
@@ -86,10 +89,12 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
             // Listeners
             popupBtnFav.setOnClickListener(v_fav -> {
                 if (ArticlesDB.isArticleInFavorites(dbHelper, article.getId())) {
+                    // Remove article from favorites (was already in)
                     Toast.makeText(context, "Article removed from favorites", Toast.LENGTH_SHORT).show();
                     ArticlesDB.deleteArticleFromFavorites(dbHelper, article.getId());
                     popupBtnFav.setImageResource(R.drawable.favorite_icon_outline);
                 }else {
+                    // Add article to favorites
                     Toast.makeText(context, "Article added to favorites", Toast.LENGTH_SHORT).show();
                     ArticlesDB.saveArticleToFavorites(dbHelper, article);
                     popupBtnFav.setImageResource(R.drawable.favorite_icon_filled);
@@ -97,16 +102,19 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
             });
             popupBtnReadLater.setOnClickListener(v_rl -> {
                 if (ArticlesDB.isArticleInReadLater(dbHelper, article.getId())) {
+                    // Remove article from read later (was already in)
                     Toast.makeText(context, "Article removed from read later", Toast.LENGTH_SHORT).show();
                     ArticlesDB.deleteArticleFromReadLater(dbHelper, article.getId());
                     popupBtnReadLater.setImageResource(R.drawable.readlater_icon_outline);
                 }else {
+                    // Add article to read later
                     Toast.makeText(context, "Article added to reaq later", Toast.LENGTH_SHORT).show();
                     ArticlesDB.saveArticleToReadLater(dbHelper, article);
                     popupBtnReadLater.setImageResource(R.drawable.readlater_icon_filled);
                 }
             });
             popupBtnWebView.setOnClickListener(v_web -> {
+                // Send URL to web browser to load article in the news site
                 Toast.makeText(context, R.string.news_toast_webView, Toast.LENGTH_SHORT).show();
                 Intent intentWebBrowser = new Intent(Intent.ACTION_VIEW);
                 intentWebBrowser.setData(article.getUrl());

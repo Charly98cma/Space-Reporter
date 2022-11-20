@@ -47,15 +47,17 @@ public class FavoritesRVAdapter extends RecyclerView.Adapter<FavoritesRVAdapter.
         return new FavoritesViewHolder(LayoutInflater.from(context).inflate(R.layout.news_rv_article, parent, false));
     }
 
-    // FIXME Should be redone to solve photos loading and some other similar issues
     @Override
     public void onBindViewHolder(@NonNull FavoritesRVAdapter.FavoritesViewHolder holder, int position) {
         Article article = favArrayList.get(position);
 
+        // Set title and picture if theres internet connection
+        // (Picasso downloads and sets image async)
         holder.articleTitle.setText(article.getTitle());
         if (NetworkConnection.isNetworkConnected(context))
             Picasso.get().load(article.getImageUrl()).into(holder.articlePicture);
 
+        // Listener for click on any part of the card
         holder.articleCardView.setOnClickListener(v -> {
 
             // Setup PopUp window
@@ -69,17 +71,16 @@ public class FavoritesRVAdapter extends RecyclerView.Adapter<FavoritesRVAdapter.
                     true // Focusable
             );
 
-            // Set PopUP UI elements
-            TextView popupTitle = popupView.findViewById(R.id.popup_txt_title);
-            TextView popupSummary = popupView.findViewById(R.id.popup_txt_summary);
+            // Set title and body
+            ((TextView) popupView.findViewById(R.id.popup_txt_title)).setText(article.getTitle());
+            ((TextView) popupView.findViewById(R.id.popup_txt_summary)).setText(article.getSummary());
+
             ImageButton popupBtnFav = popupView.findViewById(R.id.popup_btn_fav);
             ImageButton popupBtnReadLater = popupView.findViewById(R.id.popup_btn_readLater);
             ImageButton popupBtnWebView = popupView.findViewById(R.id.popup_btn_openWeb);
 
+            // Setup buttons
             popupBtnFav.setImageResource(R.drawable.favorite_icon_filled);
-
-            popupTitle.setText(article.getTitle());
-            popupSummary.setText(article.getSummary());
 
             // Change icons based on the article being (or not) in Fav/RL database
             if (ArticlesDB.isArticleInFavorites(dbHelper, article.getId()))
@@ -90,10 +91,12 @@ public class FavoritesRVAdapter extends RecyclerView.Adapter<FavoritesRVAdapter.
             // Listeners
             popupBtnFav.setOnClickListener(v_fav -> {
                 if (ArticlesDB.isArticleInFavorites(dbHelper, article.getId())) {
+                    // Remove article from favorites (was already in)
                     Toast.makeText(context, "Article removed from favorites", Toast.LENGTH_SHORT).show();
                     ArticlesDB.deleteArticleFromFavorites(dbHelper, article.getId());
                     popupBtnFav.setImageResource(R.drawable.favorite_icon_outline);
                 }else {
+                    // Add article to favorites
                     Toast.makeText(context, "Article added to favorites", Toast.LENGTH_SHORT).show();
                     ArticlesDB.saveArticleToFavorites(dbHelper, article);
                     popupBtnFav.setImageResource(R.drawable.favorite_icon_filled);
@@ -101,16 +104,19 @@ public class FavoritesRVAdapter extends RecyclerView.Adapter<FavoritesRVAdapter.
             });
             popupBtnReadLater.setOnClickListener(v_rl -> {
                 if (ArticlesDB.isArticleInReadLater(dbHelper, article.getId())) {
+                    // Remove article from read later (was already in)
                     Toast.makeText(context, "Article removed from read later", Toast.LENGTH_SHORT).show();
                     ArticlesDB.deleteArticleFromReadLater(dbHelper, article.getId());
                     popupBtnReadLater.setImageResource(R.drawable.readlater_icon_outline);
                 }else {
+                    // Add article to read later
                     Toast.makeText(context, "Article added to reaq later", Toast.LENGTH_SHORT).show();
                     ArticlesDB.saveArticleToReadLater(dbHelper, article);
                     popupBtnReadLater.setImageResource(R.drawable.readlater_icon_filled);
                 }
             });
             popupBtnWebView.setOnClickListener(v_web -> {
+                // Send URL to web browser to load article in the news site
                 Toast.makeText(context, R.string.news_toast_webView, Toast.LENGTH_SHORT).show();
                 Intent intentWebBrowser = new Intent(Intent.ACTION_VIEW);
                 intentWebBrowser.setData(article.getUrl());

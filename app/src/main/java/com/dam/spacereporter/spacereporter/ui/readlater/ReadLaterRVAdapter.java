@@ -42,6 +42,7 @@ public class ReadLaterRVAdapter extends RecyclerView.Adapter<ReadLaterRVAdapter.
     @NonNull
     @Override
     public ReadLaterRVAdapter.ReadLaterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // Inflate view of the list
         return new ReadLaterRVAdapter.ReadLaterViewHolder(LayoutInflater.from(context).inflate(R.layout.news_rv_article, parent, false));
     }
 
@@ -49,10 +50,12 @@ public class ReadLaterRVAdapter extends RecyclerView.Adapter<ReadLaterRVAdapter.
     public void onBindViewHolder(@NonNull ReadLaterRVAdapter.ReadLaterViewHolder holder, int position) {
         Article article = readLaterArrayList.get(position);
 
+        // Set title and picture (Picasso downloads and sets image async)
         holder.articleTitle.setText(article.getTitle());
         if (NetworkConnection.isNetworkConnected(context))
             Picasso.get().load(article.getImageUrl()).into(holder.articlePicture);
 
+        // Listener for click on any part of the card
         holder.articleCardView.setOnClickListener(v -> {
 
             // Setup PopUp window
@@ -67,14 +70,13 @@ public class ReadLaterRVAdapter extends RecyclerView.Adapter<ReadLaterRVAdapter.
             );
 
             // Set PopUP UI elements
-            TextView popupTitle = popupView.findViewById(R.id.popup_txt_title);
-            TextView popupSummary = popupView.findViewById(R.id.popup_txt_summary);
+            ((TextView) popupView.findViewById(R.id.popup_txt_title)).setText(article.getTitle());
+            ((TextView) popupView.findViewById(R.id.popup_txt_summary)).setText(article.getSummary());
+
+            // Setup buttons
             ImageButton popupBtnFav = popupView.findViewById(R.id.popup_btn_fav);
             ImageButton popupBtnReadLater = popupView.findViewById(R.id.popup_btn_readLater);
             ImageButton popupBtnWebView = popupView.findViewById(R.id.popup_btn_openWeb);
-
-            popupTitle.setText(article.getTitle());
-            popupSummary.setText(article.getSummary());
 
             // Change icons based on the article being (or not) in Fav/RL database
             if (ArticlesDB.isArticleInFavorites(dbHelper, article.getId()))
@@ -85,27 +87,32 @@ public class ReadLaterRVAdapter extends RecyclerView.Adapter<ReadLaterRVAdapter.
             // Listeners
             popupBtnFav.setOnClickListener(v_fav -> {
                 if (ArticlesDB.isArticleInFavorites(dbHelper, article.getId())) {
+                    // Remove article from read later (was already in)
                     Toast.makeText(context, "Article removed from favorites", Toast.LENGTH_SHORT).show();
                     ArticlesDB.deleteArticleFromFavorites(dbHelper, article.getId());
                     popupBtnFav.setImageResource(R.drawable.favorite_icon_outline);
                 }else {
+                    // Add article to read later
                     Toast.makeText(context, "Article added to favorites", Toast.LENGTH_SHORT).show();
                     ArticlesDB.saveArticleToFavorites(dbHelper, article);
                     popupBtnFav.setImageResource(R.drawable.favorite_icon_filled);
                 }
             });
             popupBtnReadLater.setOnClickListener(v_fav -> {
+                // Send URL to web browser to load article in the news site
                 if (ArticlesDB.isArticleInReadLater(dbHelper, article.getId())) {
                     Toast.makeText(context, "Article removed from read later", Toast.LENGTH_SHORT).show();
                     ArticlesDB.deleteArticleFromReadLater(dbHelper, article.getId());
                     popupBtnReadLater.setImageResource(R.drawable.readlater_icon_outline);
                 }else {
+                    // Add article to read later
                     Toast.makeText(context, "Article added to reaq later", Toast.LENGTH_SHORT).show();
                     ArticlesDB.saveArticleToReadLater(dbHelper, article);
                     popupBtnReadLater.setImageResource(R.drawable.readlater_icon_filled);
                 }
             });
             popupBtnWebView.setOnClickListener(f_web -> {
+                // Send URL to web browser to load article in the news site
                 Toast.makeText(context, R.string.news_toast_webView, Toast.LENGTH_SHORT).show();
                 Intent intentWebBrowser = new Intent(Intent.ACTION_VIEW);
                 intentWebBrowser.setData(article.getUrl());
