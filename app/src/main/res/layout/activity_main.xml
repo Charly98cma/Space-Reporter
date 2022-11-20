@@ -5,7 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".spacereporter.ui.main.MainActivity">
+    tools:context=".spacereporter.ui.MainActivity">
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
@@ -24,13 +24,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="0dp">
+            android:layout_marginTop="0dp"
+            android:background="@color/md_theme_dark_inversePrimary">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/mat_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:navigationIcon="@drawable/ic_baseline_menu_24"
+                app:navigationIcon="@drawable/menu_icon"
                 app:title="@string/global_app_name" />
 
         </com.google.android.material.appbar.AppBarLayout>

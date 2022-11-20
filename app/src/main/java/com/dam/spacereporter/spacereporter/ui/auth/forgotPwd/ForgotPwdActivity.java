@@ -13,8 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.dam.spacereporter.R;
+import com.dam.spacereporter.spacereporter.utils.NetworkConnection;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.Objects;
 
 public class ForgotPwdActivity extends AppCompatActivity {
 
@@ -42,7 +45,7 @@ public class ForgotPwdActivity extends AppCompatActivity {
 
             forgotPwd_btn_send.setEnabled(forgotPwdFormState.isDataValid());
             if (forgotPwdFormState.getEmailError() != null)
-                forgotPwd_et_email.setError(getString(forgotPwdFormState.getEmailError()));
+                Objects.requireNonNull(forgotPwd_et_email).setError(getString(forgotPwdFormState.getEmailError()));
         });
 
         forgotPwdViewModel.getForgotPwdResult().observe(this, forgotPwdResult -> {
@@ -71,18 +74,22 @@ public class ForgotPwdActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 forgotPwdViewModel.forgotPwdDataChanged(
-                        forgotPwd_et_email.getText().toString().trim()
+                        Objects.requireNonNull(forgotPwd_et_email).getText().toString().trim()
                 );
             }
         };
 
-        forgotPwd_et_email.addTextChangedListener(afterTextChangedListener);
+        Objects.requireNonNull(forgotPwd_et_email).addTextChangedListener(afterTextChangedListener);
 
         forgotPwd_btn_send.setOnClickListener(view -> {
-            forgotPwd_bar_loading.setVisibility(View.VISIBLE);
-            forgotPwdViewModel.sendPasswordResetEmail(
-                    forgotPwd_et_email.getText().toString().trim()
-            );
+            if (NetworkConnection.isNetworkConnected(this)) {
+                forgotPwd_bar_loading.setVisibility(View.VISIBLE);
+                forgotPwdViewModel.sendPasswordResetEmail(
+                        forgotPwd_et_email.getText().toString().trim()
+                );
+            } else {
+                Toast.makeText(this, R.string.global_noConn, Toast.LENGTH_SHORT).show();
+            }
         });
     }
 

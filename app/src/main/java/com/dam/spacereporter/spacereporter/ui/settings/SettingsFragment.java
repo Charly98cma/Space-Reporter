@@ -1,4 +1,4 @@
-package com.dam.spacereporter.spacereporter.ui.fragments;
+package com.dam.spacereporter.spacereporter.ui.settings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,17 +10,17 @@ import androidx.fragment.app.Fragment;
 import com.dam.spacereporter.R;
 import com.google.android.material.navigation.NavigationView;
 
-public class LaunchesFragment extends Fragment {
+public class SettingsFragment extends Fragment {
 
     private NavigationView navigationView;
 
     // Required empty public constructor
-    public LaunchesFragment() {
+    public SettingsFragment() {
     }
 
     @Override
     public void onStart() {
-        navigationView.setCheckedItem(R.id.nav_none);
+        navigationView.setCheckedItem(R.id.nav_settings);
         super.onStart();
     }
 
@@ -28,14 +28,13 @@ public class LaunchesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
         final View fragmentView;
 
         /*---------- UI ELEMENTS ----------*/
 
         // Inflate the layout for this fragment
-        fragmentView = inflater.inflate(R.layout.fragment_launches, container, false);
-        navigationView = getActivity().findViewById(R.id.nav_view);
+        fragmentView = inflater.inflate(R.layout.fragment_settings, container, false);
+        navigationView = requireActivity().findViewById(R.id.nav_view);
 
         /*---------- UI ELEMENTS LISTENERS ----------*/
         // TODO Implement UI and features

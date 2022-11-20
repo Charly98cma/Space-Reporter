@@ -45,7 +45,7 @@
         android:autofillHints="emailAddress"
         android:hint="@string/forgotPwd_hint_email"
         app:layout_constraintTop_toBottomOf="@+id/forgotPwd_txt_explanation"
-        app:startIconDrawable="@drawable/ic_baseline_email_24"
+        app:startIconDrawable="@drawable/email_icon"
         tools:layout_editor_absoluteX="16dp">
 
         <com.google.android.material.textfield.TextInputEditText

@@ -23,11 +23,11 @@ public class DataValidator {
         return username != null && !username.isEmpty() && username.length() <= USERNAME_MAX_LEN;
     }
 
-    public static boolean isEmailValid(String email) {
+    public static boolean isEmailValid(CharSequence email) {
         return email != null && PatternsCompat.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    public static boolean isPasswordValid(String password) {
+    public static boolean isPasswordValid(CharSequence password) {
         return password != null &&
                 password.length() >= PWD_MIN_LEN &&
                 UPPERCASE.matcher(password).find() &&

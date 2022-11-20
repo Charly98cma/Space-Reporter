@@ -1,5 +1,9 @@
 package com.dam.spacereporter.spacereporter.data.models;
 
+import androidx.annotation.NonNull;
+
+import com.google.gson.annotations.SerializedName;
+
 public class User {
 
     private String fullName;
@@ -15,15 +19,28 @@ public class User {
         this.email = email;
     }
 
+    @SerializedName("fullName")
     public String getFullName() {
         return fullName;
     }
 
+    @SerializedName("username")
     public String getUsername() {
         return username;
     }
 
+    @SerializedName("email")
     public String getEmail() {
         return email;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "User{" +
+                "fullName='" + fullName + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

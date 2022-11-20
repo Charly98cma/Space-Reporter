@@ -16,6 +16,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 public class SignUpViewModel extends ViewModel {
 
     private final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -82,7 +84,7 @@ public class SignUpViewModel extends ViewModel {
     }
 
     private void signUpFirebaseDB(String fullName, String username, String email) {
-        usersDatabase.child(firebaseAuth.getCurrentUser().getUid()).setValue(
+        usersDatabase.child(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid()).setValue(
                 new User(fullName, username, email)
         ).addOnCompleteListener(task -> {
             if (task.isSuccessful())
@@ -93,7 +95,7 @@ public class SignUpViewModel extends ViewModel {
     }
 
     private void sendVerificationEmail(String username) {
-        firebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task -> {
+        Objects.requireNonNull(firebaseAuth.getCurrentUser()).sendEmailVerification().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 signUpResult.setValue(new SignUpResult(true));
             } else {
@@ -104,7 +106,7 @@ public class SignUpViewModel extends ViewModel {
     }
 
     private void undoSignUp(@StringRes Integer errorString) {
-        firebaseAuth.getCurrentUser().delete();
+        Objects.requireNonNull(firebaseAuth.getCurrentUser()).delete();
         signUpResult.setValue(new SignUpResult(errorString));
     }
 }

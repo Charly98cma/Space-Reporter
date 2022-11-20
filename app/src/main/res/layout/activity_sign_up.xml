@@ -8,7 +8,6 @@
     tools:context=".spacereporter.ui.auth.signup.SignUpActivity">
 
     <ScrollView
-        android:id="@+id/signUp_scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -45,7 +44,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/signUp_img_appLogo"
                 app:layout_constraintVertical_bias="0"
-                app:startIconDrawable="@drawable/ic_baseline_perm_identity_24">
+                app:startIconDrawable="@drawable/user_icon_outline">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -67,7 +66,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/signUp_et_fullName"
                 app:layout_constraintVertical_bias="0"
-                app:startIconDrawable="@drawable/ic_baseline_person_24">
+                app:startIconDrawable="@drawable/user_icon_filled">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -89,7 +88,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/signUp_et_username"
                 app:layout_constraintVertical_bias="0"
-                app:startIconDrawable="@drawable/ic_baseline_email_24">
+                app:startIconDrawable="@drawable/email_icon">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -112,7 +111,7 @@
                 app:layout_constraintTop_toBottomOf="@id/signUp_et_email"
                 app:layout_constraintVertical_bias="0"
                 app:passwordToggleEnabled="true"
-                app:startIconDrawable="@drawable/ic_baseline_password_24">
+                app:startIconDrawable="@drawable/password_icon">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -136,7 +135,7 @@
                 app:layout_constraintTop_toBottomOf="@id/signUp_et_password"
                 app:layout_constraintVertical_bias="0.0"
                 app:passwordToggleEnabled="true"
-                app:startIconDrawable="@drawable/ic_baseline_password_24">
+                app:startIconDrawable="@drawable/password_icon">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"

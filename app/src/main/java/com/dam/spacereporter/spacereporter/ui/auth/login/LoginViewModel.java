@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 public class LoginViewModel extends ViewModel {
 
     private final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -42,7 +44,7 @@ public class LoginViewModel extends ViewModel {
                 email, password
         ).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                if (firebaseAuth.getCurrentUser().isEmailVerified()) {
+                if (Objects.requireNonNull(firebaseAuth.getCurrentUser()).isEmailVerified()) {
                     loginResult.setValue(new LoginResult(true));
                 } else {
                     loginResult.setValue(new LoginResult(R.string.login_error_unverifiedEmail));
@@ -65,22 +67,23 @@ public class LoginViewModel extends ViewModel {
 
     public void cacheUserInfo(Context context) {
         usersDatabase.child(
-                firebaseAuth.getCurrentUser().getUid()
+                Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid()
         ).addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 SharedPreferences.Editor editor = context.getSharedPreferences(
-                        context.getString(R.string.pref_name), MODE_PRIVATE
+                        context.getString(R.string.pref), MODE_PRIVATE
                 ).edit();
-                editor.putString(context.getString(R.string.pref_fullName), (String) snapshot.child("fullName").getValue());
-                editor.putString(context.getString(R.string.pref_username), (String) snapshot.child("username").getValue());
-                editor.putString(context.getString(R.string.pref_email), (String) snapshot.child("email").getValue());
+                editor.putString(context.getString(R.string.pref_user_fullName), (String) snapshot.child("fullName").getValue());
+                editor.putString(context.getString(R.string.pref_user_username), (String) snapshot.child("username").getValue());
+                editor.putString(context.getString(R.string.pref_user_email), (String) snapshot.child("email").getValue());
                 editor.apply();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
 }

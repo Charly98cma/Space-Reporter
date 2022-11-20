@@ -1,4 +1,4 @@
-package com.dam.spacereporter.spacereporter.ui.main;
+package com.dam.spacereporter.spacereporter.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -12,11 +12,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.dam.spacereporter.R;
-import com.dam.spacereporter.spacereporter.ui.fragments.FavoritesFragment;
-import com.dam.spacereporter.spacereporter.ui.fragments.HomeFragment;
-import com.dam.spacereporter.spacereporter.ui.fragments.ReadLaterFragment;
-import com.dam.spacereporter.spacereporter.ui.fragments.SettingsFragment;
 import com.dam.spacereporter.spacereporter.ui.auth.login.LoginActivity;
+import com.dam.spacereporter.spacereporter.ui.favorites.FavoritesFragment;
+import com.dam.spacereporter.spacereporter.ui.home.HomeFragment;
+import com.dam.spacereporter.spacereporter.ui.settings.SettingsFragment;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.play.core.review.ReviewInfo;
@@ -30,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private FirebaseAuth firebaseAuth;
 
-    private MaterialToolbar materialToolbar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
 
@@ -41,11 +39,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        sharedPreferences = getSharedPreferences(getString(R.string.pref_name), MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(getString(R.string.pref), MODE_PRIVATE);
 
         /*---------- UI ELEMENTS ----------*/
 
-        materialToolbar = findViewById(R.id.mat_toolbar);
+        MaterialToolbar materialToolbar = findViewById(R.id.mat_toolbar);
         navigationView = findViewById(R.id.nav_view);
         drawerLayout = findViewById(R.id.drawer_layout);
 
@@ -68,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new FavoritesFragment());
                     break;
                 case R.id.nav_readLater:
-                    replaceFragment(new ReadLaterFragment());
+                    replaceFragment(new com.dam.spacereporter.spacereporter.ui.readlater.ReadLaterFragment());
                     break;
                 case R.id.nav_settings:
                     replaceFragment(new SettingsFragment());
@@ -98,13 +96,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
 
-        String fullName = sharedPreferences.getString(getString(R.string.pref_fullName), "NAME");
-        String username = sharedPreferences.getString(getString(R.string.pref_username), "USERNAME");
-        String email = sharedPreferences.getString(getString(R.string.pref_email), "EMAIL");
+        String fullName = sharedPreferences.getString(getString(R.string.pref_user_fullName), "NAME");
+        String username = sharedPreferences.getString(getString(R.string.pref_user_username), "USERNAME");
+        String email = sharedPreferences.getString(getString(R.string.pref_user_email), "EMAIL");
 
-        ((TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_txt_fullName)).setText(fullName);
-        ((TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_txt_username)).setText(username);
-        ((TextView) navigationView.getHeaderView(0).findViewById(R.id.nav_txt_email)).setText(email);
+        ((TextView) navigationView.getHeaderView(0)
+                .findViewById(R.id.nav_txt_fullName)).setText(fullName);
+        ((TextView) navigationView.getHeaderView(0)
+                .findViewById(R.id.nav_txt_username)).setText(username);
+        ((TextView) navigationView.getHeaderView(0)
+                .findViewById(R.id.nav_txt_email)).setText(email);
 
         super.onStart();
     }
@@ -112,8 +113,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
 
-        if (!sharedPreferences.getBoolean(getString(R.string.pref_save_login), false))
+        if (!sharedPreferences.getBoolean(getString(R.string.pref_save_login), false)) {
+            clearCache();
             firebaseAuth.signOut();
+        }
         super.onDestroy();
     }
 
@@ -129,6 +132,17 @@ public class MainActivity extends AppCompatActivity {
     /*
      * AUX METHODS / FUNCTIONS
      */
+
+    private void clearCache() {
+        SharedPreferences.Editor editor = getSharedPreferences(
+                getString(R.string.pref), MODE_PRIVATE
+        ).edit();
+        editor.remove(getString(R.string.pref_user_fullName));
+        editor.remove(getString(R.string.pref_user_username));
+        editor.remove(getString(R.string.pref_user_email));
+        editor.remove(getString(R.string.pref_save_login));
+        editor.apply();
+    }
 
     private void replaceFragment(Fragment fragment) {
 

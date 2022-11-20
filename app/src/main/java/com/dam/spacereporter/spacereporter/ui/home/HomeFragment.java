@@ -1,4 +1,4 @@
-package com.dam.spacereporter.spacereporter.ui.fragments;
+package com.dam.spacereporter.spacereporter.ui.home;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.dam.spacereporter.R;
+import com.dam.spacereporter.spacereporter.ui.launches.LaunchesFragment;
+import com.dam.spacereporter.spacereporter.ui.news.NewsFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -27,8 +29,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         // NOTE: Passing through HOME resets the backstack
         //       Pressing "<" from HOME always closes the app
-        getActivity().getSupportFragmentManager()
-                .popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE );
+        requireActivity().getSupportFragmentManager()
+                .popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         navigationView.setCheckedItem(R.id.nav_home);
         super.onStart();
     }
@@ -45,7 +47,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         // Inflate the layout for this fragment
         fragmentView = inflater.inflate(R.layout.fragment_home, container, false);
-        navigationView = getActivity().findViewById(R.id.nav_view);
+        navigationView = requireActivity().findViewById(R.id.nav_view);
 
         home_btn_launches = fragmentView.findViewById(R.id.home_btn_launches);
         home_btn_news = fragmentView.findViewById(R.id.home_btn_news);
