@@ -1,8 +1,10 @@
 package com.dam.spacereporter.spacereporter.data.models;
 
+import android.annotation.SuppressLint;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -12,7 +14,10 @@ public class Article {
 
     private final Integer id;
     private final String title, url, imageUrl, newsSite, summary;
-    private final Date publishedAt, updatedAt;
+    @Nullable
+    private final Date publishedAt;
+    @Nullable
+    private final Date updatedAt;
 
     // Minimal constructor
     public Article(Integer id, String title, String url, String imageUrl, String newsSite, String summary) {
@@ -22,12 +27,12 @@ public class Article {
         this.imageUrl = imageUrl;
         this.newsSite = newsSite;
         this.summary = summary;
-        this.publishedAt = null;
-        this.updatedAt = null;
+        publishedAt = null;
+        updatedAt = null;
     }
 
     // Almost full constructor (missing list of "launches")
-    public Article(Integer id, String title, String url, String imageUrl, String newsSite, String summary, Date publishedAt, Date updatedAt) {
+    public Article(Integer id, String title, String url, String imageUrl, String newsSite, String summary, @Nullable Date publishedAt, @Nullable Date updatedAt) {
         this.id = id;
         this.title = title;
         this.url = url;
@@ -44,7 +49,7 @@ public class Article {
      * @return ID of the article
      */
     @SerializedName("id")
-    public Integer getId() {
+    public final Integer getId() {
         return id;
     }
 
@@ -54,7 +59,7 @@ public class Article {
      * @return Title of the article
      */
     @SerializedName("title")
-    public String getTitle() {
+    public final String getTitle() {
         return title;
     }
 
@@ -64,7 +69,7 @@ public class Article {
      * @return Uri of the article
      */
     @SerializedName("url")
-    public Uri getUrl() {
+    public final Uri getUrl() {
         return Uri.parse(url);
     }
 
@@ -74,7 +79,7 @@ public class Article {
      * @return Image URL of the article
      */
     @SerializedName("imageUrl")
-    public String getImageUrl() {
+    public final String getImageUrl() {
         return imageUrl;
     }
 
@@ -84,7 +89,7 @@ public class Article {
      * @return News site of the article
      */
     @SerializedName("newsSite")
-    public String getNewsSite() {
+    public final String getNewsSite() {
         return newsSite;
     }
 
@@ -94,7 +99,7 @@ public class Article {
      * @return Summary of the article
      */
     @SerializedName("summary")
-    public String getSummary() {
+    public final String getSummary() {
         return summary;
     }
 
@@ -103,8 +108,9 @@ public class Article {
      *
      * @return Publish date of the article
      */
+    @Nullable
     @SerializedName("publishedAt")
-    public Date getPublishedAt() {
+    public final Date getPublishedAt() {
         return publishedAt;
     }
 
@@ -113,8 +119,9 @@ public class Article {
      *
      * @return Date of the last edit of the article
      */
+    @Nullable
     @SerializedName("updatedAt")
-    public Date getUpdatedAt() {
+    public final Date getUpdatedAt() {
         return updatedAt;
     }
 
@@ -123,16 +130,12 @@ public class Article {
      *
      * @return Article as string
      */
+    @SuppressLint("DefaultLocale")
     @NonNull
     @Override
     public String toString() {
-        return "Article{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", url='" + url + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", newsSite='" + newsSite + '\'' +
-                ", summary='" + summary + '\'' +
-                '}';
+        return String.format(
+                "Article{id=%d, title='%s', url='%s', imageUrl='%s', newsSite='%s', summary='%s'}",
+                id, title, url, imageUrl, newsSite, summary);
     }
 }
