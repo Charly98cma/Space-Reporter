@@ -19,28 +19,27 @@ public class User {
         this.email = email;
     }
 
-    @SerializedName("fullName")
-    public String getFullName() {
-        return fullName;
+    @SerializedName(value = "fullName")
+    public final String getFullName() {
+        return this.fullName;
     }
 
-    @SerializedName("username")
-    public String getUsername() {
-        return username;
+    @SerializedName(value = "username")
+    public final String getUsername() {
+        return this.username;
     }
 
-    @SerializedName("email")
-    public String getEmail() {
-        return email;
+    @SerializedName(value = "email")
+    public final String getEmail() {
+        return this.email;
     }
 
     @NonNull
     @Override
-    public String toString() {
-        return "User{" +
-                "fullName='" + fullName + '\'' +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public final String toString() {
+        return String.format(
+                "User{fullName='%s', username='%s', email='%s'}",
+                this.fullName, this.username, this.email
+        );
     }
 }

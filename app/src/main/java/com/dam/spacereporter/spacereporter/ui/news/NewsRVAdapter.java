@@ -108,7 +108,7 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
                     popupBtnReadLater.setImageResource(R.drawable.readlater_icon_outline);
                 } else {
                     // Add article to read later
-                    Toast.makeText(context, "Article added to reaq later", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Article added to read later", Toast.LENGTH_SHORT).show();
                     ArticlesDB.saveArticleToReadLater(dbHelper, article);
                     popupBtnReadLater.setImageResource(R.drawable.readlater_icon_filled);
                 }

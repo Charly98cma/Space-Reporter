@@ -1,5 +1,6 @@
 package com.dam.spacereporter.spacereporter.ui.news;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -27,6 +28,7 @@ import com.android.volley.toolbox.Volley;
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.data.models.Article;
 import com.dam.spacereporter.spacereporter.database.ArticlesDatabaseHelper;
+import com.dam.spacereporter.spacereporter.utils.Constants;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 
@@ -75,7 +77,7 @@ public class NewsFragment extends Fragment {
         /*---------- INIT HELPERS AND SERVICES ----------*/
 
         context = requireContext();
-        sharedPreferences = context.getSharedPreferences(getString(R.string.pref), Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences(Constants.PREF_KEY, Context.MODE_PRIVATE);
         dbHelper = new ArticlesDatabaseHelper(context);
         notificationManager = NotificationManagerCompat.from(context);
 
@@ -123,7 +125,7 @@ public class NewsFragment extends Fragment {
 
         // Create channel for notifications about unread articles
         NotificationChannel channel = new NotificationChannel(
-                getString(R.string.notif_channel_newArticle_id),
+                Constants.NOTIF_CHANNELID_NEWARTICLE,
                 getString(R.string.notif_channel_newArticle_name),
                 NotificationManager.IMPORTANCE_DEFAULT);
 
@@ -149,7 +151,7 @@ public class NewsFragment extends Fragment {
         // Notify user if new articles available to read
         if (oldestArticleId < newestArticleId) {
             // Create notification
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, getString(R.string.notif_channel_newArticle_id))
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, Constants.NOTIF_CHANNELID_NEWARTICLE)
                     .setSmallIcon(R.drawable.notification_icon)
                     .setContentTitle(getString(R.string.notif_txt_newArticle_title))
                     .setContentText(getString(R.string.notif_txt_newArticle_body))
@@ -169,7 +171,7 @@ public class NewsFragment extends Fragment {
      * @return Id of the article
      */
     private Integer lastSeenArticle() {
-        return sharedPreferences.getInt(getString(R.string.pref_article_lastSeen), -1);
+        return sharedPreferences.getInt(Constants.PREF_ARTICLE_LASTSEEN, -1);
     }
 
     /**
@@ -180,7 +182,7 @@ public class NewsFragment extends Fragment {
      */
     private void saveLastSeenArticle(Integer articleId) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(getString(R.string.pref_article_lastSeen), articleId);
+        editor.putInt(Constants.PREF_ARTICLE_LASTSEEN, articleId);
         editor.apply();
     }
 
@@ -188,6 +190,7 @@ public class NewsFragment extends Fragment {
      * Retrieves a batch of articles from the Spaceflight News API, serializes and stores them
      * in an ArrayList to be shown to the user later
      */
+    @SuppressLint("DefaultLocale")
     private void getData() {
         // GSON object to serialize the articles
         Gson gson = new Gson();
@@ -195,7 +198,7 @@ public class NewsFragment extends Fragment {
         RequestQueue queue = Volley.newRequestQueue(context);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
-                String.format(getString(R.string.api_url), limit, skip),
+                String.format(Constants.SNAPI_URL, limit, skip),
                 null,
                 response -> {
                     try {

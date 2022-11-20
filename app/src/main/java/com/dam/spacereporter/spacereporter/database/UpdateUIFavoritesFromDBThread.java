@@ -23,7 +23,7 @@ public class UpdateUIFavoritesFromDBThread implements Runnable {
     @Override
     public void run() {
         List<Article> readLaterArticles = ArticlesDB.getFavoritesArticles(dbHelper, limit, offset);
-        Objects.requireNonNull(favoritesFragment.requireActivity()).runOnUiThread((Runnable) () ->
+        Objects.requireNonNull(favoritesFragment.requireActivity()).runOnUiThread(() ->
                 favoritesFragment.updateList(readLaterArticles));
     }
 }

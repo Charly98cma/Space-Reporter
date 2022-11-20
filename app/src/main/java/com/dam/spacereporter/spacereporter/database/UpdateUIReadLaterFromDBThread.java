@@ -23,7 +23,7 @@ public class UpdateUIReadLaterFromDBThread implements Runnable {
     @Override
     public void run() {
         List<Article> readLaterArticles = ArticlesDB.getReadLaterArticles(dbHelper, limit, offset);
-        Objects.requireNonNull(readLaterFragment.requireActivity()).runOnUiThread((Runnable) () ->
+        Objects.requireNonNull(readLaterFragment.requireActivity()).runOnUiThread(() ->
                 readLaterFragment.updateList(readLaterArticles));
     }
 }

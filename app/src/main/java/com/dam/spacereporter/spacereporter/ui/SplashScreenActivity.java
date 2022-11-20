@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.ui.auth.login.LoginActivity;
+import com.dam.spacereporter.spacereporter.utils.Constants;
 import com.dam.spacereporter.spacereporter.utils.NetworkConnection;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -23,7 +24,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        sharedPreferences = getSharedPreferences(getString(R.string.pref), MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(Constants.PREF_KEY, MODE_PRIVATE);
         firebaseAuth = FirebaseAuth.getInstance();
     }
 
@@ -31,7 +32,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        if (!sharedPreferences.getBoolean(getString(R.string.pref_seen_start), false)) {
+        if (!sharedPreferences.getBoolean(Constants.PREF_SEEN_START, false)) {
             startActivity(new Intent(this, StartActivity.class));
             finish();
         } else if (firebaseAuth.getCurrentUser() == null) {

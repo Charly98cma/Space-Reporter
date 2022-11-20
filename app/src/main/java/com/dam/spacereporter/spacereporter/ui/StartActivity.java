@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.ui.auth.login.LoginActivity;
+import com.dam.spacereporter.spacereporter.utils.Constants;
 import com.google.android.material.button.MaterialButton;
 
 public class StartActivity extends AppCompatActivity {
@@ -23,9 +24,9 @@ public class StartActivity extends AppCompatActivity {
         start_btn_toLogin.setOnClickListener(view -> {
 
             SharedPreferences sharedPreferences =
-                    getSharedPreferences(getString(R.string.pref), MODE_PRIVATE);
+                    getSharedPreferences(Constants.PREF_KEY, MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean(getString(R.string.pref_seen_start), true);
+            editor.putBoolean(Constants.PREF_SEEN_START, true);
             editor.apply();
 
             startActivity(new Intent(this, LoginActivity.class));
