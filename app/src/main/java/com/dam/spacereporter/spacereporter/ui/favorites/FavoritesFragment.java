@@ -80,7 +80,8 @@ public class FavoritesFragment extends Fragment {
                 offset += limit;
                 count++;
                 favProgressBar.setVisibility(View.VISIBLE);
-                if (count < 20) new Thread(new UpdateUIFavoritesFromDBThread(this, dbHelper, limit, offset)).start();
+                if (count < 20)
+                    new Thread(new UpdateUIFavoritesFromDBThread(this, dbHelper, limit, offset)).start();
             }
         });
     }

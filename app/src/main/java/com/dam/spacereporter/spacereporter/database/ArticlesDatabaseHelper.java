@@ -9,13 +9,12 @@ import androidx.annotation.Nullable;
 
 public class ArticlesDatabaseHelper extends SQLiteOpenHelper {
 
-    // Database version (update whenever the DBs are changed)
-    private static final int DB_VERSION = 1;
-
     // DB name and tables
     private static final String DB_NAME = "db_articles";
     public static final String TABLE_NAME_FAV = "favorites";
     public static final String TABLE_NAME_RL = "read_later";
+    // Database version (update whenever the DBs are changed)
+    private static final int DB_VERSION = 1;
 
     public ArticlesDatabaseHelper(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -48,9 +47,10 @@ public class ArticlesDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Insert operations for each update
-        switch(oldVersion) {
+        switch (oldVersion) {
             // example "case 1: ops. to update from version 1 to next; break;"
-            default: break;
+            default:
+                break;
         }
     }
 }

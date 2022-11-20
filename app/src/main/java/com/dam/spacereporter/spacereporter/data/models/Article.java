@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class Article {
@@ -41,6 +40,7 @@ public class Article {
 
     /**
      * Returns the id of the article
+     *
      * @return ID of the article
      */
     @SerializedName("id")
@@ -50,6 +50,7 @@ public class Article {
 
     /**
      * Returns the title of the article
+     *
      * @return Title of the article
      */
     @SerializedName("title")
@@ -59,6 +60,7 @@ public class Article {
 
     /**
      * Returns the web URI (from the stored URL) of the article
+     *
      * @return Uri of the article
      */
     @SerializedName("url")
@@ -68,6 +70,7 @@ public class Article {
 
     /**
      * Returns the image URL of the article
+     *
      * @return Image URL of the article
      */
     @SerializedName("imageUrl")
@@ -77,6 +80,7 @@ public class Article {
 
     /**
      * Returns the news site of the article
+     *
      * @return News site of the article
      */
     @SerializedName("newsSite")
@@ -86,6 +90,7 @@ public class Article {
 
     /**
      * Returns the summary of the article
+     *
      * @return Summary of the article
      */
     @SerializedName("summary")
@@ -95,6 +100,7 @@ public class Article {
 
     /**
      * Returns the publishing date site of the article
+     *
      * @return Publish date of the article
      */
     @SerializedName("publishedAt")
@@ -104,6 +110,7 @@ public class Article {
 
     /**
      * Returns the last edit date of the article
+     *
      * @return Date of the last edit of the article
      */
     @SerializedName("updatedAt")
@@ -113,6 +120,7 @@ public class Article {
 
     /**
      * Returns the string representation of the article
+     *
      * @return Article as string
      */
     @NonNull

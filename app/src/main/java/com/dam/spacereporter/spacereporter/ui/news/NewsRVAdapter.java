@@ -93,7 +93,7 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
                     Toast.makeText(context, "Article removed from favorites", Toast.LENGTH_SHORT).show();
                     ArticlesDB.deleteArticleFromFavorites(dbHelper, article.getId());
                     popupBtnFav.setImageResource(R.drawable.favorite_icon_outline);
-                }else {
+                } else {
                     // Add article to favorites
                     Toast.makeText(context, "Article added to favorites", Toast.LENGTH_SHORT).show();
                     ArticlesDB.saveArticleToFavorites(dbHelper, article);
@@ -106,7 +106,7 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
                     Toast.makeText(context, "Article removed from read later", Toast.LENGTH_SHORT).show();
                     ArticlesDB.deleteArticleFromReadLater(dbHelper, article.getId());
                     popupBtnReadLater.setImageResource(R.drawable.readlater_icon_outline);
-                }else {
+                } else {
                     // Add article to read later
                     Toast.makeText(context, "Article added to reaq later", Toast.LENGTH_SHORT).show();
                     ArticlesDB.saveArticleToReadLater(dbHelper, article);

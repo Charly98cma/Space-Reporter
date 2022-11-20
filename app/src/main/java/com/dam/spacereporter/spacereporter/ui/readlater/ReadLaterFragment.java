@@ -80,7 +80,8 @@ public class ReadLaterFragment extends Fragment {
                 offset += limit;
                 count++;
                 readLaterProgressBar.setVisibility(View.VISIBLE);
-                if (count < 20) new Thread(new UpdateUIReadLaterFromDBThread(this, dbHelper, limit, offset)).start();
+                if (count < 20)
+                    new Thread(new UpdateUIReadLaterFromDBThread(this, dbHelper, limit, offset)).start();
             }
         });
     }

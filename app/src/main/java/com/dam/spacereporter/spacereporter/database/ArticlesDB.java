@@ -21,7 +21,7 @@ public class ArticlesDB {
      * Saves the given article in the ArticlesDB, in the "favorites" table
      *
      * @param dbHelper Articles database helper
-     * @param article Article to be stored in the DB
+     * @param article  Article to be stored in the DB
      */
     public static void saveArticleToFavorites(@NonNull ArticlesDatabaseHelper dbHelper, @NonNull Article article) {
         saveArticle(dbHelper, article, ArticlesDatabaseHelper.TABLE_NAME_FAV);
@@ -31,7 +31,7 @@ public class ArticlesDB {
      * Saves the given article in the ArticlesDB, in the "read later" table
      *
      * @param dbHelper Articles database helper
-     * @param article Article to be stored in the DB
+     * @param article  Article to be stored in the DB
      */
     public static void saveArticleToReadLater(@NonNull ArticlesDatabaseHelper dbHelper, @NonNull Article article) {
         saveArticle(dbHelper, article, ArticlesDatabaseHelper.TABLE_NAME_RL);
@@ -41,8 +41,8 @@ public class ArticlesDB {
      * Saves the given article in the given table
      *
      * @param dbHelper Articles database helper
-     * @param article Article to be stored in the DB
-     * @param table Table in which the article will be stored
+     * @param article  Article to be stored in the DB
+     * @param table    Table in which the article will be stored
      */
     @SuppressLint("DefaultLocale")
     private static void saveArticle(@NonNull ArticlesDatabaseHelper dbHelper, @NonNull Article article, String table) {
@@ -61,8 +61,8 @@ public class ArticlesDB {
      * Returns a list of, at most 'limit' articles (skipping the first 'offset' articles) from the "favorites" table in the ArticlesDB
      *
      * @param dbHelper Articles database helper
-     * @param limit Number of articles to return
-     * @param offset Number of articles to skip from the DB
+     * @param limit    Number of articles to return
+     * @param offset   Number of articles to skip from the DB
      * @return List of articles
      */
     @NonNull
@@ -74,8 +74,8 @@ public class ArticlesDB {
      * Returns a list of, at most 'limit' articles (skipping the first 'offset' articles) from the "read later" table in the ArticlesDB
      *
      * @param dbHelper Articles database helper
-     * @param limit Number of articles to return
-     * @param offset Number of articles to skip from the DB
+     * @param limit    Number of articles to return
+     * @param offset   Number of articles to skip from the DB
      * @return List of articles
      */
     @NonNull
@@ -92,7 +92,7 @@ public class ArticlesDB {
                 null)
         ) {
             c.moveToFirst();
-            while(!c.isAfterLast()) {
+            while (!c.isAfterLast()) {
                 result.add(new Article(
                         c.getInt(0),
                         c.getString(1),
@@ -114,7 +114,7 @@ public class ArticlesDB {
     /**
      * Returns whether the article is in the "favorites" table in the ArticlesDB
      *
-     * @param dbHelper Articles database helper
+     * @param dbHelper  Articles database helper
      * @param articleId Id of the article to check
      * @return Whether the article is in the DB
      */
@@ -125,7 +125,7 @@ public class ArticlesDB {
     /**
      * Returns whether the article is in the "read later" table in the ArticlesDB
      *
-     * @param dbHelper Articles database helper
+     * @param dbHelper  Articles database helper
      * @param articleId Id of the article to check
      * @return Whether the article is in the DB
      */
@@ -150,7 +150,7 @@ public class ArticlesDB {
     /**
      * Deletes the given article from the "favorites" table in the ArticlesDB
      *
-     * @param dbHelper Articles database helper
+     * @param dbHelper  Articles database helper
      * @param articleId Id of the article to delete
      */
     public static void deleteArticleFromFavorites(ArticlesDatabaseHelper dbHelper, int articleId) {
@@ -160,7 +160,7 @@ public class ArticlesDB {
     /**
      * Deletes the given article from the "read later" table in the ArticlesDB
      *
-     * @param dbHelper Articles database helper
+     * @param dbHelper  Articles database helper
      * @param articleId Id of the article to delete
      */
     public static void deleteArticleFromReadLater(ArticlesDatabaseHelper dbHelper, int articleId) {
@@ -172,6 +172,6 @@ public class ArticlesDB {
         dbHelper.getWritableDatabase().delete(
                 table,
                 "id = ?",
-                new String[] {Integer.toString(articleId)});
+                new String[]{Integer.toString(articleId)});
     }
 }
