@@ -16,6 +16,7 @@ import com.dam.spacereporter.spacereporter.ui.auth.login.LoginActivity;
 import com.dam.spacereporter.spacereporter.ui.favorites.FavoritesFragment;
 import com.dam.spacereporter.spacereporter.ui.home.HomeFragment;
 import com.dam.spacereporter.spacereporter.ui.settings.SettingsFragment;
+import com.dam.spacereporter.spacereporter.utils.Constants;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.play.core.review.ReviewInfo;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        sharedPreferences = getSharedPreferences(getString(R.string.pref), MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(Constants.PREF_KEY, MODE_PRIVATE);
 
         /*---------- UI ELEMENTS ----------*/
 
@@ -96,9 +97,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
 
-        String fullName = sharedPreferences.getString(getString(R.string.pref_user_fullName), "NAME");
-        String username = sharedPreferences.getString(getString(R.string.pref_user_username), "USERNAME");
-        String email = sharedPreferences.getString(getString(R.string.pref_user_email), "EMAIL");
+        String fullName = sharedPreferences.getString(Constants.PREF_USER_FULLNAME, "NAME");
+        String username = sharedPreferences.getString(Constants.PREF_USER_USERNAME, "USERNAME");
+        String email = sharedPreferences.getString(Constants.PREF_USER_EMAIL, "EMAIL");
 
         ((TextView) navigationView.getHeaderView(0)
                 .findViewById(R.id.nav_txt_fullName)).setText(fullName);
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
 
-        if (!sharedPreferences.getBoolean(getString(R.string.pref_save_login), false)) {
+        if (!sharedPreferences.getBoolean(Constants.PREF_SAVE_LOGIN, false)) {
             clearCache();
             firebaseAuth.signOut();
         }
@@ -134,13 +135,11 @@ public class MainActivity extends AppCompatActivity {
      */
 
     private void clearCache() {
-        SharedPreferences.Editor editor = getSharedPreferences(
-                getString(R.string.pref), MODE_PRIVATE
-        ).edit();
-        editor.remove(getString(R.string.pref_user_fullName));
-        editor.remove(getString(R.string.pref_user_username));
-        editor.remove(getString(R.string.pref_user_email));
-        editor.remove(getString(R.string.pref_save_login));
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove(Constants.PREF_USER_FULLNAME);
+        editor.remove(Constants.PREF_USER_USERNAME);
+        editor.remove(Constants.PREF_USER_EMAIL);
+        editor.remove(Constants.PREF_SAVE_LOGIN);
         editor.apply();
     }
 

@@ -20,6 +20,7 @@ import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.ui.MainActivity;
 import com.dam.spacereporter.spacereporter.ui.auth.forgotPwd.ForgotPwdActivity;
 import com.dam.spacereporter.spacereporter.ui.auth.signup.SignUpActivity;
+import com.dam.spacereporter.spacereporter.utils.Constants;
 import com.dam.spacereporter.spacereporter.utils.NetworkConnection;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
@@ -120,8 +121,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void readRememberMeSwitch(Checkable login_sw_stayLogged) {
         SharedPreferences.Editor editor =
-                getSharedPreferences(getString(R.string.pref), MODE_PRIVATE).edit();
-        editor.putBoolean(getString(R.string.pref_save_login), login_sw_stayLogged.isChecked());
+                getSharedPreferences(Constants.PREF_KEY, MODE_PRIVATE).edit();
+        editor.putBoolean(Constants.PREF_SAVE_LOGIN, login_sw_stayLogged.isChecked());
         editor.apply();
     }
 

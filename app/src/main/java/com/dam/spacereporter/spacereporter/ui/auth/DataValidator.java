@@ -1,5 +1,6 @@
 package com.dam.spacereporter.spacereporter.ui.auth;
 
+import androidx.annotation.NonNull;
 import androidx.core.util.PatternsCompat;
 
 import java.util.regex.Pattern;
@@ -35,7 +36,7 @@ public class DataValidator {
                 DIGIT.matcher(password).find();
     }
 
-    public static boolean doPasswordsMatch(String password, String confirmPassword) {
+    public static boolean doPasswordsMatch(@NonNull String password, @NonNull String confirmPassword) {
         return password.equals(confirmPassword);
     }
 }

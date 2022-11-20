@@ -1,16 +1,5 @@
 <resources>
 
-    <string name="api_url">https://api.spaceflightnewsapi.net/v3/articles?_limit=%d&amp;_start=%d</string>
-
-    <!-- SHARED PREFERENCES -->
-    <string name="pref">SHARED_PREF_LIST</string>
-    <string name="pref_save_login">SAVE_LOGIN</string>
-    <string name="pref_seen_start">SEEN_START</string>
-    <string name="pref_user_fullName">USER_FULL_NAME</string>
-    <string name="pref_user_username">USER_USERNAME</string>
-    <string name="pref_user_email">USER_EMAIL</string>
-    <string name="pref_article_lastSeen">ARTICLE_LAST_ID</string>
-
     <!-- GLOBAL -->
     <string name="global_app_name">Space Reporter</string>
     <string name="global_poweredBy_txt">Powered by <a href="https://thespacedevs.com/llapi">Launch Library 2 API</a> and <a href="https://thespacedevs.com/snapi">Spaceflight News API</a></string>
@@ -18,7 +7,6 @@
     <string name="global_noConn">No internet connection</string>
 
     <!-- NOTIFICATIONS -->
-    <string name="notif_channel_newArticle_id">UNREAD_ARTICLES</string>
     <string name="notif_channel_newArticle_name">Unread articles</string>
     <string name="notif_channel_newArticle_desc">Channel for notifications about unread articles</string>
     <string name="notif_txt_newArticle_title">New unread articles!</string>

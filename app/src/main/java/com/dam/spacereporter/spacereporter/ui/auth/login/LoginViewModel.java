@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.dam.spacereporter.R;
 import com.dam.spacereporter.spacereporter.ui.auth.DataValidator;
+import com.dam.spacereporter.spacereporter.utils.Constants;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -73,11 +74,11 @@ public class LoginViewModel extends ViewModel {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 SharedPreferences.Editor editor = context.getSharedPreferences(
-                        context.getString(R.string.pref), MODE_PRIVATE
+                        Constants.PREF_KEY, MODE_PRIVATE
                 ).edit();
-                editor.putString(context.getString(R.string.pref_user_fullName), (String) snapshot.child("fullName").getValue());
-                editor.putString(context.getString(R.string.pref_user_username), (String) snapshot.child("username").getValue());
-                editor.putString(context.getString(R.string.pref_user_email), (String) snapshot.child("email").getValue());
+                editor.putString(Constants.PREF_USER_FULLNAME, (String) snapshot.child("fullName").getValue());
+                editor.putString(Constants.PREF_USER_USERNAME, (String) snapshot.child("username").getValue());
+                editor.putString(Constants.PREF_USER_EMAIL, (String) snapshot.child("email").getValue());
                 editor.apply();
             }
 
