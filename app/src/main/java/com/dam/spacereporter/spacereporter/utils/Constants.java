@@ -3,7 +3,7 @@ package com.dam.spacereporter.spacereporter.utils;
 public class Constants {
 
     // Spaceflight News API
-    public final static String SNAPI_URL = "https://api.spaceflightnewsapi.net/v3/articles?_limit=%d&amp;_start=%d;";
+    public final static String SNAPI_URL = "https://api.spaceflightnewsapi.net/v3/articles?_limit=%d&_start=%d";
 
     // SHARED PREFERENCES KEYS
     public final static String PREF_KEY = "SHARED_PREF_LIST";
