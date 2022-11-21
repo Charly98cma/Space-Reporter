@@ -79,8 +79,8 @@ public class Article {
      * @return Image URL of the article
      */
     @SerializedName("imageUrl")
-    public final String getImageUrl() {
-        return imageUrl;
+    public final Uri getImageUrl() {
+        return Uri.parse(imageUrl);
     }
 
     /**

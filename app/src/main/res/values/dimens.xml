@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="activity_margins">16dp</dimen>
+    <dimen name="popup_buttons_separation">20dp</dimen>
 
     <dimen name="title_font_size">32sp</dimen>
     <dimen name="banner_font_size">20sp</dimen>
-    <dimen name="stayLogged_font_size">16sp</dimen>
-
+    <dimen name="stayLogged_font_size">30sp</dimen>
 </resources>
