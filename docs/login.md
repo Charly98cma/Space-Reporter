@@ -13,14 +13,16 @@ sequenceDiagram
         end
     end
     loop
-        us-->sr: User clicks "Login"
+        us-->+sr: User clicks "Login"
         Note over sr: Store 'Stay logged' switch
         critical FirebaseAuth login
-            sr--)fb: signInWithEmailAndPassword
+            sr--)+fb: signInWithEmailAndPassword
             option isSuccessful
-                fb--)sr: successful
+                fb--)-sr: successful
+                Note over sr: Is email verified?
                 alt email verified
-                    sr->>us: Login successful
+                    Note over sr: Cache user info. (SP)
+                    sr->>-us: Login successful
                 else email not verified
                     sr->>us: Login failed "Unverified email"
                 end
@@ -49,16 +51,17 @@ sequenceDiagram
         us-->sr: User clicks "Send email"
         critical FirebaseAuth send email
             sr--)fb: sendPasswordResetEmail
-            fb--)em: Email to user
             option isSuccessful
+            fb--)em: Email to user
                 fb--)sr: successful
+                sr->>us: "Email sent"
             option failed
                 fb--)sr: failed
                 sr->>us: Email failed "No account with that email"
         end
     end
 ```
-# SignUp
+# Create account (SignUp)
 ```mermaid
 sequenceDiagram
     participant us as User
@@ -84,19 +87,16 @@ sequenceDiagram
                     fbdb--)fba: successful
                     fba--)fbdb: sendEmailVerification
                     alt isSuccessful
-                        fbdb--)fba: successful
-                        fba--)sr: successful
-                        sr--)us: SignUp successful                        
+                        fbdb--)sr: successful
+                        sr--)us: SignUp successful
                     else failed
-                        fbdb--)fba: failed
+                        fbdb--)sr: failed
                         Note over fba: Undo SignUp
-                        fba--)sr: failed
                         sr--)us: SignUp failed "Error ... "
                     end
                 else failed
-                    fbdb--)fba: failed
                     Note over fba: Undo SignUp
-                    fba--)sr: failed
+                    fbdb--)sr: failed
                     sr--)us: SignUp failed "Unexpected error"
                 end
             option failed
@@ -104,9 +104,4 @@ sequenceDiagram
                 sr->>us: SignUp failed "User already registered"
         end
     end
-```
-# Forgot password
-```mermaid
-sequenceDiagram
-    
 ```
