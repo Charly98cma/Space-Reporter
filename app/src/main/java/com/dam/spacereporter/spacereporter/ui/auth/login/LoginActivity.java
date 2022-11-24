@@ -69,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
             if (loginResult.getSuccess()) {
                 setResult(RESULT_OK);
                 loginViewModel.cacheUserInfo(this);
+                readRememberMeSwitch(login_sw_stayLogged);
                 // Wait to have user information on SharedPreferences
                 try {
                     Thread.sleep(500);
@@ -106,7 +107,6 @@ public class LoginActivity extends AppCompatActivity {
         login_btn_login.setOnClickListener(view -> {
             if (NetworkConnection.isNetworkConnected(this)) {
                 login_bar_loading.setVisibility(View.VISIBLE);
-                readRememberMeSwitch(login_sw_stayLogged);
                 loginViewModel.login(
                         login_et_email.getText().toString().trim(),
                         login_et_password.getText().toString().trim()
