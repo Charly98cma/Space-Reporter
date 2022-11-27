@@ -32,35 +32,6 @@ sequenceDiagram
         end
     end
 ```
-# Change password (ForgotPwd)
-```mermaid
-sequenceDiagram
-    participant us as User
-    participant sr as SpaceReporter
-    participant fb as FirebaseAuth
-    participant em as User Email
-    loop 
-        Note over us: User writes email
-        alt invalid email
-            sr->>us: Warn user of invalid email
-        else valid email
-            Note over sr: Enable "Send email" button
-        end
-    end
-    loop
-        us-->sr: User clicks "Send email"
-        critical FirebaseAuth send email
-            sr--)fb: sendPasswordResetEmail
-            option isSuccessful
-            fb--)em: Email to user
-                fb--)sr: successful
-                sr->>us: "Email sent"
-            option failed
-                fb--)sr: failed
-                sr->>us: Email failed "No account with that email"
-        end
-    end
-```
 # Create account (SignUp)
 ```mermaid
 sequenceDiagram
@@ -102,6 +73,56 @@ sequenceDiagram
             option failed
                 fba--)sr: failed
                 sr->>us: SignUp failed "User already registered"
+        end
+    end
+```
+# Change password (ForgotPwd)
+```mermaid
+sequenceDiagram
+    participant us as User
+    participant sr as SpaceReporter
+    participant fb as FirebaseAuth
+    participant em as User Email
+    loop 
+        Note over us: User writes email
+        alt invalid email
+            sr->>us: Warn user of invalid email
+        else valid email
+            Note over sr: Enable "Send email" button
+        end
+    end
+    loop
+        us-->sr: User clicks "Send email"
+        critical FirebaseAuth send email
+            sr--)fb: sendPasswordResetEmail
+            option isSuccessful
+            fb--)em: Email to user
+                fb--)sr: successful
+                sr->>us: "Email sent"
+            option failed
+                fb--)sr: failed
+                sr->>us: Email failed "No account with that email"
+        end
+    end
+```
+# News
+```mermaid
+sequenceDiagram
+    participant us as User
+    participant sr as Space Reporter
+    participant snapi as Spaceflight News API
+    loop User loop of loading new articles
+        us->>sr: Scrolls to load articles
+        sr--)snapi: Request articles (limit and offset)
+        alt request successful
+            snapi--)sr: JSON of articles
+            Note over sr: Process articles
+            Note over sr: Add to local list
+            Note over sr: Update offset
+            sr->>us: Show articles on RecyclerView
+        else request failed
+            snapi--)sr: failed
+            sr->>us: "Error loading articles"
         end
     end
 ```
