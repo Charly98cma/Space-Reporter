@@ -78,6 +78,7 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
             // Setup buttons
             ImageButton popupBtnFav = popupView.findViewById(R.id.popup_btn_fav);
             ImageButton popupBtnReadLater = popupView.findViewById(R.id.popup_btn_readLater);
+            ImageButton popupBtnShare = popupView.findViewById(R.id.popup_btn_share);
             ImageButton popupBtnWebView = popupView.findViewById(R.id.popup_btn_openWeb);
 
             // Change icons based on the article being (or not) in Fav/RL database
@@ -112,6 +113,15 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.NewsViewHo
                     ArticlesDB.saveArticleToReadLater(dbHelper, article);
                     popupBtnReadLater.setImageResource(R.drawable.readlater_icon_filled);
                 }
+            });
+            popupBtnShare.setOnClickListener(v_share -> {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_STREAM, article.getImageUrl());
+                intent.putExtra(
+                        Intent.EXTRA_TEXT,
+                        String.format("%s\n\n%s", article.getTitle(), article.getSummary()));
+                intent.setType("image/*");
+                context.startActivity(Intent.createChooser(intent, "Choose one"));
             });
             popupBtnWebView.setOnClickListener(v_web -> {
                 // Send URL to web browser to load article in the news site

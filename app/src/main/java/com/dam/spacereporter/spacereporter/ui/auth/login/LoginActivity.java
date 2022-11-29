@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
@@ -69,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             if (loginResult.getSuccess()) {
                 setResult(RESULT_OK);
                 loginViewModel.cacheUserInfo(this);
+                readRememberMeSwitch(login_sw_stayLogged);
                 // Wait to have user information on SharedPreferences
                 try {
                     Thread.sleep(500);
@@ -106,7 +108,6 @@ public class LoginActivity extends AppCompatActivity {
         login_btn_login.setOnClickListener(view -> {
             if (NetworkConnection.isNetworkConnected(this)) {
                 login_bar_loading.setVisibility(View.VISIBLE);
-                readRememberMeSwitch(login_sw_stayLogged);
                 loginViewModel.login(
                         login_et_email.getText().toString().trim(),
                         login_et_password.getText().toString().trim()
@@ -119,13 +120,23 @@ public class LoginActivity extends AppCompatActivity {
         login_btn_signUp.setOnClickListener(view -> startActivity(new Intent(this, SignUpActivity.class)));
     }
 
-    private void readRememberMeSwitch(Checkable login_sw_stayLogged) {
+    /**
+     * Store the boolean valud of the "Stay logged" switch to keep the user logged
+     *
+     * @param login_sw_stayLogged Checkable UI element
+     */
+    private void readRememberMeSwitch(@NonNull Checkable login_sw_stayLogged) {
         SharedPreferences.Editor editor =
                 getSharedPreferences(Constants.PREF_KEY, MODE_PRIVATE).edit();
         editor.putBoolean(Constants.PREF_SAVE_LOGIN, login_sw_stayLogged.isChecked());
         editor.apply();
     }
 
+    /**
+     * Show the user a Toask with an error message
+     *
+     * @param errorString String resource ID of the error message
+     */
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(this, errorString, Toast.LENGTH_SHORT).show();
     }

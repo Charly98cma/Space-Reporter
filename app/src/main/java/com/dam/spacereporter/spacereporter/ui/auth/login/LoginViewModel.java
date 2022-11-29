@@ -24,22 +24,41 @@ import java.util.Objects;
 
 public class LoginViewModel extends ViewModel {
 
+    // Initialization of the connections and data storage
     private final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private final DatabaseReference usersDatabase = FirebaseDatabase.getInstance().getReference("users");
     private final MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
     private final MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
 
+    // Mandatory empty constructor
     LoginViewModel() {
     }
 
+    /**
+     * Returns the current LoginFormState, which states if the form is correct or wrong
+     *
+     * @return the current mutable LoginFormState
+     */
     LiveData<LoginFormState> getLoginFormState() {
         return loginFormState;
     }
 
+    /**
+     * Returns the LoginResult, which indicates whether the login operation has been successful
+     *
+     * @return the current mutable loginResult
+     */
     LiveData<LoginResult> getLoginResult() {
         return loginResult;
     }
 
+    /**
+     * Async login operation through FirebaseAuth, which checks if the credentials are valid and
+     * if the user has verified the email/account.
+     *
+     * @param email String with the user email address
+     * @param password String with the user password
+     */
     public void login(String email, String password) {
         firebaseAuth.signInWithEmailAndPassword(
                 email, password
@@ -57,6 +76,13 @@ public class LoginViewModel extends ViewModel {
         });
     }
 
+    /**
+     * Check the data introduced by the user (email and password) are valid and follow the
+     * imposed restrictions on the DataValidator.
+     *
+     * @param email String with the user email address
+     * @param password String with the user password
+     */
     public void loginDataChanged(String email, String password) {
         if (!DataValidator.isEmailValid(email))
             loginFormState.setValue(new LoginFormState(R.string.login_error_email, null));
@@ -66,6 +92,12 @@ public class LoginViewModel extends ViewModel {
             loginFormState.setValue(new LoginFormState(true));
     }
 
+    /**
+     * Save the basic user information (fullName, username and email) in the SharedPreferences
+     * for later use.
+     *
+     * @param context COntext object of the activity
+     */
     public void cacheUserInfo(Context context) {
         usersDatabase.child(
                 Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid()

@@ -103,7 +103,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="8dp"
                 android:text="@string/login_txt_remember"
                 android:textSize="@dimen/stayLogged_font_size" />
 

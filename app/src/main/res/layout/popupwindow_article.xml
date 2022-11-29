@@ -33,20 +33,29 @@
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/popup_btn_readLater"
             style="@style/article_popup_btns"
+            android:layout_marginStart="@dimen/popup_buttons_separation"
             android:contentDescription="@string/popup_desc_readLater"
             android:src="@drawable/readlater_icon_outline" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/popup_btn_fav"
             style="@style/article_popup_btns"
-            android:layout_marginStart="48dp"
-            android:layout_marginEnd="48dp"
+            android:layout_marginStart="@dimen/popup_buttons_separation"
             android:contentDescription="@string/popup_desc_fav"
             android:src="@drawable/favorite_icon_outline" />
 
         <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/popup_btn_share"
+            style="@style/article_popup_btns"
+            android:layout_marginStart="@dimen/popup_buttons_separation"
+            android:contentDescription="@string/popup_desc_webView"
+            android:src="@drawable/share_icon" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/popup_btn_openWeb"
             style="@style/article_popup_btns"
+            android:layout_marginStart="@dimen/popup_buttons_separation"
+            android:layout_marginEnd="@dimen/popup_buttons_separation"
             android:contentDescription="@string/popup_desc_webView"
             android:src="@drawable/web_icon" />
 
