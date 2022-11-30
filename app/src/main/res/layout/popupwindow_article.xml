@@ -6,7 +6,7 @@
     android:elevation="20dp"
     android:orientation="vertical"
     android:padding="8dp"
-    android:background="@color/md_theme_light_tertiaryContainer">
+    android:background="@color/md_theme_light_secondaryContainer">
 
     <TextView
         android:id="@+id/popup_txt_title"
